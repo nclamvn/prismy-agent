@@ -1,0 +1,5 @@
+recursive-include src *.py
+recursive-include src *.json
+recursive-include src *.yaml
+include requirements.txt
+include README.md
