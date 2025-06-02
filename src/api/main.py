@@ -1,0 +1,56 @@
+from dotenv import load_dotenv
+load_dotenv()
+
+"""
+Main FastAPI application
+"""
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from src.config.logging_config import setup_logging, get_logger
+from src.core.utils.health_check import HealthChecker, check_disk_space
+from src.api.v1.endpoints import translation, content, health
+
+# Setup logging
+setup_logging()
+logger = get_logger(__name__)
+
+# Create app
+app = FastAPI(
+    title="Translate Export Agent API",
+    description="AI-powered translation and content transformation",
+    version="1.0.0"
+)
+
+# CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Include routers
+app.include_router(health.router, prefix="/api/v1/health", tags=["health"])
+app.include_router(translation.router, prefix="/api/v1/translate", tags=["translation"])
+app.include_router(content.router, prefix="/api/v1/content", tags=["content"])
+
+@app.get("/")
+async def root():
+    """Root endpoint"""
+    return {
+        "message": "Welcome to Translate Export Agent API",
+        "version": "1.0.0",
+        "docs": "/docs"
+    }
+
+@app.on_event("startup")
+async def startup_event():
+    """Startup tasks"""
+    logger.info("API starting up...")
+    # Initialize services here
+    
+@app.on_event("shutdown")
+async def shutdown_event():
+    """Shutdown tasks"""
+    logger.info("API shutting down...")

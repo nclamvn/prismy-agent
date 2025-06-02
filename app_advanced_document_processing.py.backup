@@ -1,0 +1,352 @@
+import streamlit as st
+import asyncio
+import time
+from datetime import datetime
+from sdip_advanced_integration import SDIPAdvancedSystem
+from ui_components.modern_components import ModernUIComponents
+from analytics.analytics_engine import AnalyticsEngine
+from analytics.dashboard_components import DashboardComponents
+
+# Initialize components
+ui = ModernUIComponents()
+ui.setup_page_config()
+
+# Initialize analytics engine
+if 'analytics_engine' not in st.session_state:
+    st.session_state.analytics_engine = AnalyticsEngine()
+
+analytics = st.session_state.analytics_engine
+dashboard = DashboardComponents()
+
+# Hero Section
+st.markdown("""
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+           padding: 25px; border-radius: 16px; color: white; margin: 15px 0; text-align: center;">
+    <h1 style="margin: 0; font-size: 2.5rem; font-weight: 700;">
+        🚀 SDIP Advanced Document Processing
+    </h1>
+    <p style="margin: 10px 0 0 0; font-size: 1.2rem; opacity: 0.9;">
+        PDF Tables • DOCX Structures • Excel Formulas • Mathematical Expressions
+    </p>
+</div>
+""", unsafe_allow_html=True)
+
+# Advanced Features Info
+st.markdown("""
+<div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)); 
+           padding: 20px; border-radius: 16px; margin: 15px 0; border-left: 4px solid #667eea;">
+    <h3 style="color: #333; margin: 0 0 10px 0;">🧠 Advanced Document Processing Features</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 0; color: #666;">
+        <div>
+            • <strong>📄 PDF Table Extraction</strong> - Automated table detection and preservation<br>
+            • <strong>📝 DOCX Complex Structures</strong> - Headers, lists, tables, formatting<br>
+            • <strong>📈 Excel Formula Processing</strong> - Formulas, functions, cell references<br>
+        </div>
+        <div>
+            • <strong>🧮 Mathematical Expressions</strong> - Equation detection and handling<br>
+            • <strong>🔍 Enhanced Semantic Chunking</strong> - Structure-aware segmentation<br>
+            • <strong>📊 Real-time Analytics</strong> - Advanced processing insights<br>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# Navigation tabs
+tab1, tab2, tab3 = st.tabs(["📄 Advanced Translation", "📊 Analytics Dashboard", "⚡ Performance Insights"])
+
+with tab1:
+    st.markdown("## 📄 Advanced Document Translation")
+    
+    # Translation mode selection
+    col_mode1, col_mode2 = st.columns(2)
+    
+    with col_mode1:
+        translation_mode = st.selectbox(
+            "🎯 Translation Mode",
+            ["📝 Text Input", "📄 File Upload"],
+            help="Choose between text input or file upload for advanced processing"
+        )
+    
+    with col_mode2:
+        target_language = st.selectbox(
+            "🌍 Target Language",
+            ["Vietnamese", "English", "French", "German", "Spanish", "Chinese", "Japanese"],
+        )
+    
+    source_language = st.selectbox(
+        "🔤 Source Language", 
+        ["Auto-detect", "English", "Vietnamese", "French", "German", "Spanish"]
+    )
+    
+    if translation_mode == "📝 Text Input":
+        # Text input mode
+        col1, col2 = st.columns([1, 1])
+        
+        with col1:
+            st.markdown("### 📝 Input Document")
+            
+            input_text = st.text_area(
+                "Enter text with tables, formulas, or complex structures:",
+                height=400,
+                placeholder="""Example with advanced features:
+
+# Financial Report Q4 2024
+
+=== TABLE 1 ===
+Department   Budget    Actual    Variance
+Sales        500000    520000    +20000
+Marketing    200000    180000    -20000
+Operations   300000    295000    -5000
+
+Key Performance Indicators:
+- ROI Formula: =((B2-A2)/A2)*100 = 4%
+- Efficiency: =C2/A2 = 1.04
+- Growth Rate: =(B5-B2)/B2*100 = 30%
+
+=== TABLE 2 ===
+Product     Price   Quantity  Total
+Laptop      1000    5         =B2*C2
+Phone       500     10        =B3*C3
+Tablet      300     15        =B4*C4
+
+Total Revenue: =SUM(D2:D4)
+Average Price: =AVERAGE(B2:B4)
+                """,
+                help="Advanced system will detect tables, formulas, and complex structures"
+            )
+        
+        with col2:
+            st.markdown("### 🎯 Advanced Translation Result")
+            
+            if st.button("🚀 Advanced Translate with Analytics", type="primary"):
+                if input_text:
+                    # Initialize advanced system
+                    advanced_system = SDIPAdvancedSystem()
+                    
+                    # Create placeholders for real-time updates
+                    status_placeholder = st.empty()
+                    progress_placeholder = st.empty()
+                    
+                    # Step-by-step processing
+                    with status_placeholder.container():
+                        ui.create_status_indicators({
+                            "🧠 Advanced Analysis": "info",
+                            "📊 Processing Tables": "warning",
+                            "🧮 Detecting Formulas": "warning"
+                        })
+                    
+                    with progress_placeholder.container():
+                        ui.create_animated_progress_bar(25, "Advanced Analysis")
+                    
+                    time.sleep(1.0)
+                    
+                    try:
+                        # Perform advanced translation
+                        result = asyncio.run(advanced_system.smart_translate_document(
+                            input_text, target_language, 
+                            "auto" if source_language == "Auto-detect" else source_language
+                        ))
+                        
+                        # Record in analytics
+                        if result['success']:
+                            # Add advanced processing info
+                            result['source_language'] = source_language
+                            result['target_language'] = target_language
+                            result['original_text'] = input_text
+                            result['advanced_processing'] = True
+                            
+                            # Record translation for analytics
+                            record_id = analytics.record_translation(result)
+                            
+                            with progress_placeholder.container():
+                                ui.create_animated_progress_bar(100, "Complete + Analytics")
+                            
+                            with status_placeholder.container():
+                                ui.create_status_indicators({
+                                    "✅ Advanced Processing": "success",
+                                    "✅ Translation Complete": "success",
+                                    "✅ Analytics Recorded": "success"
+                                })
+                            
+                            time.sleep(1)
+                            
+                            # Clear progress
+                            progress_placeholder.empty()
+                            status_placeholder.empty()
+                            
+                            # Success message
+                            st.success(f"🚀 Advanced Translation Completed! (Analytics ID: {record_id})")
+                            
+                            # Advanced metrics
+                            st.markdown("### 📊 Advanced Processing Metrics")
+                            col_m1, col_m2, col_m3, col_m4 = st.columns(4)
+                            
+                            with col_m1:
+                                st.metric("Quality Score", f"{result['quality_score']:.2f}")
+                            with col_m2:
+                                st.metric("Processing Time", f"{result['processing_time']:.2f}s")
+                            with col_m3:
+                                st.metric("Chunks Created", result['chunk_count'])
+                            with col_m4:
+                                advanced_features = result, "advanced_features", {})
+                                st.metric("Advanced Features", len(result, 'smart_features_used', [])))
+                            
+                            # Translation result
+                            st.markdown("### 🎯 Advanced Translation Result")
+                            st.text_area(
+                                "AI-Enhanced Translation with Advanced Processing:",
+                                value=result['translated_text'],
+                                height=300,
+                                help="Translation with table and formula preservation"
+                            )
+                            
+                            # Advanced features details
+                            with st.expander("🚀 Advanced Features Used", expanded=True):
+                                advanced_features = result, "advanced_features", {})
+                                
+                                col_f1, col_f2, col_f3 = st.columns(3)
+                                
+                                with col_f1:
+                                    st.metric("Table Chunks", advanced_features, 'table_chunks', 0))
+                                with col_f2:
+                                    st.metric("Formula Chunks", advanced_features, 'formula_chunks', 0))
+                                with col_f3:
+                                    st.metric("Avg Confidence", f"{advanced_features, 'average_confidence', 0):.2f}")
+                                
+                                st.markdown("**🛠️ Smart Features Utilized:**")
+                                for feature in result, 'smart_features_used', []):
+                                    st.write(f"✅ {feature}")
+                        
+                        else:
+                            progress_placeholder.empty()
+                            status_placeholder.empty()
+                            st.error(f"❌ Advanced translation failed: {result, 'error', 'Unknown error')}")
+                    
+                    except Exception as e:
+                        progress_placeholder.empty()
+                        status_placeholder.empty()
+                        st.error(f"❌ Advanced system error: {e}")
+                
+                else:
+                    st.warning("⚠️ Please enter text to translate")
+    
+    else:
+        # File upload mode
+        st.markdown("### 📄 Advanced File Processing")
+        
+        uploaded_file = st.file_uploader(
+            "Upload document for advanced processing:",
+            type=['pdf', 'docx', 'xlsx', 'txt'],
+            help="Supports PDF (with tables), DOCX (complex structures), Excel (formulas), and text files"
+        )
+        
+        if uploaded_file:
+            st.info(f"📄 Selected file: {uploaded_file.name} ({uploaded_file.size} bytes)")
+            
+            if st.button("🚀 Process & Translate Advanced Document", type="primary"):
+                # Initialize advanced system
+                advanced_system = SDIPAdvancedSystem()
+                
+                # Create placeholders
+                status_placeholder = st.empty()
+                progress_placeholder = st.empty()
+                
+                with status_placeholder.container():
+                    ui.create_status_indicators({
+                        "📄 Reading File": "info",
+                        "🔍 Advanced Processing": "warning"
+                    })
+                
+                with progress_placeholder.container():
+                    ui.create_animated_progress_bar(20, "Reading File")
+                
+                try:
+                    # Read file content
+                    file_content = uploaded_file.read()
+                    
+                    with progress_placeholder.container():
+                        ui.create_animated_progress_bar(60, "Advanced Processing")
+                    
+                    # Process with advanced system
+                    result = asyncio.run(advanced_system.smart_translate_file(
+                        file_content, uploaded_file.name, target_language,
+                        "auto" if source_language == "Auto-detect" else source_language
+                    ))
+                    
+                    with progress_placeholder.container():
+                        ui.create_animated_progress_bar(100, "Complete")
+                    
+                    if result['success']:
+                        # Clear progress
+                        progress_placeholder.empty()
+                        status_placeholder.empty()
+                        
+                        st.success("🎉 Advanced File Processing & Translation Complete!")
+                        
+                        # File processing summary
+                        if 'file_processing' in result:
+                            fp = result['file_processing']
+                            st.markdown("### 📊 File Processing Summary")
+                            
+                            col_s1, col_s2, col_s3, col_s4 = st.columns(4)
+                            with col_s1:
+                                st.metric("Format", fp['format'])
+                            with col_s2:
+                                st.metric("Tables Found", fp['tables_found'])
+                            with col_s3:
+                                st.metric("Formulas Found", fp['formulas_found'])
+                            with col_s4:
+                                st.metric("Images Found", fp['images_found'])
+                        
+                        # Translation result
+                        st.markdown("### 🎯 Advanced File Translation")
+                        st.text_area(
+                            "Advanced Translation Result:",
+                            value=result['translated_text'],
+                            height=400,
+                            help="Translation preserving document structure"
+                        )
+                    
+                    else:
+                        progress_placeholder.empty()
+                        status_placeholder.empty()
+                        st.error(f"❌ File processing failed: {result, 'error')}")
+                
+                except Exception as e:
+                    progress_placeholder.empty()
+                    status_placeholder.empty()
+                    st.error(f"❌ File processing error: {e}")
+
+with tab2:
+    # Analytics Dashboard (same as before)
+    st.markdown("## 📊 Advanced Analytics Dashboard")
+    
+    insights = analytics.get_comprehensive_insights()
+    
+    if insights.total_translations == 0:
+        st.info("📊 No analytics data yet. Start translating to see comprehensive insights!")
+    else:
+        st.success(f"📊 Analytics Dashboard - {insights.total_translations} translations analyzed")
+        dashboard.create_kpi_metrics(insights)
+
+with tab3:
+    # Performance Insights (same as before)
+    st.markdown("## ⚡ Advanced Performance Insights")
+    
+    performance_metrics = analytics.get_performance_metrics()
+    
+    if not performance_metrics:
+        st.info("⚡ No performance data available yet. Complete some translations to see insights!")
+    else:
+        st.success("⚡ Performance Analysis - Advanced document processing insights")
+        dashboard.create_performance_radar_chart(performance_metrics)
+
+# Footer
+st.markdown("---")
+st.markdown("""
+<div style="text-align: center; padding: 20px; color: #666;">
+    <h4 style="color: #333;">🚀 SDIP Advanced Document Processing</h4>
+    <p>Advanced PDF • Complex DOCX • Excel Formulas • Mathematical Expressions</p>
+    <p><small>Enhanced Semantic Chunking • Professional Analytics • Smart Translation</small></p>
+</div>
+""", unsafe_allow_html=True)

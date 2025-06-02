@@ -1,0 +1,150 @@
+"""Main application entry point with clean architecture."""
+
+import streamlit as st
+import os
+from typing import Optional
+
+from application.services.translation_service import TranslationService
+from core.entities.translation import TranslationRequest
+
+
+class TranslationApp:
+    """Main application class with clean architecture."""
+    
+    def __init__(self):
+        self.translation_service = None
+        self.setup_page_config()
+    
+    def setup_page_config(self):
+        """Configure Streamlit page."""
+        st.set_page_config(
+            page_title="Translation Agent v2.0",
+            page_icon="🚀",
+            layout="wide",
+            initial_sidebar_state="expanded"
+        )
+    
+    def get_translation_service(self) -> TranslationService:
+        """Get or create translation service."""
+        if not self.translation_service:
+            api_key = st.session_state.get('openai_api_key', '')
+            self.translation_service = TranslationService(api_key if api_key else None)
+        return self.translation_service
+    
+    def render_sidebar(self):
+        """Render application sidebar."""
+        with st.sidebar:
+            st.markdown("### 🔑 API Configuration")
+            
+            # API Key input
+            api_key = st.text_input(
+                "OpenAI API Key",
+                type="password",
+                value=st.session_state.get('openai_api_key', ''),
+                help="Enter your OpenAI API key"
+            )
+            
+            if api_key:
+                st.session_state['openai_api_key'] = api_key
+                if self.translation_service:
+                    self.translation_service.update_api_key(api_key)
+            
+            # Language selection
+            st.markdown("### 🌍 Language Settings")
+            target_lang = st.selectbox(
+                "Target Language",
+                ["vi", "en", "zh", "ja", "fr", "de", "es", "ko"],
+                format_func=lambda x: {
+                    "vi": "Vietnamese", "en": "English", "zh": "Chinese",
+                    "ja": "Japanese", "fr": "French", "de": "German", 
+                    "es": "Spanish", "ko": "Korean"
+                }[x]
+            )
+            
+            st.session_state['target_lang'] = target_lang
+            
+            # Status
+            service = self.get_translation_service()
+            if service.is_configured():
+                st.success("✅ Ready to translate")
+            else:
+                st.warning("⚠️ Please add API key")
+    
+    def render_main_content(self):
+        """Render main translation interface."""
+        st.title("🚀 Translation Agent v2.0")
+        st.markdown("**Clean Architecture • Modern UI • High Performance**")
+        
+        # Translation interface
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("### 📝 Input Text")
+            input_text = st.text_area(
+                "Enter text to translate:",
+                height=300,
+                placeholder="Enter your text here...",
+                key="input_text"
+            )
+        
+        with col2:
+            st.markdown("### 🌐 Translation Result")
+            translation_container = st.empty()
+        
+        # Translation button and logic
+        if st.button("🚀 Translate", type="primary", use_container_width=True):
+            if not input_text.strip():
+                st.error("Please enter some text to translate")
+                return
+            
+            service = self.get_translation_service()
+            if not service.is_configured():
+                st.error("Please configure your API key in the sidebar")
+                return
+            
+            target_lang = st.session_state.get('target_lang', 'vi')
+            
+            with st.spinner("Translating..."):
+                try:
+                    result = service.translate_text_sync(
+                        text=input_text,
+                        target_language=target_lang
+                    )
+                    
+                    with translation_container.container():
+                        if result.success:
+                            st.text_area(
+                                "Translation:",
+                                value=result.translated_text,
+                                height=300,
+                                disabled=True
+                            )
+                            
+                            # Show metrics
+                            col_a, col_b, col_c = st.columns(3)
+                            with col_a:
+                                st.metric("Confidence", f"{result.confidence:.1%}")
+                            with col_b:
+                                st.metric("Time", f"{result.processing_time:.1f}s")
+                            with col_c:
+                                st.metric("Tokens", result.tokens_used)
+                        else:
+                            st.error(f"Translation failed: {result.translated_text}")
+                
+                except Exception as e:
+                    st.error(f"Error: {str(e)}")
+    
+    def run(self):
+        """Run the application."""
+        self.render_sidebar()
+        self.render_main_content()
+
+
+def main():
+    """Main entry point."""
+    app = TranslationApp()
+    app.run()
+
+
+if __name__ == "__main__":
+    main()

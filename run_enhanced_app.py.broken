@@ -1,0 +1,193 @@
+# run_enhanced_app.py
+"""
+🚀 Enhanced Translation App Launcher - Phase 3B
+"""
+
+import streamlit as st
+import sys
+import os
+import traceback
+
+def setup_paths():
+    """Thiết lập đường dẫn Python paths"""
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    src_dir = os.path.join(current_dir, 'src')
+    
+    if src_dir not in sys.path:
+        sys.path.insert(0, src_dir)
+    
+    print(f"✅ Đã thiết lập Python path: {src_dir}")
+    return src_dir
+
+def check_dependencies():
+    """Kiểm tra dependencies cần thiết"""
+    required_packages = [
+        'streamlit',
+        'time',
+        'datetime',
+        'io',
+        'logging'
+    ]
+    
+    optional_packages = [
+        ('PyPDF2', 'PDF processing'),
+        ('pdfplumber', 'Advanced PDF extraction'),
+        ('pytesseract', 'Tesseract OCR'),
+        ('easyocr', 'EasyOCR engine'),
+        ('PIL', 'Image processing'),
+        ('reportlab', 'PDF export'),
+        ('docx', 'DOCX export')
+    ]
+    
+    print("🔍 Kiểm tra dependencies...")
+    
+    # Kiểm tra required packages
+    for package in required_packages:
+        try:
+            __import__(package)
+            print(f"✅ {package}")
+        except ImportError:
+            print(f"❌ {package} - THIẾU (cần thiết)")
+            return False
+    
+    # Kiểm tra optional packages
+    available_features = []
+    for package, feature in optional_packages:
+        try:
+            __import__(package)
+            print(f"✅ {package} - {feature}")
+            available_features.append(feature)
+        except ImportError:
+            print(f"⚠️  {package} - {feature} (tùy chọn)")
+    
+    print(f"\n🎯 Tính năng khả dụng: {', '.join(available_features)}")
+    return True
+
+def test_imports():
+    """Test import các module chính"""
+    try:
+        print("📦 Testing imports...")
+        
+        # Test core interfaces
+        from core.interfaces.chunking import ChunkerInterface, ChunkCombinerInterface, TextChunk
+        print("✅ Core chunking interfaces")
+        
+        # Test existing implementations
+        from infrastructure.chunking.smart_chunker import SmartTextChunker
+        from infrastructure.chunking.chunk_combiner import SmartChunkCombiner
+        print("✅ Chunking implementations")
+        
+        # Test instantiation
+        chunker = SmartTextChunker()
+        combiner = SmartChunkCombiner()
+        print("✅ Chunking components initialized")
+        
+        print("⚠️  Document processing components will be created next...")
+        return True
+        
+    except ImportError as e:
+        print(f"❌ Import error: {str(e)}")
+        return False
+    except Exception as e:
+        print(f"❌ Unexpected error: {str(e)}")
+        return False
+
+def create_init_files():
+    """Tạo các file __init__.py cần thiết"""
+    print("📁 Tạo __init__.py files...")
+    
+    init_dirs = [
+        'src',
+        'src/core',
+        'src/core/interfaces',
+        'src/infrastructure',
+        'src/infrastructure/chunking',
+        'src/infrastructure/processors',
+        'src/infrastructure/ocr',
+        'src/infrastructure/formula',
+        'src/infrastructure/export',
+        'src/application',
+        'src/application/services',
+        'src/app'
+    ]
+    
+    for dir_path in init_dirs:
+        if os.path.exists(dir_path):
+            init_file = os.path.join(dir_path, '__init__.py')
+            if not os.path.exists(init_file):
+                with open(init_file, 'w') as f:
+                    f.write('')
+                print(f"✅ Tạo {init_file}")
+            else:
+                print(f"✅ {init_file} đã tồn tại")
+        else:
+            print(f"⚠️  Thư mục {dir_path} không tồn tại")
+
+def main():
+    """Main launcher function"""
+    print("🚀 ENHANCED TRANSLATION APP LAUNCHER")
+    print("=" * 50)
+    
+    # Bước 1: Setup paths
+    setup_paths()
+    
+    # Bước 2: Check dependencies
+    if not check_dependencies():
+        print("\n❌ Vui lòng cài đặt dependencies thiếu và thử lại")
+        return
+    
+    # Bước 3: Create init files
+    create_init_files()
+    
+    # Bước 4: Test imports
+    if not test_imports() or not test_pdf_processor() or not test_all_phase3b_components():
+        print("\n❌ Import test thất bại. Kiểm tra cấu trúc project.")
+        return
+    
+    print("\n🎉 CHUNKING SYSTEM READY!")
+    print("📋 Sẵn sàng cho Phase 3B!")
+
+if __name__ == "__main__":
+    main()
+
+def test_pdf_processor():
+    """Test PDF processor"""
+    try:
+        print("📄 Testing PDF processor...")
+        from infrastructure.processors.pdf_processor import PDFProcessor
+        
+        processor = PDFProcessor()
+        print(f"✅ PDF Processor (supports: {processor.get_supported_formats()})")
+        return True
+        
+    except Exception as e:
+        print(f"❌ PDF processor failed: {e}")
+        return False
+
+def test_all_phase3b_components():
+    """Test all Phase 3B components"""
+    try:
+        print("🔧 Testing all Phase 3B components...")
+        
+        # Test OCR
+        from infrastructure.ocr.ocr_engine import OCREngineFactory
+        ocr_factory = OCREngineFactory()
+        print(f"✅ OCR engines: {ocr_factory.get_available_engines()}")
+        
+        # Test Formula
+        from infrastructure.formula.formula_processor import FormulaProcessorFactory
+        formula_factory = FormulaProcessorFactory()
+        processor = formula_factory.create_processor('stem')
+        formulas = processor.detect_formulas('Test E=mc² formula')
+        print(f"✅ Formula processor: {len(formulas)} formulas detected")
+        
+        # Test Export
+        from infrastructure.export.export_system import ExportManager
+        export_manager = ExportManager()
+        print(f"✅ Export formats: {export_manager.get_available_formats()}")
+        
+        return True
+        
+    except Exception as e:
+        print(f"❌ Phase 3B components failed: {e}")
+        return False

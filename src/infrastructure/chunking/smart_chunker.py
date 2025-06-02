@@ -1,0 +1,300 @@
+"""Smart text chunker implementation using existing algorithms."""
+
+import re
+import hashlib
+from typing import List, Dict, Any, Optional
+import logging
+
+from src.core.interfaces.chunking import ChunkerInterface, TextChunk, ChunkMetadata, ChunkType
+
+logger = logging.getLogger(__name__)
+
+
+class SmartTextChunker(ChunkerInterface):
+    """Smart text chunker with context preservation and formula handling."""
+    
+    def __init__(
+        self,
+        max_chunk_size: int = 2800,
+        overlap_size: int = 200,
+        min_chunk_size: int = 500,
+        preserve_formulas: bool = True,
+        preserve_code: bool = True
+    ):
+        self.max_chunk_size = max_chunk_size
+        self.overlap_size = overlap_size
+        self.min_chunk_size = min_chunk_size
+        self.preserve_formulas = preserve_formulas
+        self.preserve_code = preserve_code
+        
+        # Pattern definitions
+        self.formula_patterns = [
+            r'\$[^$]+\$',  # LaTeX inline math
+            r'\$\$[^$]+\$\$',  # LaTeX display math
+            r'\\begin\{[^}]+\}.*?\\end\{[^}]+\}',  # LaTeX environments
+            r'\\\([^)]+\\\)',  # LaTeX inline parentheses
+            r'\\\[[^\]]+\\\]',  # LaTeX display brackets
+        ]
+        
+        self.code_patterns = [
+            r'```[^`]*```',  # Markdown code blocks
+            r'`[^`]+`',  # Inline code
+            r'^\s{4,}.*$',  # Indented code (multiline)
+        ]
+        
+        self.sentence_endings = r'[.!?]+\s+'
+        self.paragraph_breaks = r'\n\s*\n'
+    
+    def chunk_text(self, text: str, **kwargs) -> List[TextChunk]:
+        """Split text into smart chunks with context preservation."""
+        if len(text) <= self.max_chunk_size:
+            return [self._create_single_chunk(text)]
+        
+        logger.info(f"Chunking text of {len(text)} characters")
+        
+        # Pre-process: identify special elements
+        special_elements = self._identify_special_elements(text)
+        
+        # Split into preliminary chunks
+        preliminary_chunks = self._split_into_preliminary_chunks(text, special_elements)
+        
+        # Post-process: add context and optimize
+        final_chunks = self._add_context_and_optimize(preliminary_chunks, text)
+        
+        logger.info(f"Created {len(final_chunks)} chunks")
+        return final_chunks
+    
+    def get_optimal_chunk_size(self, text: str) -> int:
+        """Calculate optimal chunk size based on text characteristics."""
+        text_length = len(text)
+        
+        # Count formulas and code blocks
+        formula_count = sum(len(re.findall(pattern, text)) for pattern in self.formula_patterns)
+        code_count = sum(len(re.findall(pattern, text, re.MULTILINE)) for pattern in self.code_patterns)
+        
+        # Adjust chunk size based on content complexity
+        if formula_count > 10 or code_count > 5:
+            return min(self.max_chunk_size, 2000)  # Smaller chunks for complex content
+        elif text_length > 50000:
+            return self.max_chunk_size  # Standard size for long documents
+        else:
+            return min(self.max_chunk_size, text_length // 2)
+    
+    def estimate_chunks(self, text: str) -> int:
+        """Estimate number of chunks for given text."""
+        optimal_size = self.get_optimal_chunk_size(text)
+        return max(1, len(text) // optimal_size)
+    
+    def _create_single_chunk(self, text: str) -> TextChunk:
+        """Create a single chunk for short text."""
+        chunk_id = hashlib.md5(text.encode()).hexdigest()[:8]
+        
+        metadata = ChunkMetadata(
+            chunk_type=self._detect_chunk_type(text),
+            has_context=False,
+            is_formula_heavy=self._is_formula_heavy(text),
+            is_code_block=self._is_code_block(text)
+        )
+        
+        return TextChunk(
+            chunk_id=chunk_id,
+            main_content=text.strip(),
+            context=None,
+            metadata=metadata,
+            start_position=0,
+            end_position=len(text)
+        )
+    
+    def _identify_special_elements(self, text: str) -> Dict[str, List[Dict[str, Any]]]:
+        """Identify formulas, code blocks, and other special elements."""
+        special_elements = {
+            'formulas': [],
+            'code_blocks': [],
+            'headers': []
+        }
+        
+        # Find formulas
+        if self.preserve_formulas:
+            for pattern in self.formula_patterns:
+                for match in re.finditer(pattern, text, re.DOTALL):
+                    special_elements['formulas'].append({
+                        'start': match.start(),
+                        'end': match.end(),
+                        'content': match.group(),
+                        'type': 'formula'
+                    })
+        
+        # Find code blocks
+        if self.preserve_code:
+            for pattern in self.code_patterns:
+                for match in re.finditer(pattern, text, re.MULTILINE | re.DOTALL):
+                    special_elements['code_blocks'].append({
+                        'start': match.start(),
+                        'end': match.end(),
+                        'content': match.group(),
+                        'type': 'code'
+                    })
+        
+        # Find headers (markdown style)
+        header_pattern = r'^#{1,6}\s+.*$'
+        for match in re.finditer(header_pattern, text, re.MULTILINE):
+            special_elements['headers'].append({
+                'start': match.start(),
+                'end': match.end(),
+                'content': match.group(),
+                'type': 'header'
+            })
+        
+        return special_elements
+    
+    def _split_into_preliminary_chunks(self, text: str, special_elements: Dict) -> List[Dict[str, Any]]:
+        """Split text into preliminary chunks respecting special elements."""
+        chunks = []
+        current_pos = 0
+        chunk_id = 0
+        
+        while current_pos < len(text):
+            chunk_end = min(current_pos + self.max_chunk_size, len(text))
+            
+            # Adjust chunk end to avoid breaking special elements
+            chunk_end = self._adjust_chunk_boundary(text, current_pos, chunk_end, special_elements)
+            
+            # Extract chunk content
+            chunk_content = text[current_pos:chunk_end].strip()
+            
+            if len(chunk_content) >= self.min_chunk_size or current_pos + len(chunk_content) >= len(text):
+                chunks.append({
+                    'id': f"chunk_{chunk_id:03d}",
+                    'content': chunk_content,
+                    'start': current_pos,
+                    'end': chunk_end,
+                    'original_text': text
+                })
+                chunk_id += 1
+            
+            # Move to next chunk with overlap
+            if chunk_end >= len(text):
+                break
+            
+            current_pos = max(chunk_end - self.overlap_size, current_pos + self.min_chunk_size)
+        
+        return chunks
+    
+    def _adjust_chunk_boundary(self, text: str, start: int, end: int, special_elements: Dict) -> int:
+        """Adjust chunk boundary to avoid breaking special elements."""
+        # Check if we're breaking any special elements
+        for element_type, elements in special_elements.items():
+            for element in elements:
+                if start < element['end'] and end > element['start']:
+                    # We're intersecting with a special element
+                    if element['start'] >= start:
+                        # Element starts within our chunk, end before it
+                        return max(start + self.min_chunk_size, element['start'])
+                    else:
+                        # Element started before our chunk, include it fully
+                        end = max(end, element['end'])
+        
+        # Find good breaking point (sentence or paragraph boundary)
+        search_window = text[max(0, end-200):min(len(text), end+100)]
+        
+        # Look for paragraph breaks first
+        paragraph_matches = list(re.finditer(self.paragraph_breaks, search_window))
+        if paragraph_matches:
+            best_break = paragraph_matches[0].start() + (end - 200)
+            if start + self.min_chunk_size <= best_break <= end + 100:
+                return best_break
+        
+        # Look for sentence endings
+        sentence_matches = list(re.finditer(self.sentence_endings, search_window))
+        if sentence_matches:
+            best_break = sentence_matches[0].start() + (end - 200)
+            if start + self.min_chunk_size <= best_break <= end + 100:
+                return best_break
+        
+        return end
+    
+    def _add_context_and_optimize(self, chunks: List[Dict], original_text: str) -> List[TextChunk]:
+        """Add context to chunks and create final TextChunk objects."""
+        final_chunks = []
+        
+        for i, chunk_data in enumerate(chunks):
+            # Generate context from surrounding chunks
+            context = self._generate_context(chunks, i, original_text)
+            
+            # Detect chunk characteristics
+            chunk_type = self._detect_chunk_type(chunk_data['content'])
+            is_formula_heavy = self._is_formula_heavy(chunk_data['content'])
+            is_code_block = self._is_code_block(chunk_data['content'])
+            
+            metadata = ChunkMetadata(
+                chunk_type=chunk_type,
+                has_context=bool(context),
+                is_formula_heavy=is_formula_heavy,
+                is_code_block=is_code_block,
+                confidence=0.95,
+                additional_data={
+                    'chunk_index': i,
+                    'total_chunks': len(chunks),
+                    'original_length': len(original_text)
+                }
+            )
+            
+            chunk = TextChunk(
+                chunk_id=chunk_data['id'],
+                main_content=chunk_data['content'],
+                context=context,
+                metadata=metadata,
+                start_position=chunk_data['start'],
+                end_position=chunk_data['end']
+            )
+            
+            final_chunks.append(chunk)
+        
+        return final_chunks
+    
+    def _generate_context(self, chunks: List[Dict], current_index: int, original_text: str) -> Optional[str]:
+        """Generate context for current chunk from surrounding chunks."""
+        if len(chunks) <= 1:
+            return None
+        
+        context_parts = []
+        
+        # Add previous chunk context (last 2 sentences)
+        if current_index > 0:
+            prev_content = chunks[current_index - 1]['content']
+            prev_sentences = re.split(self.sentence_endings, prev_content)
+            if len(prev_sentences) >= 2:
+                context_parts.append("Previous context: " + " ".join(prev_sentences[-2:]).strip())
+        
+        # Add next chunk context (first sentence) for better coherence
+        if current_index < len(chunks) - 1:
+            next_content = chunks[current_index + 1]['content']
+            next_sentences = re.split(self.sentence_endings, next_content)
+            if next_sentences:
+                context_parts.append("Following context: " + next_sentences[0].strip())
+        
+        return " | ".join(context_parts) if context_parts else None
+    
+    def _detect_chunk_type(self, content: str) -> ChunkType:
+        """Detect the primary type of content in chunk."""
+        if self._is_formula_heavy(content):
+            return ChunkType.FORMULA
+        elif self._is_code_block(content):
+            return ChunkType.CODE
+        elif re.match(r'^#{1,6}\s+', content.strip()):
+            return ChunkType.HEADER
+        elif '|' in content and content.count('|') >= 4:  # Simple table detection
+            return ChunkType.TABLE
+        else:
+            return ChunkType.TEXT
+    
+    def _is_formula_heavy(self, content: str) -> bool:
+        """Check if content is formula-heavy."""
+        formula_count = sum(len(re.findall(pattern, content)) for pattern in self.formula_patterns)
+        return formula_count > 2 or any(pattern in content for pattern in ['\\begin{', '$$', '\\(', '\\['])
+    
+    def _is_code_block(self, content: str) -> bool:
+        """Check if content is primarily code."""
+        return (content.strip().startswith('```') or 
+                content.count('```') >= 2 or
+                len(re.findall(r'^\s{4,}', content, re.MULTILINE)) > 3)

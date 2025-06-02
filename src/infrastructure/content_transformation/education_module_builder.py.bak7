@@ -1,0 +1,445 @@
+"""
+Education Module Builder
+Biến text thành các module giáo dục hoàn chỉnh với lesson plans, exercises và assessments
+"""
+import time
+import re
+from typing import Dict, List, Any, Tuple
+from .base_transformer import (
+    BaseContentTransformer,
+    TransformationType,
+    TargetAudience, 
+    ContentDifficulty,
+    TransformationRequest,
+    TransformationResponse
+)
+from ..ai_intelligence.llm_service import get_llm_service
+class EducationModuleBuilder(BaseContentTransformer):
+    """
+    Builder tạo educational modules từ text content
+    """
+    
+    # Learning objectives templates theo audience
+    LEARNING_OBJECTIVES = {
+        TargetAudience.CHILDREN: [
+            "Hiểu được khái niệm cơ bản về {}",
+            "Nhận biết được các đặc điểm của {}",
+            "Kể được ví dụ về {}"
+        ],
+        TargetAudience.TEENAGERS: [
+            "Phân tích được tác động của {}",
+            "So sánh và đối chiếu các khía cạnh của {}",
+            "Áp dụng kiến thức về {} vào thực tế"
+        ],
+        TargetAudience.ADULTS: [
+            "Đánh giá được ảnh hưởng của {}",
+            "Phân tích các yếu tố ảnh hưởng đến {}",
+            "Đưa ra quyết định dựa trên hiểu biết về {}"
+        ],
+        TargetAudience.PROFESSIONALS: [
+            "Triển khai các nguyên tắc {} trong công việc",
+            "Đánh giá hiệu quả của {} trong ngành",
+            "Phát triển strategy dựa trên {}"
+        ]
+    }
+    
+    # Assessment types theo difficulty
+    ASSESSMENT_TYPES = {
+        ContentDifficulty.BEGINNER: ["multiple_choice", "true_false", "matching"],
+        ContentDifficulty.INTERMEDIATE: ["short_answer", "case_study", "discussion"],
+        ContentDifficulty.ADVANCED: ["essay", "project", "analysis"],
+        ContentDifficulty.EXPERT: ["research", "presentation", "peer_review"]
+    }
+    
+    # Activity types theo audience
+    ACTIVITY_TYPES = {
+        TargetAudience.CHILDREN: ["drawing", "game", "story_telling", "role_play"],
+        TargetAudience.TEENAGERS: ["group_work", "debate", "research", "presentation"],
+        TargetAudience.ADULTS: ["case_study", "discussion", "workshop", "reflection"],
+        TargetAudience.PROFESSIONALS: ["simulation", "project", "analysis", "strategy_session"]
+    }
+    
+    def __init__(self, config: Dict[str, Any] = None):
+        super().__init__(config)
+        self.llm_service = get_llm_service()
+        
+        self.default_config = {
+            "include_learning_objectives": True,
+            "include_assessments": True,
+            "include_activities": True,
+            "include_resources": True,
+            "lesson_duration": 45  # minutes
+        }
+        self.config = {**self.default_config, **(config or {})}
+    
+    def _get_transformer_type(self) -> TransformationType:
+        return TransformationType.EDUCATION_MODULE
+    
+    async def transform(self, request: TransformationRequest) -> TransformationResponse:
+        """Transform text thành education module"""
+        start_time = time.time()
+        
+        if not self.validate_request(request):
+            raise ValueError("Invalid transformation request")
+        
+        # Build education module
+        module = await self._build_education_module(request)
+        
+        processing_time = time.time() - start_time
+        
+        # Calculate metadata
+        sections = self._count_sections(module)
+        activities = self._count_activities(module)
+        
+        response = TransformationResponse(
+            transformed_content=module,
+            transformation_type=self.transformer_type,
+            metadata={
+                "section_count": sections,
+                "activity_count": activities,
+                "assessment_included": self.config.get("include_assessments", True),
+                "learning_objectives_count": len(self._extract_learning_objectives(request)),
+                "estimated_teaching_time": self.config.get("lesson_duration", 45),
+                "difficulty": request.difficulty_level.value,
+                "audience": request.target_audience.value
+            },
+            processing_time=processing_time,
+            quality_score=0.0,  # Sẽ calculate sau
+            estimated_duration=self.estimate_duration(module, request.target_audience)
+        )
+        
+        # Calculate quality score
+        response.quality_score = self.calculate_quality_score(request, response)
+        
+        return response
+    
+    async def _build_education_module(self, request: TransformationRequest) -> str:
+        """Build complete education module"""
+        
+        # Extract key concepts từ content
+        key_concepts = self._extract_key_concepts(request.source_text)
+        
+        module_parts = []
+        
+        # 1. Module header
+        header = self._generate_module_header(request, key_concepts)
+        module_parts.append(header)
+        
+        # 2. Learning objectives
+        if self.config.get("include_learning_objectives", True):
+            objectives = self._generate_learning_objectives(request, key_concepts)
+            module_parts.append(objectives)
+        
+        # 3. Lesson content
+        lesson_content = self._generate_lesson_content(request)
+        module_parts.append(lesson_content)
+        
+        # 4. Activities
+        if self.config.get("include_activities", True):
+            activities = self._generate_activities(request, key_concepts)
+            module_parts.append(activities)
+        
+        # 5. Assessment
+        if self.config.get("include_assessments", True):
+            assessment = self._generate_assessment(request, key_concepts)
+            module_parts.append(assessment)
+        
+        # 6. Resources
+        if self.config.get("include_resources", True):
+            resources = self._generate_resources(request)
+            module_parts.append(resources)
+        
+        return "\n\n".join(module_parts)
+    
+    def _generate_module_header(self, request: TransformationRequest, concepts: List[str]) -> str:
+        """Generate module header với metadata"""
+        topic = concepts[0] if concepts else "chủ đề"
+        
+        header = f"=== MODULE GIÁO DỤC ===\n"
+        header += f"Chủ đề: {topic}\n"
+        header += f"Đối tượng: {request.target_audience.value}\n"
+        header += f"Độ khó: {request.difficulty_level.value}\n\n"
+        
+        return header
+    def _extract_key_concepts(self, text: str) -> List[str]:
+        """Extract key concepts từ text using LLM"""
+        # Try LLM first
+        if self.llm_service:
+            try:
+                enhanced_concepts = self.llm_service.enhance_education_content(
+                    content=text[:500],  # First 500 chars
+                    module_type="concept_extraction",
+                    difficulty_level="intermediate",
+                    learning_style="analytical"
+                )
+                # Parse LLM response to extract concepts
+                if enhanced_concepts:
+                    concepts = [c.strip() for c in enhanced_concepts.split(',') if c.strip()]
+                    if concepts:
+                        return concepts[:5]  # Top 5 concepts
+            except Exception as e:
+                print(f"LLM concept extraction failed: {e}, using fallback")
+        
+        # Fallback to simple extraction
+        sentences = [s.strip() for s in text.split('.') if s.strip()]
+        concepts = []
+        
+        # Look for important nouns và phrases
+        important_patterns = [
+            r'(AI|trí tuệ nhân tạo)',
+            r'(công nghệ)',
+            r'(tự động hóa)',
+            r'(machine learning)',
+            r'(dữ liệu)',
+            r'(algorithm)'
+        ]
+        
+        for sentence in sentences:
+            for pattern in important_patterns:
+                matches = re.findall(pattern, sentence, re.IGNORECASE)
+                concepts.extend(matches)
+        
+        # Remove duplicates và return top concepts
+        unique_concepts = list(dict.fromkeys(concepts))
+        return unique_concepts[:5] if unique_concepts else ["Chủ đề chính"]
+    
+    def _extract_learning_objectives(self, request: TransformationRequest) -> List[str]:
+        """Extract và generate learning objectives"""
+        concepts = self._extract_key_concepts(request.source_text)
+        main_concept = concepts[0] if concepts else "chủ đề này"
+        
+        audience = request.target_audience
+        if audience not in self.LEARNING_OBJECTIVES:
+            audience = TargetAudience.GENERAL
+        
+        templates = self.LEARNING_OBJECTIVES.get(audience, self.LEARNING_OBJECTIVES[TargetAudience.ADULTS])
+        
+        return [template.format(main_concept) for template in templates[:3]]
+    
+    def _generate_learning_objectives(self, request: TransformationRequest, concepts: List[str]) -> str:
+        """Generate learning objectives section using LLM"""
+        # Use LLM for better objectives
+        if self.llm_service and concepts:
+            try:
+                objectives_prompt = f"Key concepts: {', '.join(concepts[:3])}"
+                enhanced_objectives = self.llm_service.enhance_education_content(
+                    content=objectives_prompt,
+                    module_type="learning_objectives",
+                    difficulty_level=request.difficulty_level.value,
+                    learning_style="structured"
+                )
+                if enhanced_objectives:
+                    return f"=== MỤC TIÊU HỌC TẬP ===\n{enhanced_objectives}\n"
+            except Exception as e:
+                print(f"LLM objectives generation failed: {e}, using fallback")
+        
+        # Fallback
+        objectives = self._extract_learning_objectives(request)
+        
+        objectives_text = "=== MỤC TIÊU HỌC TẬP ===\n"
+        objectives_text += "Sau khi hoàn thành module này, học viên sẽ có thể:\n\n"
+        
+        for i, objective in enumerate(objectives, 1):
+            objectives_text += f"{i}. {objective}
+"
+        
+        return objectives_text
+    
+    def _generate_lesson_content(self, request: TransformationRequest) -> str:
+        """Generate structured lesson content"""
+        content = request.source_text
+        
+        # Chia content thành sections
+        paragraphs = [p.strip() for p in content.split('\n') if p.strip()]
+        
+        lesson_parts = ["=== NỘI DUNG BÀI HỌC ===\n"]
+        
+        for i, paragraph in enumerate(paragraphs, 1):
+            # Add section headers
+            lesson_parts.append(f"**Phần {i}:**")
+            
+            # Process paragraph với teaching notes
+            processed = self._add_teaching_notes(paragraph, request)
+            lesson_parts.append(processed)
+            
+            # Add pause for comprehension
+            if i < len(paragraphs):
+                lesson_parts.append("*[Tạm dừng để kiểm tra hiểu bài]*\n")
+        
+        return "\n".join(lesson_parts)
+    
+    def _add_teaching_notes(self, content: str, request: TransformationRequest) -> str:
+        """Add teaching notes và guidance"""
+        # Add explanations cho complex terms
+        if "AI" in content or "trí tuệ nhân tạo" in content:
+            content += "\n\n*Lưu ý giảng viên: Giải thích AI bằng ví dụ cụ thể như smartphone, GPS*"
+        
+        if "tự động hóa" in content:
+            content += "\n\n*Lưu ý giảng viên: Đưa ra ví dụ về máy ATM, máy giặt tự động*"
+        
+        # Add audience-specific notes
+        if request.target_audience == TargetAudience.CHILDREN:
+            content += "\n\n*Sử dụng hình ảnh và trò chơi để minh họa*"
+        elif request.target_audience == TargetAudience.PROFESSIONALS:
+            content += "\n\n*Kết nối với ứng dụng thực tế trong công việc*"
+        
+        return content
+    
+    def _generate_activities(self, request: TransformationRequest, concepts: List[str]) -> str:
+        """Generate learning activities"""
+        audience = request.target_audience
+        if audience not in self.ACTIVITY_TYPES:
+            audience = TargetAudience.ADULTS
+        
+        activity_types = self.ACTIVITY_TYPES[audience]
+        main_concept = concepts[0] if concepts else "chủ đề"
+        
+        activities_text = "=== HOẠT ĐỘNG HỌC TẬP ===\n\n"
+        
+        # Generate 2-3 activities
+        for i, activity_type in enumerate(activity_types[:3], 1):
+            activity = self._create_specific_activity(activity_type, main_concept, request)
+            activities_text += f"**Hoạt động {i}: {activity['title']}**\n"
+            activities_text += f"Loại: {activity_type.title()}\n"
+            activities_text += f"Thời gian: {activity['duration']} phút\n"
+            activities_text += f"Mô tả: {activity['description']}\n\n"
+        
+        return activities_text
+    
+    def _create_specific_activity(self, activity_type: str, concept: str, request: TransformationRequest) -> Dict[str, Any]:
+        """Create specific activity dựa trên type"""
+        
+        activities = {
+            "discussion": {
+                "title": f"Thảo luận về {concept}",
+                "duration": 10,
+                "description": f"Chia nhóm thảo luận tác động của {concept} trong đời sống hàng ngày"
+            },
+            "case_study": {
+                "title": f"Nghiên cứu tình huống {concept}",
+                "duration": 15,
+                "description": f"Phân tích một tình huống thực tế về việc áp dụng {concept}"
+            },
+            "role_play": {
+                "title": f"Đóng vai về {concept}",
+                "duration": 12,
+                "description": f"Học viên đóng vai các nhân vật liên quan đến {concept}"
+            },
+            "game": {
+                "title": f"Trò chơi {concept}",
+                "duration": 8,
+                "description": f"Trò chơi tương tác giúp hiểu về {concept} một cách vui nhộn"
+            },
+            "workshop": {
+                "title": f"Thực hành {concept}",
+                "duration": 20,
+                "description": f"Workshop hands-on để áp dụng {concept} vào thực tế"
+            }
+        }
+        
+        return activities.get(activity_type, activities["discussion"])
+    
+    def _generate_assessment(self, request: TransformationRequest, concepts: List[str]) -> str:
+        """Generate assessment section"""
+        difficulty = request.difficulty_level
+        assessment_types = self.ASSESSMENT_TYPES.get(difficulty, ["multiple_choice", "short_answer"])
+        
+        assessment_text = "=== ĐÁNH GIÁ ===\n\n"
+        
+        main_concept = concepts[0] if concepts else "chủ đề"
+        
+        for i, assessment_type in enumerate(assessment_types[:2], 1):
+            assessment = self._create_assessment_item(assessment_type, main_concept, request)
+            assessment_text += f"**Đánh giá {i}: {assessment['title']}**\n"
+            assessment_text += f"Loại: {assessment_type.replace('_', ' ').title()}\n"
+            assessment_text += f"Thời gian: {assessment['duration']} phút\n"
+            assessment_text += f"Mô tả: {assessment['description']}\n\n"
+        
+        return assessment_text
+    
+    def _create_assessment_item(self, assessment_type: str, concept: str, request: TransformationRequest) -> Dict[str, Any]:
+        """Create specific assessment item"""
+        
+        assessments = {
+            "multiple_choice": {
+                "title": f"Trắc nghiệm về {concept}",
+                "duration": 5,
+                "description": f"5 câu trắc nghiệm kiểm tra hiểu biết cơ bản về {concept}"
+            },
+            "short_answer": {
+                "title": f"Câu hỏi ngắn về {concept}",
+                "duration": 10,
+                "description": f"3 câu hỏi ngắn yêu cầu giải thích {concept}"
+            },
+            "essay": {
+                "title": f"Tiểu luận về {concept}",
+                "duration": 30,
+                "description": f"Viết tiểu luận 300-500 từ phân tích {concept}"
+            },
+            "project": {
+                "title": f"Dự án ứng dụng {concept}",
+                "duration": 60,
+                "description": f"Thực hiện dự án nhỏ áp dụng {concept} vào thực tế"
+            }
+        }
+        
+        return assessments.get(assessment_type, assessments["multiple_choice"])
+    
+    def _generate_resources(self, request: TransformationRequest) -> str:
+        """Generate additional resources"""
+        return """=== TÀI LIỆU THAM KHẢO ===
+**Tài liệu chính:**
+- Slide bài giảng
+- Handout tóm tắt nội dung chính
+- Video minh họa (nếu có)
+**Tài liệu bổ sung:**
+- Bài đọc thêm về chủ đề
+- Link websites tham khảo
+- Ứng dụng thực tế
+**Công cụ hỗ trợ:**
+- Bảng flipchart
+- Máy chiếu
+- Thiết bị audio/visual
+**Đánh giá và phản hồi:**
+- Form đánh giá bài học
+- Hướng dẫn self-assessment
+- Kênh hỗ trợ sau buổi học"""
+    
+    def _count_sections(self, module: str) -> int:
+        """Count sections trong module"""
+        return len(re.findall(r'=== .+ ===', module))
+    
+    def _count_activities(self, module: str) -> int:
+        """Count activities trong module"""
+        return len(re.findall(r'\*\*Hoạt động \d+:', module))
+    
+    def get_supported_audiences(self) -> List[TargetAudience]:
+        """Education supports most audiences"""
+        return [
+            TargetAudience.CHILDREN,
+            TargetAudience.TEENAGERS,
+            TargetAudience.YOUNG_ADULTS,
+            TargetAudience.ADULTS,
+            TargetAudience.PROFESSIONALS
+        ]
+    
+    def get_supported_difficulties(self) -> List[ContentDifficulty]:
+        """Education supports tất cả difficulty levels"""
+        return list(ContentDifficulty)
+    
+    def estimate_duration(self, text: str, target_audience: TargetAudience) -> int:
+        """Estimate module duration in minutes"""
+        # Base on lesson duration config
+        base_duration = self.config.get("lesson_duration", 45)
+        
+        # Adjust for audience attention span
+        adjustments = {
+            TargetAudience.CHILDREN: 0.7,       # Shorter lessons
+            TargetAudience.TEENAGERS: 0.9,      # Slightly shorter
+            TargetAudience.YOUNG_ADULTS: 1.0,   # Standard
+            TargetAudience.ADULTS: 1.1,         # Slightly longer
+            TargetAudience.PROFESSIONALS: 1.3   # Longer, detailed
+        }
+        
+        factor = adjustments.get(target_audience, 1.0)
+        return round(base_duration * factor)

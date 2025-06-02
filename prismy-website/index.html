@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRISMY - AI Translation Agent</title>
+    <style>
+        /* Monochrome Color System */
+        :root {
+            /* Grayscale Palette */
+            --color-bg: #FAFAFA;           /* Very light gray background */
+            --color-white: #FFFFFF;         /* Pure white */
+            --color-gray-50: #F9FAFB;       /* Almost white */
+            --color-gray-100: #F3F4F6;      /* Light gray */
+            --color-gray-200: #E5E7EB;      /* Border gray */
+            --color-gray-300: #D1D5DB;      /* Medium light gray */
+            --color-gray-400: #9CA3AF;      /* Placeholder gray */
+            --color-gray-500: #6B7280;      /* Medium gray */
+            --color-gray-600: #4B5563;      /* Dark gray */
+            --color-gray-700: #374151;      /* Darker gray */
+            --color-gray-800: #1F2937;      /* Very dark gray */
+            --color-gray-900: #111827;      /* Almost black */
+            --color-black: #000000;         /* Pure black */
+            
+            /* Primary accent (minimal use) */
+            --color-primary: #18181B;       /* Near black for primary actions */
+            
+            /* Typography */
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            
+            /* Font Sizes */
+            --text-xs: 0.75rem;     /* 12px */
+            --text-sm: 0.875rem;    /* 14px */
+            --text-base: 1rem;      /* 16px */
+            --text-lg: 1.125rem;    /* 18px */
+            --text-xl: 1.25rem;     /* 20px */
+            --text-2xl: 1.5rem;     /* 24px */
+            --text-3xl: 1.875rem;   /* 30px */
+            --text-4xl: 2.25rem;    /* 36px */
+            --text-5xl: 3rem;       /* 48px */
+            
+            /* Spacing */
+            --space-1: 0.25rem;     /* 4px */
+            --space-2: 0.5rem;      /* 8px */
+            --space-3: 0.75rem;     /* 12px */
+            --space-4: 1rem;        /* 16px */
+            --space-5: 1.25rem;     /* 20px */
+            --space-6: 1.5rem;      /* 24px */
+            --space-8: 2rem;        /* 32px */
+            --space-10: 2.5rem;     /* 40px */
+            --space-12: 3rem;       /* 48px */
+            --space-16: 4rem;       /* 64px */
+            --space-20: 5rem;       /* 80px */
+            
+            /* Shadows - Subtle and sophisticated */
+            --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            /* Transitions */
+            --transition-all: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-transform: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-opacity: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-shadow: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Base */
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: var(--text-base);
+            line-height: 1.5;
+            color: var(--color-gray-700);
+            background-color: var(--color-bg);
+            min-height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-gray-200);
+            z-index: 1000;
+            transition: var(--transition-all);
+        }
+
+        .header-content {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Logo */
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            color: var(--color-gray-900);
+            text-decoration: none;
+            transition: var(--transition-opacity);
+        }
+
+        .logo:hover {
+            opacity: 0.7;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        /* Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-2) var(--space-4);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition-all);
+            white-space: nowrap;
+        }
+
+        .btn-ghost {
+            color: var(--color-gray-700);
+            background: transparent;
+        }
+
+        .btn-ghost:hover {
+            background: var(--color-gray-100);
+        }
+
+        .btn-primary {
+            color: var(--color-white);
+            background: var(--color-gray-900);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-black);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+        }
+
+        .btn-large {
+            padding: var(--space-3) var(--space-6);
+            font-size: var(--text-base);
+        }
+
+        /* Main */
+        .main {
+            padding-top: 64px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: var(--space-20) 0 var(--space-16);
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: var(--text-5xl);
+            font-weight: 300;
+            letter-spacing: -0.025em;
+            color: var(--color-gray-900);
+            margin-bottom: var(--space-6);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .hero-subtitle {
+            font-size: var(--text-xl);
+            color: var(--color-gray-600);
+            margin-bottom: var(--space-10);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Try Demo Section */
+        .demo-section {
+            max-width: 800px;
+            margin: 0 auto var(--space-20);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.4s forwards;
+        }
+
+        .demo-card {
+            background: var(--color-white);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transition: var(--transition-shadow);
+        }
+
+        .demo-card:hover {
+            box-shadow: var(--shadow-xl);
+        }
+
+        .demo-header {
+            padding: var(--space-4) var(--space-6);
+            background: var(--color-gray-50);
+            border-bottom: 1px solid var(--color-gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .demo-title {
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--color-gray-700);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .demo-body {
+            padding: var(--space-8);
+        }
+
+        .demo-input {
+            width: 100%;
+            font-family: inherit;
+            font-size: var(--text-lg);
+            color: var(--color-gray-900);
+            background: transparent;
+            border: none;
+            resize: none;
+            outline: none;
+            margin-bottom: var(--space-6);
+            min-height: 100px;
+        }
+
+        .demo-input::placeholder {
+            color: var(--color-gray-400);
+        }
+
+        .demo-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .demo-languages {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--text-sm);
+            color: var(--color-gray-600);
+        }
+
+        .language-badge {
+            padding: var(--space-1) var(--space-3);
+            background: var(--color-gray-100);
+            border-radius: 100px;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: var(--space-16) 0;
+            background: var(--color-white);
+            border-top: 1px solid var(--color-gray-200);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-12);
+        }
+
+        .feature-card {
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+            animation-delay: calc(var(--i) * 0.1s);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto var(--space-4);
+            padding: var(--space-3);
+            background: var(--color-gray-100);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--color-gray-700);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .feature-title {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--color-gray-900);
+            margin-bottom: var(--space-2);
+        }
+
+        .feature-description {
+            color: var(--color-gray-600);
+            line-height: 1.6;
+        }
+
+        /* Services Section */
+        .services {
+            padding: var(--space-20) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-12);
+        }
+
+        .section-title {
+            font-size: var(--text-3xl);
+            font-weight: 300;
+            color: var(--color-gray-900);
+            margin-bottom: var(--space-4);
+        }
+
+        .section-subtitle {
+            font-size: var(--text-lg);
+            color: var(--color-gray-600);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .service-card {
+            background: var(--color-white);
+            border-radius: 12px;
+            padding: var(--space-8);
+            border: 1px solid var(--color-gray-200);
+            transition: var(--transition-all);
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            border-color: transparent;
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            padding: var(--space-2);
+            background: var(--color-gray-100);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--color-gray-700);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .service-title {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            color: var(--color-gray-900);
+        }
+
+        .service-description {
+            color: var(--color-gray-600);
+            line-height: 1.6;
+            margin-bottom: var(--space-4);
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: var(--space-4);
+        }
+
+        .service-features li {
+            position: relative;
+            padding-left: var(--space-6);
+            margin-bottom: var(--space-2);
+            color: var(--color-gray-600);
+            font-size: var(--text-sm);
+        }
+
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-gray-500);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: var(--space-20) 0;
+            text-align: center;
+            background: var(--color-gray-50);
+        }
+
+        .cta-title {
+            font-size: var(--text-3xl);
+            font-weight: 300;
+            color: var(--color-gray-900);
+            margin-bottom: var(--space-4);
+        }
+
+        .cta-description {
+            font-size: var(--text-lg);
+            color: var(--color-gray-600);
+            margin-bottom: var(--space-8);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .footer {
+            padding: var(--space-12) 0;
+            background: var(--color-white);
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+        }
+
+        .footer-copyright {
+            color: var(--color-gray-500);
+            font-size: var(--text-sm);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-6);
+        }
+
+        .footer-link {
+            color: var(--color-gray-600);
+            text-decoration: none;
+            font-size: var(--text-sm);
+            transition: var(--transition-opacity);
+        }
+
+        .footer-link:hover {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: var(--text-3xl);
+            }
+
+            .hero-subtitle {
+                font-size: var(--text-lg);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Focus States */
+        :focus {
+            outline: none;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--color-gray-400);
+            outline-offset: 2px;
+        }
+
+        /* Selection */
+        ::selection {
+            background: var(--color-gray-900);
+            color: var(--color-white);
+        }
+
+        /* Loading */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--color-gray-200);
+            border-radius: 50%;
+            border-top-color: var(--color-gray-700);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo" style="display: flex; align-items: center; gap: 8px;">
+                    <img src="logo.png" alt="PRISMY Logo" style="height: 24px; width: auto;">
+                    <span>PRISMY</span>
+                </a>
+                <nav class="nav">
+                    <a href="/app" class="btn btn-ghost">Try Free</a>
+                    <a href="/app" class="btn btn-primary">Start Translating</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">AI-Powered Translation for Everyone</h1>
+                <p class="hero-subtitle">Instant, accurate translations powered by advanced AI. Supporting 10+ languages with context-aware results.</p>
+                
+                <!-- Try Demo -->
+                <div class="demo-section">
+                    <div class="demo-card">
+                        <div class="demo-header">
+                            <span class="demo-title">Try it now - No signup required</span>
+                            <div class="demo-languages">
+                                <span class="language-badge">Auto-detect</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M5 12h14m-7-7l7 7-7 7"/>
+                                </svg>
+                                <span class="language-badge">Vietnamese</span>
+                            </div>
+                        </div>
+                        <div class="demo-body">
+                            <textarea 
+                                class="demo-input"
+                                placeholder="Type or paste text here to translate..."
+                                id="demoInput"
+                            ></textarea>
+                            <div class="demo-actions">
+                                <div class="demo-languages">
+                                    <span id="charCount">0 / 5,000 characters</span>
+                                </div>
+                                <button class="btn btn-primary btn-large" onclick="redirectToApp()">
+                                    Translate Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Why Choose PRISMY?</h2>
+                    <p class="section-subtitle">Professional translation tools designed for speed and accuracy</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card" style="--i: 0">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Lightning Fast</h3>
+                        <p class="feature-description">Get instant translations as you type. No waiting, no loading screens.</p>
+                    </div>
+                    
+                    <div class="feature-card" style="--i: 1">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">High Accuracy</h3>
+                        <p class="feature-description">Context-aware AI ensures natural, accurate translations every time.</p>
+                    </div>
+                    
+                    <div class="feature-card" style="--i: 2">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">10+ Languages</h3>
+                        <p class="feature-description">Support for major Asian and European languages with more coming soon.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Translation Services</h2>
+                    <p class="section-subtitle">Choose the right tool for your needs</p>
+                </div>
+                
+                <div class="services-grid">
+                    <!-- Text Translation -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Text Translation</h3>
+                        </div>
+                        <p class="service-description">
+                            Instant text translation with support for over 5,000 characters. Perfect for emails, messages, and quick translations.
+                        </p>
+                        <ul class="service-features">
+                            <li>Real-time translation as you type</li>
+                            <li>Auto-detect source language</li>
+                            <li>Copy & paste functionality</li>
+                            <li>Character counter</li>
+                        </ul>
+                    </div>
+
+                    <!-- Document Translation -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 12h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Document Translation</h3>
+                        </div>
+                        <p class="service-description">
+                            Upload and translate entire documents while preserving formatting. Supports PDF, DOC, DOCX, and TXT files.
+                        </p>
+                        <ul class="service-features">
+                            <li>Preserve original formatting</li>
+                            <li>Batch processing available</li>
+                            <li>Download translated files</li>
+                            <li>Up to 10MB file size</li>
+                        </ul>
+                    </div>
+
+                    <!-- Voice Translation -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m-4 0h8m-11-15a3 3 0 016 0v8a3 3 0 01-6 0V4z"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Voice Translation</h3>
+                        </div>
+                        <p class="service-description">
+                            Speak naturally and get instant translations. Perfect for conversations and quick voice notes.
+                        </p>
+                        <ul class="service-features">
+                            <li>Speech recognition in all languages</li>
+                            <li>Text-to-speech output</li>
+                            <li>Conversation mode</li>
+                            <li>Offline capability (coming soon)</li>
+                        </ul>
+                    </div>
+
+                    <!-- API Integration -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">API for Developers</h3>
+                        </div>
+                        <p class="service-description">
+                            Integrate PRISMY's translation power into your applications with our simple REST API.
+                        </p>
+                        <ul class="service-features">
+                            <li>RESTful API endpoints</li>
+                            <li>Bulk translation support</li>
+                            <li>99.9% uptime SLA</li>
+                            <li>Comprehensive documentation</li>
+                        </ul>
+                    </div>
+
+                    <!-- Business Solutions -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Business Solutions</h3>
+                        </div>
+                        <p class="service-description">
+                            Custom translation solutions for enterprises with dedicated support and advanced features.
+                        </p>
+                        <ul class="service-features">
+                            <li>Custom translation models</li>
+                            <li>Team collaboration tools</li>
+                            <li>Priority support</li>
+                            <li>Volume discounts</li>
+                        </ul>
+                    </div>
+
+                    <!-- Website Translation -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Website Translation</h3>
+                        </div>
+                        <p class="service-description">
+                            Translate entire websites automatically. Perfect for reaching global audiences.
+                        </p>
+                        <ul class="service-features">
+                            <li>One-line JavaScript integration</li>
+                            <li>SEO-friendly translations</li>
+                            <li>Automatic updates</li>
+                            <li>Custom domain support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <h2 class="cta-title">Ready to break language barriers?</h2>
+                <p class="cta-description">Join thousands of users who trust PRISMY for their translation needs.</p>
+                <div class="cta-buttons">
+                    <a href="/app" class="btn btn-primary btn-large">Start Free Trial</a>
+                    <a href="/pricing" class="btn btn-ghost btn-large">View Pricing</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-copyright">
+                    © 2025 PRISMY. All rights reserved.
+                </div>
+                <div class="footer-links">
+                    <a href="/privacy" class="footer-link">Privacy</a>
+                    <a href="/terms" class="footer-link">Terms</a>
+                    <a href="/api" class="footer-link">API</a>
+                    <a href="/contact" class="footer-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Character counter for demo
+        const demoInput = document.getElementById('demoInput');
+        const charCount = document.getElementById('charCount');
+        
+        demoInput.addEventListener('input', function() {
+            const count = this.value.length;
+            charCount.textContent = `${count} / 5,000 characters`;
+            
+            if (count > 5000) {
+                this.value = this.value.substring(0, 5000);
+            }
+        });
+
+        // Auto-resize textarea
+        demoInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        });
+
+        // Redirect to app with text
+        function redirectToApp() {
+            const text = document.getElementById('demoInput').value;
+            if (text) {
+                // Store text in sessionStorage to pass to app
+                sessionStorage.setItem('demoText', text);
+            }
+            window.location.href = '/app.html';
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.pageYOffset > 100) {
+                header.style.boxShadow = 'var(--shadow-sm)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Fix navigation links
+        document.querySelectorAll('a[href="/app"]').forEach(link => {
+            link.href = '/app.html';
+        });
+    </script>
+</body>
+</html>

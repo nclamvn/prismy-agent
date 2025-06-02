@@ -1,0 +1,275 @@
+"""
+Podcast Script Generator
+Biến text thành script podcast chuyên nghiệp với intro, outro, và natural flow
+"""
+
+import time
+import re
+from typing import Dict, List, Any
+from .base_transformer import (
+    BaseContentTransformer,
+    TransformationType,
+    TargetAudience, 
+    ContentDifficulty,
+    TransformationRequest,
+    TransformationResponse
+)
+from ..ai_intelligence.llm_service import get_llm_service
+from ..ai_intelligence.quality_enhancer import QualityEnhancer
+
+
+class PodcastGenerator(BaseContentTransformer):
+    """
+    Generator biến text thành podcast script
+    """
+    
+    # Templates cho các phần của podcast
+    INTRO_TEMPLATES = {
+        TargetAudience.CHILDREN: [
+            "Xin chào các bạn nhỏ! Hôm nay chúng ta sẽ cùng khám phá một câu chuyện thú vị...",
+            "Chào bạn! Bạn có sẵn sàng cho một cuộc phiêu lưu mới không?"
+        ],
+        TargetAudience.TEENAGERS: [
+            "Chào các bạn teen! Hôm nay mình có một chủ đề cực kỳ thú vị để chia sẻ...",
+            "Hey guys! Câu chuyện hôm nay sẽ làm bạn thay đổi cách nhìn về..."
+        ],
+        TargetAudience.ADULTS: [
+            "Xin chào và chào mừng bạn đến với podcast của chúng tôi. Hôm nay chúng ta sẽ thảo luận về...",
+            "Chào bạn! Trong tập này, chúng ta sẽ đi sâu vào vấn đề..."
+        ],
+        TargetAudience.PROFESSIONALS: [
+            "Chào mừng các chuyên gia đến với phiên thảo luận chuyên sâu. Hôm nay chúng ta phân tích...",
+            "Xin chào đồng nghiệp. Trong tập này, chúng ta sẽ khám phá các insights về..."
+        ],
+        TargetAudience.GENERAL: [
+            "Chào mừng quý vị đến với podcast. Chủ đề hôm nay là...",
+            "Xin chào! Cùng khám phá một góc nhìn mới về..."
+        ]
+    }
+    
+    OUTRO_TEMPLATES = {
+        TargetAudience.CHILDREN: [
+            "Và như vậy là kết thúc câu chuyện hôm nay! Các bạn hãy chia sẻ với bố mẹ nhé!",
+            "Woa! Thật là một cuộc phiêu lưu tuyệt vời! Hẹn gặp lại các bạn trong tập tiếp theo!"
+        ],
+        TargetAudience.TEENAGERS: [
+            "Okay guys, đó là tất cả cho tập hôm nay! Đừng quên like và share nhé!",
+            "Hy vọng bạn đã có những suy nghĩ mới! Hẹn gặp lại trong tập sau!"
+        ],
+        TargetAudience.ADULTS: [
+            "Cảm ơn bạn đã theo dõi tập podcast hôm nay. Hy vọng thông tin này hữu ích cho bạn.",
+            "Đó là những chia sẻ của chúng tôi hôm nay. Hẹn gặp lại bạn trong tập tiếp theo."
+        ],
+        TargetAudience.PROFESSIONALS: [
+            "Cảm ơn quý vị đã tham gia phiên thảo luận. Chúng tôi mong nhận được feedback từ các chuyên gia.",
+            "Kết thúc phiên phân tích hôm nay. Hy vọng các insights này có giá trị cho công việc của quý vị."
+        ],
+        TargetAudience.GENERAL: [
+            "Cảm ơn bạn đã lắng nghe. Hẹn gặp lại trong tập tiếp theo!",
+            "Đó là tất cả cho hôm nay. Cảm ơn bạn đã đồng hành cùng chúng tôi."
+        ]
+    }
+    
+    def __init__(self, config: Dict[str, Any] = None):
+        super().__init__(config)
+        self.llm_service = get_llm_service()
+        
+        # Default config
+        self.default_config = {
+            "add_pauses": True,
+            "add_emphasis": True,
+            "natural_transitions": True,
+            "audience_engagement": True,
+            "background_music_cues": False
+        }
+        self.config = {**self.default_config, **(config or {})}
+    
+    def _get_transformer_type(self) -> TransformationType:
+        return TransformationType.PODCAST_SCRIPT
+    
+    async def transform(self, request: TransformationRequest) -> TransformationResponse:
+        """Transform text thành podcast script"""
+        start_time = time.time()
+        
+        if not self.validate_request(request):
+            raise ValueError("Invalid transformation request")
+        
+        # Build podcast script
+        script = await self._build_podcast_script(request)
+        
+        processing_time = time.time() - start_time
+        
+        # Calculate metadata
+        estimated_duration = self.estimate_duration(script, request.target_audience)
+        word_count = len(script.split())
+        
+        response = TransformationResponse(
+            transformed_content=script,
+            transformation_type=self.transformer_type,
+            metadata={
+                "word_count": word_count,
+                "paragraph_count": len(script.split('\n\n')),
+                "has_intro": True,
+                "has_outro": True,
+                "audience_optimized": True,
+                "difficulty": request.difficulty_level.value,
+                "language": request.language
+            },
+            processing_time=processing_time,
+            quality_score=0.0,  # Sẽ calculate sau
+            estimated_duration=estimated_duration
+        )
+        
+        # Calculate quality score
+        response.quality_score = self.calculate_quality_score(request, response)
+        
+        return response
+    
+    async def _build_podcast_script(self, request: TransformationRequest) -> str:
+        """Build complete podcast script"""
+        
+        # 1. Chọn intro phù hợp
+        intro = self._generate_intro(request)
+        
+        # 2. Process main content
+        main_content = self._process_main_content(request)
+        
+        # 3. Chọn outro phù hợp  
+        outro = self._generate_outro(request)
+        
+        # 4. Combine tất cả
+        script_parts = [
+            f"[INTRO]",
+            intro,
+            "",
+            f"[MAIN CONTENT]", 
+            main_content,
+            "",
+            f"[OUTRO]",
+            outro
+        ]
+        
+        return "\n".join(script_parts)
+    
+    def _generate_intro(self, request: TransformationRequest) -> str:
+        """Generate intro phù hợp với audience"""
+        audience = request.target_audience
+        if audience not in self.INTRO_TEMPLATES:
+            audience = TargetAudience.GENERAL
+        
+        templates = self.INTRO_TEMPLATES[audience]
+        intro_template = templates[0]  # Chọn template đầu tiên
+        
+        # Customize theo context
+        if request.context:
+            intro_template += f" {request.context}"
+        
+        return intro_template
+    
+    def _process_main_content(self, request: TransformationRequest) -> str:
+        """Process main content với podcast formatting"""
+        content = request.source_text
+        
+        # Split thành paragraphs
+        paragraphs = [p.strip() for p in content.split('\n') if p.strip()]
+        
+        processed_paragraphs = []
+        
+        for i, paragraph in enumerate(paragraphs):
+            # Add natural transitions
+            if i > 0 and self.config.get("natural_transitions", True):
+                transitions = [
+                    "Và tiếp theo,",
+                    "Điều thú vị là,", 
+                    "Chúng ta cũng cần biết rằng,",
+                    "Một điểm quan trọng khác là,"
+                ]
+                transition = transitions[i % len(transitions)]
+                paragraph = f"{transition} {paragraph.lower()}"
+            
+            # Add pauses và emphasis
+            if self.config.get("add_pauses", True):
+                paragraph = self._add_natural_pauses(paragraph)
+            
+            if self.config.get("add_emphasis", True):
+                paragraph = self._add_emphasis(paragraph)
+            
+            # Add audience engagement
+            if self.config.get("audience_engagement", True) and i == len(paragraphs) // 2:
+                engagement = self._get_engagement_phrase(request.target_audience)
+                paragraph += f"\n\n{engagement}"
+            
+            processed_paragraphs.append(paragraph)
+        
+        return "\n\n".join(processed_paragraphs)
+    
+    def _add_natural_pauses(self, text: str) -> str:
+        """Add pause markers cho natural flow"""
+        # Add pauses after important points
+        text = re.sub(r'([.!?])\s+', r'\1 [PAUSE] ', text)
+        
+        # Add brief pauses after commas
+        text = re.sub(r'(,)\s+', r'\1 [BRIEF_PAUSE] ', text)
+        
+        return text
+    
+    def _add_emphasis(self, text: str) -> str:
+        """Add emphasis markers"""
+        # Emphasize important words (có thể improve bằng AI sau)
+        important_words = ['quan trọng', 'đặc biệt', 'chú ý', 'nhớ rằng', 'điều này']
+        
+        for word in important_words:
+            text = text.replace(word, f"[EMPHASIS]{word}[/EMPHASIS]")
+        
+        return text
+    
+    def _get_engagement_phrase(self, audience: TargetAudience) -> str:
+        """Get audience engagement phrase"""
+        engagement_phrases = {
+            TargetAudience.CHILDREN: "Các bạn có nghĩ như vậy không?",
+            TargetAudience.TEENAGERS: "Bạn nghĩ sao về điều này?", 
+            TargetAudience.ADULTS: "Điều này có ý nghĩa gì với chúng ta?",
+            TargetAudience.PROFESSIONALS: "Từ góc độ chuyên môn, điều này như thế nào?",
+            TargetAudience.GENERAL: "Chúng ta hãy suy nghĩ về điều này."
+        }
+        
+        return engagement_phrases.get(audience, engagement_phrases[TargetAudience.GENERAL])
+    
+    def _generate_outro(self, request: TransformationRequest) -> str:
+        """Generate outro phù hợp"""
+        audience = request.target_audience
+        if audience not in self.OUTRO_TEMPLATES:
+            audience = TargetAudience.GENERAL
+        
+        templates = self.OUTRO_TEMPLATES[audience]
+        return templates[0]  # Chọn template đầu tiên
+    
+    def get_supported_audiences(self) -> List[TargetAudience]:
+        """Podcast supports tất cả audiences"""
+        return list(TargetAudience)
+    
+    def get_supported_difficulties(self) -> List[ContentDifficulty]:
+        """Podcast supports tất cả difficulty levels"""
+        return list(ContentDifficulty)
+    
+    def estimate_duration(self, text: str, target_audience: TargetAudience) -> int:
+        """Estimate podcast duration in minutes"""
+        # Average speaking speed: 150-160 words per minute in Vietnamese
+        # Slower for children, faster for professionals
+        
+        word_count = len(text.split())
+        
+        speeds = {
+            TargetAudience.CHILDREN: 120,      # Slower, clearer
+            TargetAudience.TEENAGERS: 140,     # Moderate
+            TargetAudience.YOUNG_ADULTS: 150,  # Normal
+            TargetAudience.ADULTS: 155,        # Normal
+            TargetAudience.SENIORS: 130,       # Slower, clearer
+            TargetAudience.PROFESSIONALS: 160, # Faster, more info
+            TargetAudience.GENERAL: 150        # Normal
+        }
+        
+        wpm = speeds.get(target_audience, 150)
+        duration_minutes = max(1, round(word_count / wpm))
+        
+        return duration_minutes

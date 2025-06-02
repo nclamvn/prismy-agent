@@ -1,0 +1,31 @@
+services:
+  # API Service
+  - type: web
+    name: translate-agent-api
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn src.api.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.16
+      - key: PORT
+        value: 8000
+      - key: LLM_PROVIDER
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+    healthCheckPath: /api/v1/health
+    
+  # Streamlit UI Service  
+  - type: web
+    name: translate-agent-ui
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "streamlit run streamlit_ui.py --server.port $PORT --server.address 0.0.0.0"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.16
+      - key: API_BASE_URL
+        value: https://translate-agent-api.onrender.com

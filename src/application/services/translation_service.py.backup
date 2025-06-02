@@ -1,0 +1,73 @@
+"""Application service for translation operations."""
+
+from typing import Optional
+import asyncio
+
+from core.use_cases.translate_text import TranslateTextUseCase
+from core.entities.translation import TranslationRequest, TranslationResult, ProcessingConfig
+from infrastructure.ai_clients.openai_translator import OpenAITranslator
+
+
+class TranslationService:
+    """High-level service for translation operations."""
+    
+    def __init__(self, openai_api_key: Optional[str] = None):
+        self.openai_api_key = openai_api_key
+        self._translator = None
+        self._use_case = None
+    
+    def _get_translator(self) -> OpenAITranslator:
+        """Lazy initialization of translator."""
+        if not self._translator:
+            if not self.openai_api_key:
+                raise ValueError("OpenAI API key is required")
+            self._translator = OpenAITranslator(self.openai_api_key)
+        return self._translator
+    
+    def _get_use_case(self) -> TranslateTextUseCase:
+        """Lazy initialization of use case."""
+        if not self._use_case:
+            translator = self._get_translator()
+            self._use_case = TranslateTextUseCase(translator)
+        return self._use_case
+    
+    async def translate_text(
+        self, 
+        text: str, 
+        target_language: str,
+        source_language: Optional[str] = None,
+        preserve_formatting: bool = True
+    ) -> TranslationResult:
+        """Translate text using the configured translator."""
+        
+        request = TranslationRequest(
+            text=text,
+            source_language=source_language,
+            target_language=target_language,
+            preserve_formatting=preserve_formatting
+        )
+        
+        use_case = self._get_use_case()
+        return await use_case.execute(request)
+    
+    def translate_text_sync(
+        self, 
+        text: str, 
+        target_language: str,
+        source_language: Optional[str] = None,
+        preserve_formatting: bool = True
+    ) -> TranslationResult:
+        """Synchronous wrapper for translation."""
+        return asyncio.run(
+            self.translate_text(text, target_language, source_language, preserve_formatting)
+        )
+    
+    def update_api_key(self, api_key: str) -> None:
+        """Update API key and reset translator."""
+        self.openai_api_key = api_key
+        self._translator = None
+        self._use_case = None
+    
+    def is_configured(self) -> bool:
+        """Check if service is properly configured."""
+        return bool(self.openai_api_key)

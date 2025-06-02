@@ -1,0 +1,335 @@
+{
+  "success": true,
+  "session_id": "Production_Demo",
+  "total_chunks": 7,
+  "total_duration": 60.5,
+  "source_language": "vietnamese",
+  "chunks": [
+    {
+      "id": 1,
+      "content": "FADE IN: EXT",
+      "duration": 1.5,
+      "scene_type": "dialogue",
+      "characters": [],
+      "dna_hash": "59549594",
+      "enhanced_prompt": "🎬 CẢNH 1: FADE IN: EXT\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 59549594]\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+      "ai_generation_ready": true,
+      "adjacency_links": {
+        "previous": null,
+        "current": "59549594"
+      },
+      "quality_features": {
+        "character_features": 0,
+        "environment_features": 0,
+        "emotional_features": 0
+      }
+    },
+    {
+      "id": 2,
+      "content": "NHÀ VIỆT NAM - SÁNG SỚM Anh MINH (40 tuổi, đàn ông Việt Nam, dáng gầy, da ngăm đen, mặt khắc khổ) bước ra khỏi nhà tranh nhỏ",
+      "duration": 14.0,
+      "scene_type": "dialogue",
+      "characters": [
+        "Nhỏ",
+        "Minh"
+      ],
+      "dna_hash": "dec5d69d",
+      "enhanced_prompt": "🎬 CẢNH 2: NHÀ VIỆT NAM - SÁNG SỚM Anh MINH (40 tuổi, đàn ông Việt Nam, dáng gầy, da ngăm đen, mặt khắc khổ) bước ra khỏi nhà tranh nhỏ\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: dec5d69d]\n\n👥 NHÂN VẬT:\n• Nhỏ: asian, male, slim, medium\n• Minh: asian, male, slim, medium\n\n🌍 BỐI CẢNH:\n• Location_Type: indoor\n• Architecture: traditional\n• Time_Of_Day: morning\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n🔗 LIÊN KẾT: 59549594\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+      "ai_generation_ready": true,
+      "adjacency_links": {
+        "previous": "59549594",
+        "current": "dec5d69d"
+      },
+      "quality_features": {
+        "character_features": 8,
+        "environment_features": 3,
+        "emotional_features": 0
+      }
+    },
+    {
+      "id": 3,
+      "content": ". Ánh nắng sáng sớm chiếu rọi lên khuôn mặt nghiêm túc của anh . CUT TO: EXT",
+      "duration": 9.0,
+      "scene_type": "dialogue",
+      "characters": [],
+      "dna_hash": "c1509991",
+      "enhanced_prompt": "🎬 CẢNH 3: . Ánh nắng sáng sớm chiếu rọi lên khuôn mặt nghiêm túc của anh . CUT TO: EXT\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: c1509991]\n\n🌍 BỐI CẢNH:\n• Weather: sunny\n• Time_Of_Day: morning\n• Location_Type: indoor\n• Architecture: traditional\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n💫 CẢM XÚC: peaceful\n\n🔗 LIÊN KẾT: dec5d69d\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+      "ai_generation_ready": true,
+      "adjacency_links": {
+        "previous": "dec5d69d",
+        "current": "c1509991"
+      },
+      "quality_features": {
+        "character_features": 0,
+        "environment_features": 4,
+        "emotional_features": 0
+      }
+    },
+    {
+      "id": 4,
+      "content": ". CON ĐƯỜNG ĐẤT - CONTINUOUS Anh Minh đi bộ trên con đường đất giữa cánh đồng lúa . Bối cảnh nông thôn yên bình",
+      "duration": 10.0,
+      "scene_type": "establishing",
+      "characters": [
+        "Thôn",
+        "Minh"
+      ],
+      "dna_hash": "17d483a8",
+      "enhanced_prompt": "🎬 CẢNH 4: . CON ĐƯỜNG ĐẤT - CONTINUOUS Anh Minh đi bộ trên con đường đất giữa cánh đồng lúa . Bối cảnh nông thôn yên bình\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 17d483a8]\n\n👥 NHÂN VẬT:\n• Minh: male\n\n🌍 BỐI CẢNH:\n• Landscape: flat\n• Weather: sunny\n• Time_Of_Day: morning\n• Location_Type: indoor\n• Architecture: traditional\n\n💫 CẢM XÚC: peaceful\n\n🔗 LIÊN KẾT: c1509991\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+      "ai_generation_ready": true,
+      "adjacency_links": {
+        "previous": "c1509991",
+        "current": "17d483a8"
+      },
+      "quality_features": {
+        "character_features": 1,
+        "environment_features": 5,
+        "emotional_features": 0
+      }
+    },
+    {
+      "id": 5,
+      "content": ". Anh dừng lại khi thấy em LAN (25 tuổi, xinh đẹp, mặc áo bà ba trắng) đang hái rau . MINH Chào em Lan",
+      "duration": 10.0,
+      "scene_type": "establishing",
+      "characters": [
+        "Lan",
+        "Dừng"
+      ],
+      "dna_hash": "7846796d",
+      "enhanced_prompt": "🎬 CẢNH 5: . Anh dừng lại khi thấy em LAN (25 tuổi, xinh đẹp, mặc áo bà ba trắng) đang hái rau . MINH Chào em Lan\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 7846796d]\n\n👥 NHÂN VẬT:\n• Lan: male, casual\n• Dừng: male, casual\n\n🌍 BỐI CẢNH:\n• Landscape: flat\n• Weather: sunny\n• Time_Of_Day: morning\n• Location_Type: indoor\n• Architecture: traditional\n\n🔗 LIÊN KẾT: 17d483a8\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+      "ai_generation_ready": true,
+      "adjacency_links": {
+        "previous": "17d483a8",
+        "current": "7846796d"
+      },
+      "quality_features": {
+        "character_features": 4,
+        "environment_features": 5,
+        "emotional_features": 0
+      }
+    },
+    {
+      "id": 6,
+      "content": "! Sáng nay em dậy sớm quá ! LAN (cười tươi) Chào anh Minh ! Em phải hái rau sớm để mang ra chợ bán",
+      "duration": 10.0,
+      "scene_type": "establishing",
+      "characters": [
+        "Lan",
+        "Minh",
+        "Phải",
+        "Dậy"
+      ],
+      "dna_hash": "c7ead37e",
+      "enhanced_prompt": "🎬 CẢNH 6: ! Sáng nay em dậy sớm quá ! LAN (cười tươi) Chào anh Minh ! Em phải hái rau sớm để mang ra chợ bán\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: c7ead37e]\n\n👥 NHÂN VẬT:\n• Lan: male\n• Minh: male\n• Phải: female\n• Dậy: female\n\n🌍 BỐI CẢNH:\n• Time_Of_Day: morning\n• Landscape: flat\n• Weather: sunny\n• Location_Type: indoor\n• Architecture: traditional\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n🔗 LIÊN KẾT: 7846796d\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+      "ai_generation_ready": true,
+      "adjacency_links": {
+        "previous": "7846796d",
+        "current": "c7ead37e"
+      },
+      "quality_features": {
+        "character_features": 4,
+        "environment_features": 5,
+        "emotional_features": 0
+      }
+    },
+    {
+      "id": 7,
+      "content": ". Hai người trò chuyện vài phút trong ánh nắng dịu nhẹ . FADE OUT.",
+      "duration": 6.0,
+      "scene_type": "transition",
+      "characters": [],
+      "dna_hash": "308d2bc9",
+      "enhanced_prompt": "🎬 CẢNH 7: . Hai người trò chuyện vài phút trong ánh nắng dịu nhẹ . FADE OUT.\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 308d2bc9]\n\n🌍 BỐI CẢNH:\n• Weather: sunny\n• Time_Of_Day: morning\n• Landscape: flat\n• Location_Type: indoor\n• Architecture: traditional\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n🔗 LIÊN KẾT: c7ead37e\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+      "ai_generation_ready": true,
+      "adjacency_links": {
+        "previous": "c7ead37e",
+        "current": "308d2bc9"
+      },
+      "quality_features": {
+        "character_features": 0,
+        "environment_features": 5,
+        "emotional_features": 0
+      }
+    }
+  ],
+  "dna_chain": [
+    "59549594",
+    "dec5d69d",
+    "c1509991",
+    "17d483a8",
+    "7846796d",
+    "c7ead37e",
+    "308d2bc9"
+  ],
+  "quality_metrics": {
+    "character_consistency": 1.0,
+    "visual_continuity": 1.0,
+    "narrative_flow": 0.9
+  },
+  "export_ready": {
+    "general": {
+      "session_id": "Production_Demo",
+      "total_chunks": 7,
+      "chunks": [
+        {
+          "id": 1,
+          "prompt": "🎬 CẢNH 1: FADE IN: EXT\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 59549594]\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 1.5,
+          "dna_hash": "59549594"
+        },
+        {
+          "id": 2,
+          "prompt": "🎬 CẢNH 2: NHÀ VIỆT NAM - SÁNG SỚM Anh MINH (40 tuổi, đàn ông Việt Nam, dáng gầy, da ngăm đen, mặt khắc khổ) bước ra khỏi nhà tranh nhỏ\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: dec5d69d]\n\n👥 NHÂN VẬT:\n• Nhỏ: asian, male, slim, medium\n• Minh: asian, male, slim, medium\n\n🌍 BỐI CẢNH:\n• Location_Type: indoor\n• Architecture: traditional\n• Time_Of_Day: morning\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n🔗 LIÊN KẾT: 59549594\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 14.0,
+          "dna_hash": "dec5d69d"
+        },
+        {
+          "id": 3,
+          "prompt": "🎬 CẢNH 3: . Ánh nắng sáng sớm chiếu rọi lên khuôn mặt nghiêm túc của anh . CUT TO: EXT\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: c1509991]\n\n🌍 BỐI CẢNH:\n• Weather: sunny\n• Time_Of_Day: morning\n• Location_Type: indoor\n• Architecture: traditional\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n💫 CẢM XÚC: peaceful\n\n🔗 LIÊN KẾT: dec5d69d\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 9.0,
+          "dna_hash": "c1509991"
+        },
+        {
+          "id": 4,
+          "prompt": "🎬 CẢNH 4: . CON ĐƯỜNG ĐẤT - CONTINUOUS Anh Minh đi bộ trên con đường đất giữa cánh đồng lúa . Bối cảnh nông thôn yên bình\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 17d483a8]\n\n👥 NHÂN VẬT:\n• Minh: male\n\n🌍 BỐI CẢNH:\n• Landscape: flat\n• Weather: sunny\n• Time_Of_Day: morning\n• Location_Type: indoor\n• Architecture: traditional\n\n💫 CẢM XÚC: peaceful\n\n🔗 LIÊN KẾT: c1509991\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 10.0,
+          "dna_hash": "17d483a8"
+        },
+        {
+          "id": 5,
+          "prompt": "🎬 CẢNH 5: . Anh dừng lại khi thấy em LAN (25 tuổi, xinh đẹp, mặc áo bà ba trắng) đang hái rau . MINH Chào em Lan\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 7846796d]\n\n👥 NHÂN VẬT:\n• Lan: male, casual\n• Dừng: male, casual\n\n🌍 BỐI CẢNH:\n• Landscape: flat\n• Weather: sunny\n• Time_Of_Day: morning\n• Location_Type: indoor\n• Architecture: traditional\n\n🔗 LIÊN KẾT: 17d483a8\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 10.0,
+          "dna_hash": "7846796d"
+        },
+        {
+          "id": 6,
+          "prompt": "🎬 CẢNH 6: ! Sáng nay em dậy sớm quá ! LAN (cười tươi) Chào anh Minh ! Em phải hái rau sớm để mang ra chợ bán\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: c7ead37e]\n\n👥 NHÂN VẬT:\n• Lan: male\n• Minh: male\n• Phải: female\n• Dậy: female\n\n🌍 BỐI CẢNH:\n• Time_Of_Day: morning\n• Landscape: flat\n• Weather: sunny\n• Location_Type: indoor\n• Architecture: traditional\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n🔗 LIÊN KẾT: 7846796d\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 10.0,
+          "dna_hash": "c7ead37e"
+        },
+        {
+          "id": 7,
+          "prompt": "🎬 CẢNH 7: . Hai người trò chuyện vài phút trong ánh nắng dịu nhẹ . FADE OUT.\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 308d2bc9]\n\n🌍 BỐI CẢNH:\n• Weather: sunny\n• Time_Of_Day: morning\n• Landscape: flat\n• Location_Type: indoor\n• Architecture: traditional\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n🔗 LIÊN KẾT: c7ead37e\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 6.0,
+          "dna_hash": "308d2bc9"
+        }
+      ]
+    },
+    "runway": {
+      "project_name": "Production_Demo",
+      "scenes": [
+        {
+          "scene_id": 1,
+          "text_prompt": "🎬 CẢNH 1: FADE IN: EXT\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 59549594]\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 1.5,
+          "resolution": "1920x1080",
+          "style": "cinematic"
+        },
+        {
+          "scene_id": 2,
+          "text_prompt": "🎬 CẢNH 2: NHÀ VIỆT NAM - SÁNG SỚM Anh MINH (40 tuổi, đàn ông Việt Nam, dáng gầy, da ngăm đen, mặt khắc khổ) bước ra khỏi nhà tranh nhỏ\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: dec5d69d]\n\n👥 NHÂN VẬT:\n• Nhỏ: asian, male, slim, medium\n• Minh: asian, male, slim, medium\n\n🌍 BỐI CẢNH:\n• Location_Type: indoor\n• Architecture: traditional\n• Time_Of_Day: morning\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n🔗 LIÊN KẾT: 59549594\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 14.0,
+          "resolution": "1920x1080",
+          "style": "cinematic"
+        },
+        {
+          "scene_id": 3,
+          "text_prompt": "🎬 CẢNH 3: . Ánh nắng sáng sớm chiếu rọi lên khuôn mặt nghiêm túc của anh . CUT TO: EXT\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: c1509991]\n\n🌍 BỐI CẢNH:\n• Weather: sunny\n• Time_Of_Day: morning\n• Location_Type: indoor\n• Architecture: traditional\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n💫 CẢM XÚC: peaceful\n\n🔗 LIÊN KẾT: dec5d69d\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 9.0,
+          "resolution": "1920x1080",
+          "style": "cinematic"
+        },
+        {
+          "scene_id": 4,
+          "text_prompt": "🎬 CẢNH 4: . CON ĐƯỜNG ĐẤT - CONTINUOUS Anh Minh đi bộ trên con đường đất giữa cánh đồng lúa . Bối cảnh nông thôn yên bình\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 17d483a8]\n\n👥 NHÂN VẬT:\n• Minh: male\n\n🌍 BỐI CẢNH:\n• Landscape: flat\n• Weather: sunny\n• Time_Of_Day: morning\n• Location_Type: indoor\n• Architecture: traditional\n\n💫 CẢM XÚC: peaceful\n\n🔗 LIÊN KẾT: c1509991\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 10.0,
+          "resolution": "1920x1080",
+          "style": "cinematic"
+        },
+        {
+          "scene_id": 5,
+          "text_prompt": "🎬 CẢNH 5: . Anh dừng lại khi thấy em LAN (25 tuổi, xinh đẹp, mặc áo bà ba trắng) đang hái rau . MINH Chào em Lan\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 7846796d]\n\n👥 NHÂN VẬT:\n• Lan: male, casual\n• Dừng: male, casual\n\n🌍 BỐI CẢNH:\n• Landscape: flat\n• Weather: sunny\n• Time_Of_Day: morning\n• Location_Type: indoor\n• Architecture: traditional\n\n🔗 LIÊN KẾT: 17d483a8\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 10.0,
+          "resolution": "1920x1080",
+          "style": "cinematic"
+        },
+        {
+          "scene_id": 6,
+          "text_prompt": "🎬 CẢNH 6: ! Sáng nay em dậy sớm quá ! LAN (cười tươi) Chào anh Minh ! Em phải hái rau sớm để mang ra chợ bán\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: c7ead37e]\n\n👥 NHÂN VẬT:\n• Lan: male\n• Minh: male\n• Phải: female\n• Dậy: female\n\n🌍 BỐI CẢNH:\n• Time_Of_Day: morning\n• Landscape: flat\n• Weather: sunny\n• Location_Type: indoor\n• Architecture: traditional\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n🔗 LIÊN KẾT: 7846796d\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 10.0,
+          "resolution": "1920x1080",
+          "style": "cinematic"
+        },
+        {
+          "scene_id": 7,
+          "text_prompt": "🎬 CẢNH 7: . Hai người trò chuyện vài phút trong ánh nắng dịu nhẹ . FADE OUT.\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 308d2bc9]\n\n🌍 BỐI CẢNH:\n• Weather: sunny\n• Time_Of_Day: morning\n• Landscape: flat\n• Location_Type: indoor\n• Architecture: traditional\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n🔗 LIÊN KẾT: c7ead37e\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+          "duration": 6.0,
+          "resolution": "1920x1080",
+          "style": "cinematic"
+        }
+      ]
+    },
+    "pika": {
+      "video_project": {
+        "name": "Production_Demo",
+        "clips": [
+          {
+            "clip_number": 1,
+            "text_prompt": "🎬 CẢNH 1: FADE IN: EXT\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 59549594]\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+            "duration_seconds": 1.5,
+            "aspect_ratio": "16:9",
+            "style": "realistic"
+          },
+          {
+            "clip_number": 2,
+            "text_prompt": "🎬 CẢNH 2: NHÀ VIỆT NAM - SÁNG SỚM Anh MINH (40 tuổi, đàn ông Việt Nam, dáng gầy, da ngăm đen, mặt khắc khổ) bước ra khỏi nhà tranh nhỏ\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: dec5d69d]\n\n👥 NHÂN VẬT:\n• Nhỏ: asian, male, slim, medium\n• Minh: asian, male, slim, medium\n\n🌍 BỐI CẢNH:\n• Location_Type: indoor\n• Architecture: traditional\n• Time_Of_Day: morning\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n🔗 LIÊN KẾT: 59549594\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+            "duration_seconds": 14.0,
+            "aspect_ratio": "16:9",
+            "style": "realistic"
+          },
+          {
+            "clip_number": 3,
+            "text_prompt": "🎬 CẢNH 3: . Ánh nắng sáng sớm chiếu rọi lên khuôn mặt nghiêm túc của anh . CUT TO: EXT\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: c1509991]\n\n🌍 BỐI CẢNH:\n• Weather: sunny\n• Time_Of_Day: morning\n• Location_Type: indoor\n• Architecture: traditional\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n💫 CẢM XÚC: peaceful\n\n🔗 LIÊN KẾT: dec5d69d\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+            "duration_seconds": 9.0,
+            "aspect_ratio": "16:9",
+            "style": "realistic"
+          },
+          {
+            "clip_number": 4,
+            "text_prompt": "🎬 CẢNH 4: . CON ĐƯỜNG ĐẤT - CONTINUOUS Anh Minh đi bộ trên con đường đất giữa cánh đồng lúa . Bối cảnh nông thôn yên bình\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 17d483a8]\n\n👥 NHÂN VẬT:\n• Minh: male\n\n🌍 BỐI CẢNH:\n• Landscape: flat\n• Weather: sunny\n• Time_Of_Day: morning\n• Location_Type: indoor\n• Architecture: traditional\n\n💫 CẢM XÚC: peaceful\n\n🔗 LIÊN KẾT: c1509991\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+            "duration_seconds": 10.0,
+            "aspect_ratio": "16:9",
+            "style": "realistic"
+          },
+          {
+            "clip_number": 5,
+            "text_prompt": "🎬 CẢNH 5: . Anh dừng lại khi thấy em LAN (25 tuổi, xinh đẹp, mặc áo bà ba trắng) đang hái rau . MINH Chào em Lan\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 7846796d]\n\n👥 NHÂN VẬT:\n• Lan: male, casual\n• Dừng: male, casual\n\n🌍 BỐI CẢNH:\n• Landscape: flat\n• Weather: sunny\n• Time_Of_Day: morning\n• Location_Type: indoor\n• Architecture: traditional\n\n🔗 LIÊN KẾT: 17d483a8\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+            "duration_seconds": 10.0,
+            "aspect_ratio": "16:9",
+            "style": "realistic"
+          },
+          {
+            "clip_number": 6,
+            "text_prompt": "🎬 CẢNH 6: ! Sáng nay em dậy sớm quá ! LAN (cười tươi) Chào anh Minh ! Em phải hái rau sớm để mang ra chợ bán\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: c7ead37e]\n\n👥 NHÂN VẬT:\n• Lan: male\n• Minh: male\n• Phải: female\n• Dậy: female\n\n🌍 BỐI CẢNH:\n• Time_Of_Day: morning\n• Landscape: flat\n• Weather: sunny\n• Location_Type: indoor\n• Architecture: traditional\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n🔗 LIÊN KẾT: 7846796d\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+            "duration_seconds": 10.0,
+            "aspect_ratio": "16:9",
+            "style": "realistic"
+          },
+          {
+            "clip_number": 7,
+            "text_prompt": "🎬 CẢNH 7: . Hai người trò chuyện vài phút trong ánh nắng dịu nhẹ . FADE OUT.\n\n🧬 VÂN TAY HÌNH ẢNH [DNA: 308d2bc9]\n\n🌍 BỐI CẢNH:\n• Weather: sunny\n• Time_Of_Day: morning\n• Landscape: flat\n• Location_Type: indoor\n• Architecture: traditional\n\n🎨 PHONG CÁCH:\n• Lighting_Quality: natural\n\n🔗 LIÊN KẾT: c7ead37e\n\n⚡ SIÊU QUAN TRỌNG:\n- Duy trì CHÍNH XÁC 100% tất cả đặc điểm trong Vân Tay Hình Ảnh\n- Chất lượng: 4K ultra-sharp, điện ảnh chuyên nghiệp\n- Thời lượng: 8 giây mượt mà, liên tục hoàn hảo\n- Style: Hyper-realistic, chi tiết sắc nét tuyệt đối\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!",
+            "duration_seconds": 6.0,
+            "aspect_ratio": "16:9",
+            "style": "realistic"
+          }
+        ]
+      }
+    },
+    "formats_available": [
+      "general",
+      "runway",
+      "pika"
+    ]
+  }
+}

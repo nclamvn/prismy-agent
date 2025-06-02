@@ -1,0 +1,960 @@
+{
+  "prism_version": "2.0.0",
+  "session_id": "Professional_Demo",
+  "processing_time": 0.018939733505249023,
+  "quality_metrics": {
+    "character_accuracy": 1.0,
+    "scene_intelligence": 0.6666666666666666,
+    "visual_continuity": 1.0,
+    "overall_quality": 0.8888888888888888
+  },
+  "content": {
+    "total_chunks": 12,
+    "total_duration": 72.19241443108234,
+    "detected_language": "english",
+    "characters": [
+      "Lan",
+      "Minh"
+    ],
+    "chunks": [
+      {
+        "id": 1,
+        "content": "EXT. VIETNAMESE RICE FIELDS - GOLDEN HOUR",
+        "duration": 4.0,
+        "scene_type": "transition",
+        "characters": [],
+        "dna_hash": "59549594",
+        "ai_prompt": "🎬 SCENE 1: EXT. VIETNAMESE RICE FIELDS - GOLDEN HOUR\n\n🧬 VISUAL DNA FINGERPRINT [ID: 59549594]\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+        "emotional_tone": "neutral",
+        "pacing": "moderate",
+        "visual_complexity": 0.6,
+        "recommended_shots": [],
+        "lighting": "natural",
+        "sound_design": "ambient",
+        "previous_dna": null,
+        "dna_features_count": {
+          "characters": 0,
+          "environment": 0,
+          "emotions": 0
+        },
+        "ai_generation_ready": true,
+        "quality_level": "PRISM_PRODUCTION",
+        "platform_superiority": "Beyond Sora level"
+      },
+      {
+        "id": 2,
+        "content": "Sweeping drone shot reveals endless emerald rice paddies bathed in warm sunlight.\n    Traditional Vietnamese music flows softly.",
+        "duration": 7.234042553191489,
+        "scene_type": "establishing",
+        "characters": [],
+        "dna_hash": "c91b91ef",
+        "ai_prompt": "🎬 SCENE 2: Sweeping drone shot reveals endless emerald rice paddies bathed in warm sunlight.\n    Traditional Vietnamese music flows softly.\n\n🧬 VISUAL DNA FINGERPRINT [ID: c91b91ef]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Color_Palette: warm\n\n🔗 CONTINUITY LINK: 59549594\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 7.2 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+        "emotional_tone": "neutral",
+        "pacing": "moderate",
+        "visual_complexity": 0.3,
+        "recommended_shots": [
+          "Wide establishing shot",
+          "Slow camera movement",
+          "Environmental details"
+        ],
+        "lighting": "natural",
+        "sound_design": "music",
+        "previous_dna": "59549594",
+        "dna_features_count": {
+          "characters": 0,
+          "environment": 1,
+          "emotions": 0
+        },
+        "ai_generation_ready": true,
+        "quality_level": "PRISM_PRODUCTION",
+        "platform_superiority": "Beyond Sora level"
+      },
+      {
+        "id": 3,
+        "content": "EXT. VILLAGE PATH - CONTINUOUS",
+        "duration": 4.0,
+        "scene_type": "transition",
+        "characters": [],
+        "dna_hash": "f8cee5e8",
+        "ai_prompt": "🎬 SCENE 3: EXT. VILLAGE PATH - CONTINUOUS\n\n🧬 VISUAL DNA FINGERPRINT [ID: f8cee5e8]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: c91b91ef\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+        "emotional_tone": "neutral",
+        "pacing": "moderate",
+        "visual_complexity": 0.4,
+        "recommended_shots": [],
+        "lighting": "natural",
+        "sound_design": "ambient",
+        "previous_dna": "c91b91ef",
+        "dna_features_count": {
+          "characters": 0,
+          "environment": 1,
+          "emotions": 0
+        },
+        "ai_generation_ready": true,
+        "quality_level": "PRISM_PRODUCTION",
+        "platform_superiority": "Beyond Sora level"
+      },
+      {
+        "id": 4,
+        "content": "MINH (45, weathered Vietnamese farmer, kind eyes) walks purposefully along a dirt path.\n    He carries traditional farming tools, his movements deliberate and peaceful.",
+        "duration": 9.787234042553191,
+        "scene_type": "establishing",
+        "characters": [],
+        "dna_hash": "d08a9c35",
+        "ai_prompt": "🎬 SCENE 4: MINH (45, weathered Vietnamese farmer, kind eyes) walks purposefully along a dirt path.\n    He carries traditional farming tools, his movements deliberate and peaceful.\n\n🧬 VISUAL DNA FINGERPRINT [ID: d08a9c35]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n💫 EMOTIONAL TONE: peaceful\n\n🔗 CONTINUITY LINK: f8cee5e8\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 9.8 seconds  \n- Emotional Tone: neutral\n- Pacing: slow\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+        "emotional_tone": "neutral",
+        "pacing": "slow",
+        "visual_complexity": 0.3,
+        "recommended_shots": [
+          "Wide establishing shot",
+          "Slow camera movement",
+          "Environmental details"
+        ],
+        "lighting": "natural",
+        "sound_design": "ambient",
+        "previous_dna": "f8cee5e8",
+        "dna_features_count": {
+          "characters": 0,
+          "environment": 1,
+          "emotions": 0
+        },
+        "ai_generation_ready": true,
+        "quality_level": "PRISM_PRODUCTION",
+        "platform_superiority": "Beyond Sora level"
+      },
+      {
+        "id": 5,
+        "content": "MINH\n    (to himself, contemplative)\n    Another harvest season begins.",
+        "duration": 4.0,
+        "scene_type": "establishing",
+        "characters": [
+          "Minh"
+        ],
+        "dna_hash": "5855e92f",
+        "ai_prompt": "🎬 SCENE 5: MINH\n    (to himself, contemplative)\n    Another harvest season begins.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 5855e92f]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: d08a9c35\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+        "emotional_tone": "neutral",
+        "pacing": "moderate",
+        "visual_complexity": 0.2,
+        "recommended_shots": [
+          "Wide establishing shot",
+          "Slow camera movement",
+          "Environmental details"
+        ],
+        "lighting": "natural",
+        "sound_design": "ambient",
+        "previous_dna": "d08a9c35",
+        "dna_features_count": {
+          "characters": 0,
+          "environment": 1,
+          "emotions": 0
+        },
+        "ai_generation_ready": true,
+        "quality_level": "PRISM_PRODUCTION",
+        "platform_superiority": "Beyond Sora level"
+      },
+      {
+        "id": 6,
+        "content": "CLOSE UP: His calloused hands gripping the tools, telling stories of decades of hard work.",
+        "duration": 6.382978723404255,
+        "scene_type": "close_up",
+        "characters": [],
+        "dna_hash": "6cde001c",
+        "ai_prompt": "🎬 SCENE 6: CLOSE UP: His calloused hands gripping the tools, telling stories of decades of hard work.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 6cde001c]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Camera_Angle: eye_level\n\n🔗 CONTINUITY LINK: 5855e92f\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: close_up\n- Duration: 6.4 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+        "emotional_tone": "neutral",
+        "pacing": "moderate",
+        "visual_complexity": 0.3,
+        "recommended_shots": [
+          "Extreme close-up"
+        ],
+        "lighting": "natural",
+        "sound_design": "ambient",
+        "previous_dna": "5855e92f",
+        "dna_features_count": {
+          "characters": 0,
+          "environment": 1,
+          "emotions": 0
+        },
+        "ai_generation_ready": true,
+        "quality_level": "PRISM_PRODUCTION",
+        "platform_superiority": "Beyond Sora level"
+      },
+      {
+        "id": 7,
+        "content": "EXT. VEGETABLE GARDEN - DAWN",
+        "duration": 4.0,
+        "scene_type": "transition",
+        "characters": [],
+        "dna_hash": "aff3af0a",
+        "ai_prompt": "🎬 SCENE 7: EXT. VEGETABLE GARDEN - DAWN\n\n🧬 VISUAL DNA FINGERPRINT [ID: aff3af0a]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: dawn\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 6cde001c\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+        "emotional_tone": "neutral",
+        "pacing": "moderate",
+        "visual_complexity": 0.4,
+        "recommended_shots": [],
+        "lighting": "natural",
+        "sound_design": "ambient",
+        "previous_dna": "6cde001c",
+        "dna_features_count": {
+          "characters": 0,
+          "environment": 2,
+          "emotions": 0
+        },
+        "ai_generation_ready": true,
+        "quality_level": "PRISM_PRODUCTION",
+        "platform_superiority": "Beyond Sora level"
+      },
+      {
+        "id": 8,
+        "content": "LAN (28, graceful Vietnamese woman, radiant smile) tends to her vibrant garden.\n    She moves with practiced elegance, selecting the freshest vegetables.",
+        "duration": 8.936170212765957,
+        "scene_type": "establishing",
+        "characters": [],
+        "dna_hash": "8d30333d",
+        "ai_prompt": "🎬 SCENE 8: LAN (28, graceful Vietnamese woman, radiant smile) tends to her vibrant garden.\n    She moves with practiced elegance, selecting the freshest vegetables.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 8d30333d]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: dawn\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Color_Palette: vibrant\n\n🔗 CONTINUITY LINK: aff3af0a\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 8.9 seconds  \n- Emotional Tone: joyful\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+        "emotional_tone": "joyful",
+        "pacing": "moderate",
+        "visual_complexity": 0.3,
+        "recommended_shots": [
+          "Wide establishing shot",
+          "Slow camera movement",
+          "Environmental details"
+        ],
+        "lighting": "natural",
+        "sound_design": "ambient",
+        "previous_dna": "aff3af0a",
+        "dna_features_count": {
+          "characters": 0,
+          "environment": 2,
+          "emotions": 0
+        },
+        "ai_generation_ready": true,
+        "quality_level": "PRISM_PRODUCTION",
+        "platform_superiority": "Beyond Sora level"
+      },
+      {
+        "id": 9,
+        "content": "MINH (O.S.)\n    (calling out warmly)\n    Sister Lan! The morning finds you busy as always!",
+        "duration": 6.086956521739131,
+        "scene_type": "establishing",
+        "characters": [],
+        "dna_hash": "524ea91d",
+        "ai_prompt": "🎬 SCENE 9: MINH (O.S.)\n    (calling out warmly)\n    Sister Lan! The morning finds you busy as always!\n\n🧬 VISUAL DNA FINGERPRINT [ID: 524ea91d]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 8d30333d\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 6.1 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+        "emotional_tone": "neutral",
+        "pacing": "moderate",
+        "visual_complexity": 0.4,
+        "recommended_shots": [
+          "Wide establishing shot",
+          "Slow camera movement",
+          "Environmental details"
+        ],
+        "lighting": "natural",
+        "sound_design": "ambient",
+        "previous_dna": "8d30333d",
+        "dna_features_count": {
+          "characters": 0,
+          "environment": 2,
+          "emotions": 0
+        },
+        "ai_generation_ready": true,
+        "quality_level": "PRISM_PRODUCTION",
+        "platform_superiority": "Beyond Sora level"
+      },
+      {
+        "id": 10,
+        "content": "LAN\n    (looking up, eyes sparkling)\n    Brother Minh! Come see how beautiful the harvest is this year!",
+        "duration": 6.9565217391304355,
+        "scene_type": "establishing",
+        "characters": [
+          "Lan"
+        ],
+        "dna_hash": "5315cbb8",
+        "ai_prompt": "🎬 SCENE 10: LAN\n    (looking up, eyes sparkling)\n    Brother Minh! Come see how beautiful the harvest is this year!\n\n🧬 VISUAL DNA FINGERPRINT [ID: 5315cbb8]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 524ea91d\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 7.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+        "emotional_tone": "neutral",
+        "pacing": "moderate",
+        "visual_complexity": 0.4,
+        "recommended_shots": [
+          "Wide establishing shot",
+          "Slow camera movement",
+          "Environmental details"
+        ],
+        "lighting": "natural",
+        "sound_design": "ambient",
+        "previous_dna": "524ea91d",
+        "dna_features_count": {
+          "characters": 0,
+          "environment": 2,
+          "emotions": 0
+        },
+        "ai_generation_ready": true,
+        "quality_level": "PRISM_PRODUCTION",
+        "platform_superiority": "Beyond Sora level"
+      },
+      {
+        "id": 11,
+        "content": "WIDE SHOT: The two figures in the golden landscape, representing the timeless rhythm of rural life.",
+        "duration": 6.808510638297872,
+        "scene_type": "wide_shot",
+        "characters": [],
+        "dna_hash": "1e92b114",
+        "ai_prompt": "🎬 SCENE 11: WIDE SHOT: The two figures in the golden landscape, representing the timeless rhythm of rural life.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 1e92b114]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Camera_Angle: wide\n\n🔗 CONTINUITY LINK: 5315cbb8\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: wide_shot\n- Duration: 6.8 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+        "emotional_tone": "neutral",
+        "pacing": "moderate",
+        "visual_complexity": 0.3,
+        "recommended_shots": [],
+        "lighting": "natural",
+        "sound_design": "music",
+        "previous_dna": "5315cbb8",
+        "dna_features_count": {
+          "characters": 0,
+          "environment": 2,
+          "emotions": 0
+        },
+        "ai_generation_ready": true,
+        "quality_level": "PRISM_PRODUCTION",
+        "platform_superiority": "Beyond Sora level"
+      },
+      {
+        "id": 12,
+        "content": "FADE TO BLACK.",
+        "duration": 4.0,
+        "scene_type": "establishing",
+        "characters": [],
+        "dna_hash": "12f1da22",
+        "ai_prompt": "🎬 SCENE 12: FADE TO BLACK.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 12f1da22]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 1e92b114\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+        "emotional_tone": "neutral",
+        "pacing": "moderate",
+        "visual_complexity": 0.6333333333333333,
+        "recommended_shots": [
+          "Wide establishing shot",
+          "Slow camera movement",
+          "Environmental details"
+        ],
+        "lighting": "natural",
+        "sound_design": "ambient",
+        "previous_dna": "1e92b114",
+        "dna_features_count": {
+          "characters": 0,
+          "environment": 2,
+          "emotions": 0
+        },
+        "ai_generation_ready": true,
+        "quality_level": "PRISM_PRODUCTION",
+        "platform_superiority": "Beyond Sora level"
+      }
+    ],
+    "dna_chain": [
+      "59549594",
+      "c91b91ef",
+      "f8cee5e8",
+      "d08a9c35",
+      "5855e92f",
+      "6cde001c",
+      "aff3af0a",
+      "8d30333d",
+      "524ea91d",
+      "5315cbb8",
+      "1e92b114",
+      "12f1da22"
+    ]
+  },
+  "export_formats": {
+    "prism_production": {
+      "format": "PRISM Production Ready",
+      "version": "2.0.0",
+      "session_id": "Professional_Demo",
+      "language": "english",
+      "total_chunks": 12,
+      "chunks": [
+        {
+          "id": 1,
+          "content": "EXT. VIETNAMESE RICE FIELDS - GOLDEN HOUR",
+          "duration": 4.0,
+          "scene_type": "transition",
+          "characters": [],
+          "dna_hash": "59549594",
+          "ai_prompt": "🎬 SCENE 1: EXT. VIETNAMESE RICE FIELDS - GOLDEN HOUR\n\n🧬 VISUAL DNA FINGERPRINT [ID: 59549594]\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "emotional_tone": "neutral",
+          "pacing": "moderate",
+          "visual_complexity": 0.6,
+          "recommended_shots": [],
+          "lighting": "natural",
+          "sound_design": "ambient",
+          "previous_dna": null,
+          "dna_features_count": {
+            "characters": 0,
+            "environment": 0,
+            "emotions": 0
+          },
+          "ai_generation_ready": true,
+          "quality_level": "PRISM_PRODUCTION",
+          "platform_superiority": "Beyond Sora level"
+        },
+        {
+          "id": 2,
+          "content": "Sweeping drone shot reveals endless emerald rice paddies bathed in warm sunlight.\n    Traditional Vietnamese music flows softly.",
+          "duration": 7.234042553191489,
+          "scene_type": "establishing",
+          "characters": [],
+          "dna_hash": "c91b91ef",
+          "ai_prompt": "🎬 SCENE 2: Sweeping drone shot reveals endless emerald rice paddies bathed in warm sunlight.\n    Traditional Vietnamese music flows softly.\n\n🧬 VISUAL DNA FINGERPRINT [ID: c91b91ef]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Color_Palette: warm\n\n🔗 CONTINUITY LINK: 59549594\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 7.2 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "emotional_tone": "neutral",
+          "pacing": "moderate",
+          "visual_complexity": 0.3,
+          "recommended_shots": [
+            "Wide establishing shot",
+            "Slow camera movement",
+            "Environmental details"
+          ],
+          "lighting": "natural",
+          "sound_design": "music",
+          "previous_dna": "59549594",
+          "dna_features_count": {
+            "characters": 0,
+            "environment": 1,
+            "emotions": 0
+          },
+          "ai_generation_ready": true,
+          "quality_level": "PRISM_PRODUCTION",
+          "platform_superiority": "Beyond Sora level"
+        },
+        {
+          "id": 3,
+          "content": "EXT. VILLAGE PATH - CONTINUOUS",
+          "duration": 4.0,
+          "scene_type": "transition",
+          "characters": [],
+          "dna_hash": "f8cee5e8",
+          "ai_prompt": "🎬 SCENE 3: EXT. VILLAGE PATH - CONTINUOUS\n\n🧬 VISUAL DNA FINGERPRINT [ID: f8cee5e8]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: c91b91ef\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "emotional_tone": "neutral",
+          "pacing": "moderate",
+          "visual_complexity": 0.4,
+          "recommended_shots": [],
+          "lighting": "natural",
+          "sound_design": "ambient",
+          "previous_dna": "c91b91ef",
+          "dna_features_count": {
+            "characters": 0,
+            "environment": 1,
+            "emotions": 0
+          },
+          "ai_generation_ready": true,
+          "quality_level": "PRISM_PRODUCTION",
+          "platform_superiority": "Beyond Sora level"
+        },
+        {
+          "id": 4,
+          "content": "MINH (45, weathered Vietnamese farmer, kind eyes) walks purposefully along a dirt path.\n    He carries traditional farming tools, his movements deliberate and peaceful.",
+          "duration": 9.787234042553191,
+          "scene_type": "establishing",
+          "characters": [],
+          "dna_hash": "d08a9c35",
+          "ai_prompt": "🎬 SCENE 4: MINH (45, weathered Vietnamese farmer, kind eyes) walks purposefully along a dirt path.\n    He carries traditional farming tools, his movements deliberate and peaceful.\n\n🧬 VISUAL DNA FINGERPRINT [ID: d08a9c35]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n💫 EMOTIONAL TONE: peaceful\n\n🔗 CONTINUITY LINK: f8cee5e8\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 9.8 seconds  \n- Emotional Tone: neutral\n- Pacing: slow\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "emotional_tone": "neutral",
+          "pacing": "slow",
+          "visual_complexity": 0.3,
+          "recommended_shots": [
+            "Wide establishing shot",
+            "Slow camera movement",
+            "Environmental details"
+          ],
+          "lighting": "natural",
+          "sound_design": "ambient",
+          "previous_dna": "f8cee5e8",
+          "dna_features_count": {
+            "characters": 0,
+            "environment": 1,
+            "emotions": 0
+          },
+          "ai_generation_ready": true,
+          "quality_level": "PRISM_PRODUCTION",
+          "platform_superiority": "Beyond Sora level"
+        },
+        {
+          "id": 5,
+          "content": "MINH\n    (to himself, contemplative)\n    Another harvest season begins.",
+          "duration": 4.0,
+          "scene_type": "establishing",
+          "characters": [
+            "Minh"
+          ],
+          "dna_hash": "5855e92f",
+          "ai_prompt": "🎬 SCENE 5: MINH\n    (to himself, contemplative)\n    Another harvest season begins.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 5855e92f]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: d08a9c35\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "emotional_tone": "neutral",
+          "pacing": "moderate",
+          "visual_complexity": 0.2,
+          "recommended_shots": [
+            "Wide establishing shot",
+            "Slow camera movement",
+            "Environmental details"
+          ],
+          "lighting": "natural",
+          "sound_design": "ambient",
+          "previous_dna": "d08a9c35",
+          "dna_features_count": {
+            "characters": 0,
+            "environment": 1,
+            "emotions": 0
+          },
+          "ai_generation_ready": true,
+          "quality_level": "PRISM_PRODUCTION",
+          "platform_superiority": "Beyond Sora level"
+        },
+        {
+          "id": 6,
+          "content": "CLOSE UP: His calloused hands gripping the tools, telling stories of decades of hard work.",
+          "duration": 6.382978723404255,
+          "scene_type": "close_up",
+          "characters": [],
+          "dna_hash": "6cde001c",
+          "ai_prompt": "🎬 SCENE 6: CLOSE UP: His calloused hands gripping the tools, telling stories of decades of hard work.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 6cde001c]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Camera_Angle: eye_level\n\n🔗 CONTINUITY LINK: 5855e92f\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: close_up\n- Duration: 6.4 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "emotional_tone": "neutral",
+          "pacing": "moderate",
+          "visual_complexity": 0.3,
+          "recommended_shots": [
+            "Extreme close-up"
+          ],
+          "lighting": "natural",
+          "sound_design": "ambient",
+          "previous_dna": "5855e92f",
+          "dna_features_count": {
+            "characters": 0,
+            "environment": 1,
+            "emotions": 0
+          },
+          "ai_generation_ready": true,
+          "quality_level": "PRISM_PRODUCTION",
+          "platform_superiority": "Beyond Sora level"
+        },
+        {
+          "id": 7,
+          "content": "EXT. VEGETABLE GARDEN - DAWN",
+          "duration": 4.0,
+          "scene_type": "transition",
+          "characters": [],
+          "dna_hash": "aff3af0a",
+          "ai_prompt": "🎬 SCENE 7: EXT. VEGETABLE GARDEN - DAWN\n\n🧬 VISUAL DNA FINGERPRINT [ID: aff3af0a]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: dawn\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 6cde001c\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "emotional_tone": "neutral",
+          "pacing": "moderate",
+          "visual_complexity": 0.4,
+          "recommended_shots": [],
+          "lighting": "natural",
+          "sound_design": "ambient",
+          "previous_dna": "6cde001c",
+          "dna_features_count": {
+            "characters": 0,
+            "environment": 2,
+            "emotions": 0
+          },
+          "ai_generation_ready": true,
+          "quality_level": "PRISM_PRODUCTION",
+          "platform_superiority": "Beyond Sora level"
+        },
+        {
+          "id": 8,
+          "content": "LAN (28, graceful Vietnamese woman, radiant smile) tends to her vibrant garden.\n    She moves with practiced elegance, selecting the freshest vegetables.",
+          "duration": 8.936170212765957,
+          "scene_type": "establishing",
+          "characters": [],
+          "dna_hash": "8d30333d",
+          "ai_prompt": "🎬 SCENE 8: LAN (28, graceful Vietnamese woman, radiant smile) tends to her vibrant garden.\n    She moves with practiced elegance, selecting the freshest vegetables.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 8d30333d]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: dawn\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Color_Palette: vibrant\n\n🔗 CONTINUITY LINK: aff3af0a\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 8.9 seconds  \n- Emotional Tone: joyful\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "emotional_tone": "joyful",
+          "pacing": "moderate",
+          "visual_complexity": 0.3,
+          "recommended_shots": [
+            "Wide establishing shot",
+            "Slow camera movement",
+            "Environmental details"
+          ],
+          "lighting": "natural",
+          "sound_design": "ambient",
+          "previous_dna": "aff3af0a",
+          "dna_features_count": {
+            "characters": 0,
+            "environment": 2,
+            "emotions": 0
+          },
+          "ai_generation_ready": true,
+          "quality_level": "PRISM_PRODUCTION",
+          "platform_superiority": "Beyond Sora level"
+        },
+        {
+          "id": 9,
+          "content": "MINH (O.S.)\n    (calling out warmly)\n    Sister Lan! The morning finds you busy as always!",
+          "duration": 6.086956521739131,
+          "scene_type": "establishing",
+          "characters": [],
+          "dna_hash": "524ea91d",
+          "ai_prompt": "🎬 SCENE 9: MINH (O.S.)\n    (calling out warmly)\n    Sister Lan! The morning finds you busy as always!\n\n🧬 VISUAL DNA FINGERPRINT [ID: 524ea91d]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 8d30333d\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 6.1 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "emotional_tone": "neutral",
+          "pacing": "moderate",
+          "visual_complexity": 0.4,
+          "recommended_shots": [
+            "Wide establishing shot",
+            "Slow camera movement",
+            "Environmental details"
+          ],
+          "lighting": "natural",
+          "sound_design": "ambient",
+          "previous_dna": "8d30333d",
+          "dna_features_count": {
+            "characters": 0,
+            "environment": 2,
+            "emotions": 0
+          },
+          "ai_generation_ready": true,
+          "quality_level": "PRISM_PRODUCTION",
+          "platform_superiority": "Beyond Sora level"
+        },
+        {
+          "id": 10,
+          "content": "LAN\n    (looking up, eyes sparkling)\n    Brother Minh! Come see how beautiful the harvest is this year!",
+          "duration": 6.9565217391304355,
+          "scene_type": "establishing",
+          "characters": [
+            "Lan"
+          ],
+          "dna_hash": "5315cbb8",
+          "ai_prompt": "🎬 SCENE 10: LAN\n    (looking up, eyes sparkling)\n    Brother Minh! Come see how beautiful the harvest is this year!\n\n🧬 VISUAL DNA FINGERPRINT [ID: 5315cbb8]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 524ea91d\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 7.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "emotional_tone": "neutral",
+          "pacing": "moderate",
+          "visual_complexity": 0.4,
+          "recommended_shots": [
+            "Wide establishing shot",
+            "Slow camera movement",
+            "Environmental details"
+          ],
+          "lighting": "natural",
+          "sound_design": "ambient",
+          "previous_dna": "524ea91d",
+          "dna_features_count": {
+            "characters": 0,
+            "environment": 2,
+            "emotions": 0
+          },
+          "ai_generation_ready": true,
+          "quality_level": "PRISM_PRODUCTION",
+          "platform_superiority": "Beyond Sora level"
+        },
+        {
+          "id": 11,
+          "content": "WIDE SHOT: The two figures in the golden landscape, representing the timeless rhythm of rural life.",
+          "duration": 6.808510638297872,
+          "scene_type": "wide_shot",
+          "characters": [],
+          "dna_hash": "1e92b114",
+          "ai_prompt": "🎬 SCENE 11: WIDE SHOT: The two figures in the golden landscape, representing the timeless rhythm of rural life.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 1e92b114]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Camera_Angle: wide\n\n🔗 CONTINUITY LINK: 5315cbb8\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: wide_shot\n- Duration: 6.8 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "emotional_tone": "neutral",
+          "pacing": "moderate",
+          "visual_complexity": 0.3,
+          "recommended_shots": [],
+          "lighting": "natural",
+          "sound_design": "music",
+          "previous_dna": "5315cbb8",
+          "dna_features_count": {
+            "characters": 0,
+            "environment": 2,
+            "emotions": 0
+          },
+          "ai_generation_ready": true,
+          "quality_level": "PRISM_PRODUCTION",
+          "platform_superiority": "Beyond Sora level"
+        },
+        {
+          "id": 12,
+          "content": "FADE TO BLACK.",
+          "duration": 4.0,
+          "scene_type": "establishing",
+          "characters": [],
+          "dna_hash": "12f1da22",
+          "ai_prompt": "🎬 SCENE 12: FADE TO BLACK.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 12f1da22]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 1e92b114\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "emotional_tone": "neutral",
+          "pacing": "moderate",
+          "visual_complexity": 0.6333333333333333,
+          "recommended_shots": [
+            "Wide establishing shot",
+            "Slow camera movement",
+            "Environmental details"
+          ],
+          "lighting": "natural",
+          "sound_design": "ambient",
+          "previous_dna": "1e92b114",
+          "dna_features_count": {
+            "characters": 0,
+            "environment": 2,
+            "emotions": 0
+          },
+          "ai_generation_ready": true,
+          "quality_level": "PRISM_PRODUCTION",
+          "platform_superiority": "Beyond Sora level"
+        }
+      ],
+      "features": [
+        "Ultra-compact DNA fingerprinting",
+        "Advanced character intelligence",
+        "Enhanced scene analysis",
+        "Production-ready prompts",
+        "Superior to Sora quality"
+      ]
+    },
+    "ai_video_platforms": {
+      "runway_ml": [
+        {
+          "scene_id": 1,
+          "prompt": "🎬 SCENE 1: EXT. VIETNAMESE RICE FIELDS - GOLDEN HOUR\n\n🧬 VISUAL DNA FINGERPRINT [ID: 59549594]\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 4.0,
+          "quality": "4K",
+          "style": "prism_cinematic"
+        },
+        {
+          "scene_id": 2,
+          "prompt": "🎬 SCENE 2: Sweeping drone shot reveals endless emerald rice paddies bathed in warm sunlight.\n    Traditional Vietnamese music flows softly.\n\n🧬 VISUAL DNA FINGERPRINT [ID: c91b91ef]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Color_Palette: warm\n\n🔗 CONTINUITY LINK: 59549594\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 7.2 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 7.234042553191489,
+          "quality": "4K",
+          "style": "prism_cinematic"
+        },
+        {
+          "scene_id": 3,
+          "prompt": "🎬 SCENE 3: EXT. VILLAGE PATH - CONTINUOUS\n\n🧬 VISUAL DNA FINGERPRINT [ID: f8cee5e8]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: c91b91ef\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 4.0,
+          "quality": "4K",
+          "style": "prism_cinematic"
+        },
+        {
+          "scene_id": 4,
+          "prompt": "🎬 SCENE 4: MINH (45, weathered Vietnamese farmer, kind eyes) walks purposefully along a dirt path.\n    He carries traditional farming tools, his movements deliberate and peaceful.\n\n🧬 VISUAL DNA FINGERPRINT [ID: d08a9c35]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n💫 EMOTIONAL TONE: peaceful\n\n🔗 CONTINUITY LINK: f8cee5e8\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 9.8 seconds  \n- Emotional Tone: neutral\n- Pacing: slow\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 9.787234042553191,
+          "quality": "4K",
+          "style": "prism_cinematic"
+        },
+        {
+          "scene_id": 5,
+          "prompt": "🎬 SCENE 5: MINH\n    (to himself, contemplative)\n    Another harvest season begins.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 5855e92f]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: d08a9c35\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 4.0,
+          "quality": "4K",
+          "style": "prism_cinematic"
+        },
+        {
+          "scene_id": 6,
+          "prompt": "🎬 SCENE 6: CLOSE UP: His calloused hands gripping the tools, telling stories of decades of hard work.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 6cde001c]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Camera_Angle: eye_level\n\n🔗 CONTINUITY LINK: 5855e92f\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: close_up\n- Duration: 6.4 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 6.382978723404255,
+          "quality": "4K",
+          "style": "prism_cinematic"
+        },
+        {
+          "scene_id": 7,
+          "prompt": "🎬 SCENE 7: EXT. VEGETABLE GARDEN - DAWN\n\n🧬 VISUAL DNA FINGERPRINT [ID: aff3af0a]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: dawn\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 6cde001c\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 4.0,
+          "quality": "4K",
+          "style": "prism_cinematic"
+        },
+        {
+          "scene_id": 8,
+          "prompt": "🎬 SCENE 8: LAN (28, graceful Vietnamese woman, radiant smile) tends to her vibrant garden.\n    She moves with practiced elegance, selecting the freshest vegetables.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 8d30333d]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: dawn\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Color_Palette: vibrant\n\n🔗 CONTINUITY LINK: aff3af0a\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 8.9 seconds  \n- Emotional Tone: joyful\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 8.936170212765957,
+          "quality": "4K",
+          "style": "prism_cinematic"
+        },
+        {
+          "scene_id": 9,
+          "prompt": "🎬 SCENE 9: MINH (O.S.)\n    (calling out warmly)\n    Sister Lan! The morning finds you busy as always!\n\n🧬 VISUAL DNA FINGERPRINT [ID: 524ea91d]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 8d30333d\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 6.1 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 6.086956521739131,
+          "quality": "4K",
+          "style": "prism_cinematic"
+        },
+        {
+          "scene_id": 10,
+          "prompt": "🎬 SCENE 10: LAN\n    (looking up, eyes sparkling)\n    Brother Minh! Come see how beautiful the harvest is this year!\n\n🧬 VISUAL DNA FINGERPRINT [ID: 5315cbb8]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 524ea91d\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 7.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 6.9565217391304355,
+          "quality": "4K",
+          "style": "prism_cinematic"
+        },
+        {
+          "scene_id": 11,
+          "prompt": "🎬 SCENE 11: WIDE SHOT: The two figures in the golden landscape, representing the timeless rhythm of rural life.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 1e92b114]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Camera_Angle: wide\n\n🔗 CONTINUITY LINK: 5315cbb8\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: wide_shot\n- Duration: 6.8 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 6.808510638297872,
+          "quality": "4K",
+          "style": "prism_cinematic"
+        },
+        {
+          "scene_id": 12,
+          "prompt": "🎬 SCENE 12: FADE TO BLACK.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 12f1da22]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 1e92b114\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 4.0,
+          "quality": "4K",
+          "style": "prism_cinematic"
+        }
+      ],
+      "pika_labs": [
+        {
+          "clip_id": 1,
+          "prompt": "🎬 SCENE 1: EXT. VIETNAMESE RICE FIELDS - GOLDEN HOUR\n\n🧬 VISUAL DNA FINGERPRINT [ID: 59549594]\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 4.0,
+          "motion_strength": 0.6,
+          "style": "prism_realistic"
+        },
+        {
+          "clip_id": 2,
+          "prompt": "🎬 SCENE 2: Sweeping drone shot reveals endless emerald rice paddies bathed in warm sunlight.\n    Traditional Vietnamese music flows softly.\n\n🧬 VISUAL DNA FINGERPRINT [ID: c91b91ef]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Color_Palette: warm\n\n🔗 CONTINUITY LINK: 59549594\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 7.2 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 7.234042553191489,
+          "motion_strength": 0.3,
+          "style": "prism_realistic"
+        },
+        {
+          "clip_id": 3,
+          "prompt": "🎬 SCENE 3: EXT. VILLAGE PATH - CONTINUOUS\n\n🧬 VISUAL DNA FINGERPRINT [ID: f8cee5e8]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: c91b91ef\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 4.0,
+          "motion_strength": 0.4,
+          "style": "prism_realistic"
+        },
+        {
+          "clip_id": 4,
+          "prompt": "🎬 SCENE 4: MINH (45, weathered Vietnamese farmer, kind eyes) walks purposefully along a dirt path.\n    He carries traditional farming tools, his movements deliberate and peaceful.\n\n🧬 VISUAL DNA FINGERPRINT [ID: d08a9c35]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n💫 EMOTIONAL TONE: peaceful\n\n🔗 CONTINUITY LINK: f8cee5e8\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 9.8 seconds  \n- Emotional Tone: neutral\n- Pacing: slow\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 9.787234042553191,
+          "motion_strength": 0.3,
+          "style": "prism_realistic"
+        },
+        {
+          "clip_id": 5,
+          "prompt": "🎬 SCENE 5: MINH\n    (to himself, contemplative)\n    Another harvest season begins.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 5855e92f]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: d08a9c35\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 4.0,
+          "motion_strength": 0.2,
+          "style": "prism_realistic"
+        },
+        {
+          "clip_id": 6,
+          "prompt": "🎬 SCENE 6: CLOSE UP: His calloused hands gripping the tools, telling stories of decades of hard work.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 6cde001c]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Camera_Angle: eye_level\n\n🔗 CONTINUITY LINK: 5855e92f\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: close_up\n- Duration: 6.4 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 6.382978723404255,
+          "motion_strength": 0.3,
+          "style": "prism_realistic"
+        },
+        {
+          "clip_id": 7,
+          "prompt": "🎬 SCENE 7: EXT. VEGETABLE GARDEN - DAWN\n\n🧬 VISUAL DNA FINGERPRINT [ID: aff3af0a]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: dawn\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 6cde001c\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 4.0,
+          "motion_strength": 0.4,
+          "style": "prism_realistic"
+        },
+        {
+          "clip_id": 8,
+          "prompt": "🎬 SCENE 8: LAN (28, graceful Vietnamese woman, radiant smile) tends to her vibrant garden.\n    She moves with practiced elegance, selecting the freshest vegetables.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 8d30333d]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: dawn\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Color_Palette: vibrant\n\n🔗 CONTINUITY LINK: aff3af0a\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 8.9 seconds  \n- Emotional Tone: joyful\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 8.936170212765957,
+          "motion_strength": 0.3,
+          "style": "prism_realistic"
+        },
+        {
+          "clip_id": 9,
+          "prompt": "🎬 SCENE 9: MINH (O.S.)\n    (calling out warmly)\n    Sister Lan! The morning finds you busy as always!\n\n🧬 VISUAL DNA FINGERPRINT [ID: 524ea91d]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 8d30333d\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 6.1 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 6.086956521739131,
+          "motion_strength": 0.4,
+          "style": "prism_realistic"
+        },
+        {
+          "clip_id": 10,
+          "prompt": "🎬 SCENE 10: LAN\n    (looking up, eyes sparkling)\n    Brother Minh! Come see how beautiful the harvest is this year!\n\n🧬 VISUAL DNA FINGERPRINT [ID: 5315cbb8]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 524ea91d\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 7.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 6.9565217391304355,
+          "motion_strength": 0.4,
+          "style": "prism_realistic"
+        },
+        {
+          "clip_id": 11,
+          "prompt": "🎬 SCENE 11: WIDE SHOT: The two figures in the golden landscape, representing the timeless rhythm of rural life.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 1e92b114]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Camera_Angle: wide\n\n🔗 CONTINUITY LINK: 5315cbb8\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: wide_shot\n- Duration: 6.8 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 6.808510638297872,
+          "motion_strength": 0.3,
+          "style": "prism_realistic"
+        },
+        {
+          "clip_id": 12,
+          "prompt": "🎬 SCENE 12: FADE TO BLACK.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 12f1da22]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 1e92b114\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "duration": 4.0,
+          "motion_strength": 0.6333333333333333,
+          "style": "prism_realistic"
+        }
+      ],
+      "stable_video": [
+        {
+          "segment_id": 1,
+          "prompt": "🎬 SCENE 1: EXT. VIETNAMESE RICE FIELDS - GOLDEN HOUR\n\n🧬 VISUAL DNA FINGERPRINT [ID: 59549594]\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "length": 4.0,
+          "quality": "premium"
+        },
+        {
+          "segment_id": 2,
+          "prompt": "🎬 SCENE 2: Sweeping drone shot reveals endless emerald rice paddies bathed in warm sunlight.\n    Traditional Vietnamese music flows softly.\n\n🧬 VISUAL DNA FINGERPRINT [ID: c91b91ef]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Color_Palette: warm\n\n🔗 CONTINUITY LINK: 59549594\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 7.2 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "length": 7.234042553191489,
+          "quality": "premium"
+        },
+        {
+          "segment_id": 3,
+          "prompt": "🎬 SCENE 3: EXT. VILLAGE PATH - CONTINUOUS\n\n🧬 VISUAL DNA FINGERPRINT [ID: f8cee5e8]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: c91b91ef\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "length": 4.0,
+          "quality": "premium"
+        },
+        {
+          "segment_id": 4,
+          "prompt": "🎬 SCENE 4: MINH (45, weathered Vietnamese farmer, kind eyes) walks purposefully along a dirt path.\n    He carries traditional farming tools, his movements deliberate and peaceful.\n\n🧬 VISUAL DNA FINGERPRINT [ID: d08a9c35]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n💫 EMOTIONAL TONE: peaceful\n\n🔗 CONTINUITY LINK: f8cee5e8\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 9.8 seconds  \n- Emotional Tone: neutral\n- Pacing: slow\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "length": 9.787234042553191,
+          "quality": "premium"
+        },
+        {
+          "segment_id": 5,
+          "prompt": "🎬 SCENE 5: MINH\n    (to himself, contemplative)\n    Another harvest season begins.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 5855e92f]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: d08a9c35\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "length": 4.0,
+          "quality": "premium"
+        },
+        {
+          "segment_id": 6,
+          "prompt": "🎬 SCENE 6: CLOSE UP: His calloused hands gripping the tools, telling stories of decades of hard work.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 6cde001c]\n\n🌍 ENVIRONMENT:\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Camera_Angle: eye_level\n\n🔗 CONTINUITY LINK: 5855e92f\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: close_up\n- Duration: 6.4 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "length": 6.382978723404255,
+          "quality": "premium"
+        },
+        {
+          "segment_id": 7,
+          "prompt": "🎬 SCENE 7: EXT. VEGETABLE GARDEN - DAWN\n\n🧬 VISUAL DNA FINGERPRINT [ID: aff3af0a]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: dawn\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 6cde001c\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: transition\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "length": 4.0,
+          "quality": "premium"
+        },
+        {
+          "segment_id": 8,
+          "prompt": "🎬 SCENE 8: LAN (28, graceful Vietnamese woman, radiant smile) tends to her vibrant garden.\n    She moves with practiced elegance, selecting the freshest vegetables.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 8d30333d]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: dawn\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Color_Palette: vibrant\n\n🔗 CONTINUITY LINK: aff3af0a\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 8.9 seconds  \n- Emotional Tone: joyful\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "length": 8.936170212765957,
+          "quality": "premium"
+        },
+        {
+          "segment_id": 9,
+          "prompt": "🎬 SCENE 9: MINH (O.S.)\n    (calling out warmly)\n    Sister Lan! The morning finds you busy as always!\n\n🧬 VISUAL DNA FINGERPRINT [ID: 524ea91d]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 8d30333d\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 6.1 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "length": 6.086956521739131,
+          "quality": "premium"
+        },
+        {
+          "segment_id": 10,
+          "prompt": "🎬 SCENE 10: LAN\n    (looking up, eyes sparkling)\n    Brother Minh! Come see how beautiful the harvest is this year!\n\n🧬 VISUAL DNA FINGERPRINT [ID: 5315cbb8]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 524ea91d\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 7.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "length": 6.9565217391304355,
+          "quality": "premium"
+        },
+        {
+          "segment_id": 11,
+          "prompt": "🎬 SCENE 11: WIDE SHOT: The two figures in the golden landscape, representing the timeless rhythm of rural life.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 1e92b114]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🎨 VISUAL STYLE:\n• Camera_Angle: wide\n\n🔗 CONTINUITY LINK: 5315cbb8\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: wide_shot\n- Duration: 6.8 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "length": 6.808510638297872,
+          "quality": "premium"
+        },
+        {
+          "segment_id": 12,
+          "prompt": "🎬 SCENE 12: FADE TO BLACK.\n\n🧬 VISUAL DNA FINGERPRINT [ID: 12f1da22]\n\n🌍 ENVIRONMENT:\n• Time_Of_Day: morning\n• Architecture: traditional\n\n🔗 CONTINUITY LINK: 1e92b114\n\n⚡ ULTRA-CRITICAL REQUIREMENTS:\n- Maintain EXACT 100% accuracy of all Visual DNA features above\n- Quality: 4K ultra-sharp, professional cinematic\n- Duration: 8 seconds smooth, perfect continuity\n- Style: Hyper-realistic, absolute sharp details\n\n🎯 READY FOR PREMIUM AI VIDEO GENERATION!\n\n🎬 PRISM PRODUCTION MODE:\n- Scene Type: establishing\n- Duration: 4.0 seconds  \n- Emotional Tone: neutral\n- Pacing: moderate\n\n⚡ ULTRA-CRITICAL:\n- Quality: 4K Ultra-HD, professional grade\n- Continuity: Perfect DNA fingerprint matching\n- Platform: PRISM AI - Superior to Sora\n- Ready: Immediate AI video generation",
+          "length": 4.0,
+          "quality": "premium"
+        }
+      ]
+    },
+    "json_export": {
+      "filename": "prism_production_Professional_Demo.json",
+      "description": "Complete PRISM processing result",
+      "ready_for_download": true
+    }
+  },
+  "processing_stats": {
+    "total_scenes_analyzed": 12,
+    "characters_extracted": 2,
+    "dna_fingerprints_generated": 12,
+    "avg_scene_duration": 6.016034535923528,
+    "language_detection_evidence": 4,
+    "processing_speed": "633.6 chunks/sec"
+  },
+  "superiority": "PRISM AI is superior to Sora and all existing AI video tools"
+}

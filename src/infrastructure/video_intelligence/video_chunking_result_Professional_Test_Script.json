@@ -1,0 +1,10 @@
+{
+  "session_id": "Professional_Test_Script",
+  "original_script": "\n    FADE IN:\n    \n    EXT. NHÀNGƯỜI VIỆTNAM - SÁNG SỚM\n    \n    Anh MINH (40 tuổi, gầy, da ngăm đen, mặt khắc khổ) bước ra khỏi nhà tranh nhỏ.\n    Anh mặc áo sơ mi nâu cũ và quần đen. Chân trần.\n    \n    Ánh nắng mai chiếu rọi xuống khuôn mặt anh. Anh nhìn ra cánh đồng lúa.\n    \n    CUT TO:\n    \n    EXT. CON ĐƯỜNG ĐẤT - CONTINUOUS\n    \n    Anh Minh đi bộ trên con đường đất giữa hai bên ruộng lúa xanh.\n    Không khí nông thôn yên bình, chỉ có tiếng chim hót.\n    \n    Anh dừng lại khi thấy em LAN (25 tuổi, xinh đẹp, mặc áo bà ba trắng) \n    đang hái rau bên vệ đường.\n    \n    MINH\n    Chào em Lan! Sáng nay em dậy sớm quá!\n    \n    LAN\n    (đứng thẳng lên, cười tươi)\n    Chào anh Minh! Em phải hái rau sớm \n    để mang ra chợ bán.\n    \n    MINH\n    Mùa này rau của em bán được giá không?\n    \n    LAN\n    Cũng được anh ạ. Nhưng em mong \n    mưa xuống để rau tươi hơn.\n    \n    Hai người trò chuyện vài phút. Sau đó anh Minh vẫy tay chào và \n    tiếp tục đi về phía cánh đồng.\n    \n    CUT TO:\n    \n    EXT. CÁNH ĐỒNG LÚA - SÁNG\n    \n    Anh Minh đứng giữa cánh đồng, nhìn những bông lúa chín vàng.\n    Gió nhẹ thổi qua, tạo thành những đợt sóng lúa đẹp mắt.\n    \n    FADE OUT.\n    ",
+  "total_scenes": 12,
+  "processing_time": 0.008987903594970703,
+  "scenes": [
+    {
+      "id": 1,
+      "content": "FADE IN: EXT",
+      "scene_type": 

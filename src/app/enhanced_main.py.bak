@@ -1,0 +1,477 @@
+# src/app/enhanced_main.py
+import streamlit as st
+import time
+import io
+from datetime import datetime
+from typing import Optional
+
+# Simple path setup
+import sys
+import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+src_dir = os.path.join(current_dir, '..', '..')
+if src_dir not in sys.path:
+    sys.path.insert(0, src_dir)
+
+try:
+    from application.services.enhanced_translation_service import (
+        EnhancedTranslationService, ProcessingOptions
+    )
+except ImportError as e:
+    st.error(f"Import error: {e}")
+    st.stop()
+
+# Page configuration
+st.set_page_config(
+    page_title="🚀 AI Translation Hub - Enterprise",
+    page_icon="🚀",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# Custom CSS
+st.markdown("""
+<style>
+    .main-header {
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        padding: 2rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+        color: white;
+        text-align: center;
+    }
+    
+    .feature-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+        margin: 1rem 0;
+    }
+    
+    .stats-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 1rem;
+        border-radius: 8px;
+        color: white;
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+    
+    .success-alert {
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+    }
+    
+    .error-alert {
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# Initialize session state
+if 'service' not in st.session_state:
+    st.session_state.service = None
+if 'translation_history' not in st.session_state:
+    st.session_state.translation_history = []
+
+def initialize_service():
+    """Initialize the enhanced translation service"""
+    if st.session_state.service is None:
+        api_key = st.sidebar.text_input("🔑 API Key", 
+                                       value="demo_key", 
+                                       type="password",
+                                       help="Enter your translation API key")
+        
+        if api_key:
+            try:
+                st.session_state.service = EnhancedTranslationService(
+                    api_key=api_key,
+                    enable_cache=True
+                )
+                return True
+            except Exception as e:
+                st.error(f"Failed to initialize service: {str(e)}")
+                return False
+    return True
+
+def render_header():
+    """Render the main header"""
+    st.markdown("""
+    <div class="main-header">
+        <h1>🚀 AI Translation Hub - Enterprise Edition</h1>
+        <p>Complete Phase 3B: PDF Processing • OCR • Formula Detection • Export System</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+def render_service_info():
+    """Render service information and statistics"""
+    if st.session_state.service:
+        service_info = st.session_state.service.get_service_info()
+        stats = st.session_state.service.get_processing_stats()
+        
+        with st.sidebar:
+            st.markdown("### 📊 Service Status")
+            
+            # Service features
+            st.markdown("**🎯 Active Features:**")
+            for feature in service_info['features']:
+                st.markdown(f"✅ {feature}")
+            
+            # Statistics
+            st.markdown("### 📈 Statistics")
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                st.markdown(f"""
+                <div class="stats-card">
+                    <strong>{stats['total_translations']}</strong><br>
+                    Translations
+                </div>
+                """, unsafe_allow_html=True)
+                
+                st.markdown(f"""
+                <div class="stats-card">
+                    <strong>{stats['total_formulas_detected']}</strong><br>
+                    Formulas
+                </div>
+                """, unsafe_allow_html=True)
+            
+            with col2:
+                st.markdown(f"""
+                <div class="stats-card">
+                    <strong>{stats['cache_hits']}</strong><br>
+                    Cache Hits
+                </div>
+                """, unsafe_allow_html=True)
+                
+                st.markdown(f"""
+                <div class="stats-card">
+                    <strong>{stats['total_chunks_processed']}</strong><br>
+                    Chunks
+                </div>
+                """, unsafe_allow_html=True)
+
+def render_processing_options():
+    """Render processing options panel"""
+    with st.expander("⚙️ Advanced Processing Options", expanded=False):
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("**📝 Text Processing**")
+            enable_chunking = st.checkbox("Enable Smart Chunking", value=True)
+            chunk_size = st.slider("Chunk Size", 1000, 5000, 2500, 250) if enable_chunking else 2500
+            
+            enable_formulas = st.checkbox("Detect Formulas", value=True)
+            formula_type = st.selectbox("Formula Type", ["stem"]) if enable_formulas else "stem"
+            
+        with col2:
+            st.markdown("**🖼️ Document Processing**")
+            enable_ocr = st.checkbox("Enable OCR for Images", value=False)
+            ocr_engine = st.selectbox("OCR Engine", ["tesseract"]) if enable_ocr else "tesseract"
+            
+            enable_export = st.checkbox("Auto-Export Results", value=False)
+            export_format = st.selectbox("Export Format", ["json", "csv"]) if enable_export else "json"
+        
+        return ProcessingOptions(
+            enable_chunking=enable_chunking,
+            enable_ocr=enable_ocr,
+            enable_formula_detection=enable_formulas,
+            enable_export=enable_export,
+            chunk_size=chunk_size,
+            ocr_engine=ocr_engine,
+            formula_processor=formula_type,
+            export_format=export_format
+        )
+
+def render_text_translation():
+    """Render text translation interface"""
+    st.markdown("### 📝 Text Translation")
+    
+    # Input text area
+    input_text = st.text_area(
+        "Enter text to translate:",
+        height=200,
+        placeholder="Enter your text here... Supports formulas like E=mc² and long documents with smart chunking."
+    )
+    
+    # Language selection
+    col1, col2 = st.columns(2)
+    with col1:
+        source_lang = st.selectbox("Source Language", 
+                                  ["auto", "en", "vi", "fr", "de", "es", "ja", "ko", "zh"])
+    with col2:
+        target_lang = st.selectbox("Target Language", 
+                                  ["vi", "en", "fr", "de", "es", "ja", "ko", "zh"])
+    
+    # Processing options
+    options = render_processing_options()
+    
+    # Translate button
+    if st.button("🚀 Translate Text", type="primary", use_container_width=True):
+        if input_text.strip():
+            with st.spinner("🔄 Processing translation..."):
+                result = st.session_state.service.translate_text(
+                    input_text, target_lang, source_lang, options
+                )
+                
+                if result.success:
+                    st.markdown("""
+                    <div class="success-alert">
+                        ✅ Translation completed successfully!
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
+                    render_translation_result(result)
+                    
+                    # Add to history
+                    st.session_state.translation_history.append({
+                        'timestamp': datetime.now(),
+                        'original': input_text[:100] + "..." if len(input_text) > 100 else input_text,
+                        'translated': result.translated_text[:100] + "..." if len(result.translated_text) > 100 else result.translated_text,
+                        'source_lang': source_lang,
+                        'target_lang': target_lang,
+                        'processing_time': result.processing_time,
+                        'chunks': result.chunks_processed,
+                        'formulas': result.formulas_detected
+                    })
+                else:
+                    st.markdown(f"""
+                    <div class="error-alert">
+                        ❌ Translation failed: {result.error_message}
+                    </div>
+                    """, unsafe_allow_html=True)
+        else:
+            st.warning("⚠️ Please enter some text to translate.")
+
+def render_document_upload():
+    """Render document upload interface"""
+    st.markdown("### 📄 Document Processing")
+    
+    # File uploader
+    uploaded_file = st.file_uploader(
+        "Upload document for translation:",
+        type=['pdf', 'jpg', 'jpeg', 'png', 'bmp', 'tiff'],
+        help="Supported formats: PDF, Images (JPG, PNG, BMP, TIFF)"
+    )
+    
+    if uploaded_file is not None:
+        # Display file info
+        st.markdown(f"""
+        <div class="feature-card">
+            <strong>📁 File Information:</strong><br>
+            • Name: {uploaded_file.name}<br>
+            • Size: {uploaded_file.size:,} bytes<br>
+            • Type: {uploaded_file.type}
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Language selection
+        col1, col2 = st.columns(2)
+        with col1:
+            doc_source_lang = st.selectbox("Document Source Language", 
+                                          ["auto", "en", "vi", "fr", "de", "es"])
+        with col2:
+            doc_target_lang = st.selectbox("Document Target Language", 
+                                          ["vi", "en", "fr", "de", "es"])
+        
+        # Processing options
+        doc_options = render_processing_options()
+        
+        # Process document button
+        if st.button("🔍 Process Document", type="primary", use_container_width=True):
+            with st.spinner("📖 Processing document..."):
+                progress_bar = st.progress(0)
+                status_text = st.empty()
+                
+                status_text.text("📄 Reading document...")
+                progress_bar.progress(25)
+                time.sleep(0.5)
+                
+                status_text.text("🔍 Extracting text...")
+                progress_bar.progress(50)
+                time.sleep(0.5)
+                
+                status_text.text("🚀 Translating content...")
+                progress_bar.progress(75)
+                
+                result = st.session_state.service.process_document(
+                    uploaded_file.getvalue(),
+                    uploaded_file.name,
+                    doc_target_lang,
+                    doc_source_lang,
+                    doc_options
+                )
+                
+                progress_bar.progress(100)
+                status_text.text("✅ Processing complete!")
+                time.sleep(0.5)
+                progress_bar.empty()
+                status_text.empty()
+                
+                if result.success:
+                    st.markdown("""
+                    <div class="success-alert">
+                        ✅ Document processed and translated successfully!
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
+                    render_translation_result(result)
+                else:
+                    st.markdown(f"""
+                    <div class="error-alert">
+                        ❌ Document processing failed: {result.error_message}
+                    </div>
+                    """, unsafe_allow_html=True)
+
+def render_translation_result(result):
+    """Render translation results"""
+    
+    # Metrics
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.metric("⏱️ Processing Time", f"{result.processing_time:.2f}s")
+    with col2:
+        st.metric("📊 Chunks", result.chunks_processed)
+    with col3:
+        st.metric("🔢 Formulas", result.formulas_detected)
+    with col4:
+        st.metric("📝 Characters", len(result.translated_text))
+    
+    # Display texts
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("**📥 Original Text:**")
+        st.text_area("", result.original_text, height=300, key="original_display", disabled=True)
+    
+    with col2:
+        st.markdown("**📤 Translated Text:**")
+        st.text_area("", result.translated_text, height=300, key="translated_display", disabled=True)
+    
+    # Metadata
+    with st.expander("📋 Processing Details", expanded=False):
+        st.json(result.metadata)
+    
+    # Export
+    if result.export_data and result.export_filename:
+        st.download_button(
+            label=f"📥 Download {result.export_filename}",
+            data=result.export_data,
+            file_name=result.export_filename,
+            mime="application/octet-stream"
+        )
+
+def render_translation_history():
+    """Render translation history"""
+    if st.session_state.translation_history:
+        st.markdown("### 📚 Translation History")
+        
+        for i, item in enumerate(reversed(st.session_state.translation_history[-10:])):
+            with st.expander(f"🕒 {item['timestamp'].strftime('%Y-%m-%d %H:%M:%S')} - {item['source_lang']} → {item['target_lang']}", expanded=False):
+                col1, col2 = st.columns(2)
+                
+                with col1:
+                    st.markdown("**Original:**")
+                    st.text(item['original'])
+                
+                with col2:
+                    st.markdown("**Translated:**")
+                    st.text(item['translated'])
+                
+                # Metrics
+                mcol1, mcol2, mcol3 = st.columns(3)
+                with mcol1:
+                    st.metric("⏱️ Time", f"{item['processing_time']:.2f}s")
+                with mcol2:
+                    st.metric("📊 Chunks", item['chunks'])
+                with mcol3:
+                    st.metric("🔢 Formulas", item['formulas'])
+        
+        if st.button("🗑️ Clear History"):
+            st.session_state.translation_history = []
+            st.success("History cleared!")
+            st.experimental_rerun()
+    else:
+        st.info("📭 No translation history yet.")
+
+def render_system_tools():
+    """Render system tools"""
+    st.markdown("### 🛠️ System Tools")
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        if st.button("🧹 Clear Cache", use_container_width=True):
+            if st.session_state.service and st.session_state.service.clear_cache():
+                st.success("✅ Cache cleared!")
+            else:
+                st.warning("⚠️ No cache to clear.")
+    
+    with col2:
+        if st.button("📊 Reset Stats", use_container_width=True):
+            if st.session_state.service:
+                st.session_state.service.stats = {
+                    'total_translations': 0,
+                    'cache_hits': 0,
+                    'cache_misses': 0,
+                    'total_chunks_processed': 0,
+                    'total_formulas_detected': 0,
+                    'processing_time_total': 0.0
+                }
+                st.success("✅ Statistics reset!")
+    
+    with col3:
+        if st.button("🔄 Refresh Service", use_container_width=True):
+            st.session_state.service = None
+            st.success("✅ Service refreshed!")
+            st.experimental_rerun()
+
+def main():
+    """Main application function"""
+    render_header()
+    
+    # Initialize service
+    if not initialize_service():
+        st.stop()
+    
+    # Render service info
+    render_service_info()
+    
+    # Main tabs
+    tab1, tab2, tab3, tab4 = st.tabs(["📝 Text Translation", "📄 Document Processing", "📚 History", "🛠️ Tools"])
+    
+    with tab1:
+        render_text_translation()
+    
+    with tab2:
+        render_document_upload()
+    
+    with tab3:
+        render_translation_history()
+    
+    with tab4:
+        render_system_tools()
+    
+    # Footer
+    st.markdown("---")
+    st.markdown("""
+    <div style="text-align: center; color: #666; padding: 2rem;">
+        🚀 <strong>AI Translation Hub - Enterprise Edition</strong><br>
+        Phase 3B Complete: All Advanced Features Integrated<br>
+        Built with ❤️ using Clean Architecture & Streamlit
+    </div>
+    """, unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    main()

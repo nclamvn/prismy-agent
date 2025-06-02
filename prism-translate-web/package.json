@@ -1,0 +1,9 @@
+{
+  "name": "prism-translate",
+  "version": "1.0.0",
+  "description": "PRISM Translate - AI-powered translation platform",
+  "scripts": {
+    "dev": "python -m http.server 8080",
+    "build": "echo 'No build required for static files'"
+  }
+}

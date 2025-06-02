@@ -1,0 +1,177 @@
+"""Application service for translation operations with caching."""
+
+from typing import Optional
+import asyncio
+import time
+
+from core.use_cases.translate_text import TranslateTextUseCase
+from core.entities.translation import TranslationRequest, TranslationResult, ProcessingConfig
+from infrastructure.ai_clients.openai_translator import OpenAITranslator
+from infrastructure.repositories.memory_cache import SmartCache
+
+
+class TranslationService:
+    """High-level service for translation operations with advanced caching."""
+    
+    def __init__(self, openai_api_key: Optional[str] = None, enable_cache: bool = True):
+        self.openai_api_key = openai_api_key
+        self.enable_cache = enable_cache
+        self._translator = None
+        self._cache = None
+        self._use_case = None
+        
+        # Initialize cache if enabled
+        if self.enable_cache:
+            self._cache = SmartCache(default_ttl=3600)  # 1 hour TTL
+    
+    def _get_translator(self) -> OpenAITranslator:
+        """Lazy initialization of translator."""
+        if not self._translator:
+            if not self.openai_api_key:
+                raise ValueError("OpenAI API key is required")
+            self._translator = OpenAITranslator(self.openai_api_key)
+        return self._translator
+    
+    def _get_use_case(self) -> TranslateTextUseCase:
+        """Lazy initialization of use case with cache."""
+        if not self._use_case:
+            translator = self._get_translator()
+            # Pass cache to use case if available
+            self._use_case = TranslateTextUseCase(
+                translator=translator,
+                cache=self._cache
+            )
+        return self._use_case
+    
+    async def translate_text(
+        self, 
+        text: str, 
+        target_language: str,
+        source_language: Optional[str] = None,
+        preserve_formatting: bool = True,
+        quality_tier: str = "standard"
+    ) -> TranslationResult:
+        """Translate text using the configured translator with caching."""
+        
+        start_time = time.time()
+        
+        # Check cache first if enabled
+        if self._cache:
+            cache_key = self._cache.generate_key(
+                text=text,
+                target_lang=target_language,
+                preserve_formatting=preserve_formatting,
+                quality_tier=quality_tier
+            )
+            
+            cached_result = await self._cache.get(cache_key)
+            if cached_result:
+                # UPDATE PROCESSING TIME FOR CACHE HIT
+                cache_retrieval_time = time.time() - start_time
+                
+                # Create new result with updated timing
+                cached_result.processing_time = cache_retrieval_time
+                cached_result.metadata = cached_result.metadata or {}
+                cached_result.metadata['from_cache'] = True
+                cached_result.metadata['cache_hit'] = True
+                cached_result.metadata['original_processing_time'] = cached_result.processing_time
+                cached_result.metadata['cache_retrieval_time'] = cache_retrieval_time
+                
+                return cached_result
+        
+        # Create translation request
+        request = TranslationRequest(
+            text=text,
+            source_language=source_language,
+            target_language=target_language,
+            preserve_formatting=preserve_formatting,
+            quality_tier=quality_tier
+        )
+        
+        # Execute translation
+        use_case = self._get_use_case()
+        result = await use_case.execute(request)
+        
+        # Cache result if successful and cache enabled
+        if self._cache and result.success:
+            await self._cache.set(cache_key, result)
+            
+            # Add cache metadata
+            result.metadata = result.metadata or {}
+            result.metadata['cached'] = True
+            result.metadata['cache_key'] = cache_key[:16] + "..."
+        
+        return result
+    
+    def translate_text_sync(
+        self, 
+        text: str, 
+        target_language: str,
+        source_language: Optional[str] = None,
+        preserve_formatting: bool = True,
+        quality_tier: str = "standard"
+    ) -> TranslationResult:
+        """Synchronous wrapper for translation with caching."""
+        return asyncio.run(
+            self.translate_text(
+                text, 
+                target_language, 
+                source_language, 
+                preserve_formatting,
+                quality_tier
+            )
+        )
+    
+    def update_api_key(self, api_key: str) -> None:
+        """Update API key and reset translator."""
+        self.openai_api_key = api_key
+        self._translator = None
+        self._use_case = None
+    
+    def is_configured(self) -> bool:
+        """Check if service is properly configured."""
+        return bool(self.openai_api_key)
+    
+    def get_cache_stats(self) -> Optional[dict]:
+        """Get cache performance statistics."""
+        if not self._cache:
+            return None
+        
+        return self._cache.get_performance_stats()
+    
+    async def clear_cache(self) -> None:
+        """Clear translation cache."""
+        if self._cache:
+            await self._cache.clear()
+    
+    async def invalidate_cache_pattern(self, pattern: str) -> None:
+        """Invalidate cache entries matching pattern."""
+        if self._cache:
+            await self._cache.invalidate(pattern)
+    
+    def toggle_cache(self, enable: bool) -> None:
+        """Enable or disable caching."""
+        self.enable_cache = enable
+        if enable and not self._cache:
+            self._cache = SmartCache(default_ttl=3600)
+        elif not enable:
+            self._cache = None
+            # Reset use case to remove cache
+            self._use_case = None
+    
+    def get_service_info(self) -> dict:
+        """Get comprehensive service information."""
+        cache_stats = self.get_cache_stats()
+        
+        return {
+            'configured': self.is_configured(),
+            'cache_enabled': self.enable_cache,
+            'cache_stats': cache_stats,
+            'translator_type': 'OpenAI' if self._translator else 'Not initialized',
+            'api_key_set': bool(self.openai_api_key),
+            'performance': {
+                'cache_hit_rate': cache_stats.get('hit_rate_percent', 0) if cache_stats else 0,
+                'total_requests': cache_stats.get('total_requests', 0) if cache_stats else 0,
+                'memory_usage_mb': cache_stats.get('memory_usage_mb', 0) if cache_stats else 0
+            }
+        }

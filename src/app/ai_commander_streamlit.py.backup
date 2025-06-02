@@ -1,0 +1,343 @@
+"""
+Enhanced Streamlit App với AI Commander Integration
+Combine original translation features với Claude conversation experience
+"""
+
+import streamlit as st
+import asyncio
+import sys
+import os
+from datetime import datetime
+import time
+
+# Add paths for AI Commander
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Import AI Commander components
+try:
+    from ai_commander.enhanced_commander.production_claude_commander import ProductionClaudeCommander
+    from ai_commander import IntentAnalyzer, SmartRequirementCollector, WorkflowOrchestrator
+    AI_COMMANDER_AVAILABLE = True
+except ImportError as e:
+    st.error(f"AI Commander not available: {e}")
+    AI_COMMANDER_AVAILABLE = False
+
+# Import original infrastructure if available
+try:
+    from infrastructure.ai_intelligence import IntelligenceOrchestrator
+    BACKEND_AVAILABLE = True
+except ImportError:
+    BACKEND_AVAILABLE = False
+
+
+def main():
+    """Main Streamlit application"""
+    
+    st.set_page_config(
+        page_title="AI Commander - Translation Platform",
+        page_icon="🤖",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
+    
+    # Header
+    st.title("🤖 AI Commander - Intelligent Translation Platform")
+    st.markdown("**Professional AI-powered content creation with conversational interface**")
+    
+    # Sidebar cho mode selection
+    st.sidebar.title("🎛️ Control Panel")
+    
+    mode = st.sidebar.selectbox(
+        "Choose Interface Mode",
+        ["🤖 AI Commander (Conversational)", "⚡ Direct Processing", "📊 System Status"]
+    )
+    
+    if mode == "🤖 AI Commander (Conversational)":
+        ai_commander_interface()
+    elif mode == "⚡ Direct Processing":
+        direct_processing_interface()
+    else:
+        system_status_interface()
+
+
+def ai_commander_interface():
+    """AI Commander conversational interface"""
+    
+    st.header("🤖 AI Commander - Conversational Interface")
+    st.markdown("*Chat với Claude như một chuyên gia tư vấn*")
+    
+    if not AI_COMMANDER_AVAILABLE:
+        st.error("AI Commander not available. Please check installation.")
+        return
+    
+    # Initialize session state
+    if 'commander' not in st.session_state:
+        st.session_state.commander = ProductionClaudeCommander()
+        st.session_state.conversation_history = []
+        st.session_state.current_session = None
+    
+    # Customer information
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        customer_name = st.text_input("👤 Your Name", placeholder="Anh/Chị tên gì?")
+    
+    with col2:
+        expertise_level = st.selectbox(
+            "💼 Expertise Level", 
+            ["Beginner", "Intermediate", "Advanced", "Professional"]
+        )
+    
+    # File upload
+    uploaded_file = st.file_uploader(
+        "📄 Upload Content (Optional)",
+        type=['txt', 'pdf', 'docx'],
+        help="Upload document for processing"
+    )
+    
+    # Read uploaded content
+    uploaded_content = None
+    if uploaded_file:
+        try:
+            uploaded_content = uploaded_file.read().decode('utf-8')
+            st.success(f"✅ File uploaded: {len(uploaded_content)} characters")
+            with st.expander("📋 Preview Content"):
+                st.text(uploaded_content[:500] + "..." if len(uploaded_content) > 500 else uploaded_content)
+        except:
+            st.error("❌ Could not read file. Please ensure it's a text file.")
+    
+    # Customer request
+    st.markdown("### 💬 What can I help you with?")
+    customer_request = st.text_area(
+        "Your Request",
+        placeholder="Ví dụ: Làm podcast chuyên nghiệp từ báo cáo này...",
+        height=100
+    )
+    
+    # Process button
+    if st.button("🚀 Start AI Commander Conversation", type="primary"):
+        if customer_request and customer_name:
+            process_ai_commander_request(customer_name, customer_request, uploaded_content)
+        else:
+            st.warning("⚠️ Please provide your name and request.")
+    
+    # Display conversation history
+    if st.session_state.conversation_history:
+        st.markdown("### 💬 Conversation History")
+        for i, message in enumerate(st.session_state.conversation_history):
+            if message.startswith("CLAUDE:"):
+                st.info(message[7:])  # Remove "CLAUDE:" prefix
+            else:
+                st.success(message)
+
+
+def process_ai_commander_request(customer_name, customer_request, uploaded_content):
+    """Process AI Commander request"""
+    
+    try:
+        # Show processing
+        with st.spinner("🤖 AI Commander is thinking..."):
+            
+            # Create async function to handle commander
+            async def run_commander():
+                commander = st.session_state.commander
+                
+                # Start session
+                session = await commander.start_customer_session(
+                    customer_name=customer_name,
+                    customer_request=customer_request,
+                    uploaded_content=uploaded_content
+                )
+                
+                # Conduct conversation
+                session = await commander.conduct_intelligent_conversation(session)
+                
+                # Execute workflow
+                session = await commander.execute_ai_workflow(session)
+                
+                return session
+            
+            # Run async function
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            session = loop.run_until_complete(run_commander())
+            loop.close()
+        
+        # Store session
+        st.session_state.current_session = session
+        
+        # Add to conversation history
+        st.session_state.conversation_history.extend(session.conversation_log)
+        
+        # Display results
+        st.success("✅ AI Commander conversation completed!")
+        
+        # Show session details
+        with st.expander("📊 Session Details", expanded=True):
+            col1, col2, col3 = st.columns(3)
+            
+            with col1:
+                st.metric("Session ID", session.session_id)
+                st.metric("Processing Time", f"{session.service_metrics.get('processing_time', 0):.2f}s")
+            
+            with col2:
+                st.metric("Quality", f"{session.service_metrics.get('quality_achieved', 0)*100:.0f}%")
+                st.metric("AI Stages", session.service_metrics.get('ai_stages', 7))
+            
+            with col3:
+                st.metric("Cost", f"${session.service_metrics.get('cost', 0):.3f}")
+                st.metric("Success", "✅" if session.service_metrics.get('success') else "❌")
+        
+        # Show final result
+        st.markdown("### 🎯 Final Result")
+        st.success(session.final_result)
+        
+        # Feedback
+        satisfaction = st.slider("Rate your experience (1-5 stars)", 1, 5, 5)
+        if st.button("Submit Feedback"):
+            st.success("Thank you for your feedback!")
+        
+    except Exception as e:
+        st.error(f"❌ Error: {str(e)}")
+
+
+def direct_processing_interface():
+    """Direct processing interface (original style)"""
+    
+    st.header("⚡ Direct Processing Mode")
+    st.markdown("*Quick processing without conversation*")
+    
+    # Input
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        source_lang = st.selectbox("Source Language", ["auto", "english", "vietnamese"])
+        processing_mode = st.selectbox("Processing Mode", ["balanced", "speed_optimized", "quality_optimized"])
+    
+    with col2:
+        target_lang = st.selectbox("Target Language", ["vietnamese", "english"])
+        output_format = st.selectbox("Output Format", ["text", "podcast", "video", "education"])
+    
+    # Content input
+    content = st.text_area("Content to Process", height=200)
+    
+    if st.button("🚀 Process Now", type="primary"):
+        if content:
+            process_direct_request(content, source_lang, target_lang, processing_mode, output_format)
+        else:
+            st.warning("Please provide content to process.")
+
+
+def process_direct_request(content, source_lang, target_lang, processing_mode, output_format):
+    """Process direct request"""
+    
+    try:
+        with st.spinner("Processing..."):
+            if BACKEND_AVAILABLE:
+                # Use real backend
+                from infrastructure.ai_intelligence.intelligence_orchestrator import ProcessingRequest, ProcessingMode as PM
+                from infrastructure.content_transformation.base_transformer import TransformationType, TargetAudience
+                
+                orchestrator = IntelligenceOrchestrator()
+                
+                # Map processing mode
+                mode_mapping = {
+                    "balanced": PM.BALANCED,
+                    "speed_optimized": PM.SPEED_OPTIMIZED,
+                    "quality_optimized": PM.QUALITY_OPTIMIZED
+                }
+                
+                # Map output format
+                format_mapping = {
+                    "podcast": [TransformationType.PODCAST_SCRIPT],
+                    "video": [TransformationType.VIDEO_SCENARIO],
+                    "education": [TransformationType.EDUCATION_MODULE],
+                    "text": []
+                }
+                
+                request = ProcessingRequest(
+                    input_text=content,
+                    source_language=source_lang,
+                    target_language=target_lang,
+                    processing_mode=mode_mapping.get(processing_mode, PM.BALANCED),
+                    target_audience=TargetAudience.GENERAL,
+                    desired_outputs=format_mapping.get(output_format, []),
+                    quality_target=0.85
+                )
+                
+                # Process
+                async def process():
+                    return await orchestrator.process_intelligent(request)
+                
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                result = loop.run_until_complete(process())
+                loop.close()
+                
+                # Display result
+                st.success("✅ Processing completed!")
+                st.text_area("Result", result.translated_text, height=300)
+                
+                # Metrics
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.metric("Quality", f"{getattr(result, 'quality_score', 0.85)*100:.0f}%")
+                with col2:
+                    st.metric("Chunks", len(result.chunks_analysis.get('chunks', [])))
+                with col3:
+                    st.metric("Context Score", f"{result.context_analysis.get('confidence', 0.8)*100:.0f}%")
+            
+            else:
+                # Simulation mode
+                st.warning("Backend not available - showing simulated result")
+                time.sleep(1)  # Simulate processing
+                st.success("✅ Simulated processing completed!")
+                st.text_area("Simulated Result", f"[PROCESSED] {content}", height=200)
+        
+    except Exception as e:
+        st.error(f"❌ Error: {str(e)}")
+
+
+def system_status_interface():
+    """System status and diagnostics"""
+    
+    st.header("📊 System Status")
+    
+    # System health
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.metric("AI Commander", "✅ Available" if AI_COMMANDER_AVAILABLE else "❌ Not Available")
+    
+    with col2:
+        st.metric("Backend AI", "✅ Available" if BACKEND_AVAILABLE else "❌ Not Available")
+    
+    with col3:
+        st.metric("Streamlit", "✅ Running")
+    
+    # Component status
+    st.markdown("### 🔧 Component Status")
+    
+    components = [
+        ("Intent Analysis", AI_COMMANDER_AVAILABLE),
+        ("Requirement Collector", AI_COMMANDER_AVAILABLE),
+        ("Workflow Orchestrator", AI_COMMANDER_AVAILABLE),
+        ("Adaptive Learning", AI_COMMANDER_AVAILABLE),
+        ("Intelligence Orchestrator", BACKEND_AVAILABLE),
+        ("Translation Providers", BACKEND_AVAILABLE),
+        ("Content Transformers", BACKEND_AVAILABLE)
+    ]
+    
+    for component, status in components:
+        st.write(f"{'✅' if status else '❌'} {component}")
+    
+    # Session statistics
+    if 'commander' in st.session_state:
+        st.markdown("### 📈 Session Statistics")
+        commander = st.session_state.commander
+        st.metric("Total Sessions", getattr(commander, 'session_count', 0))
+        st.metric("Conversation Messages", len(st.session_state.get('conversation_history', [])))
+
+
+if __name__ == "__main__":
+    main()

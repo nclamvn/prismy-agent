@@ -1,0 +1,179 @@
+# run_enhanced_app.py
+"""
+🚀 Enhanced Translation App Launcher - Phase 3B
+Launcher cho ứng dụng dịch thuật nâng cao với đầy đủ tính năng enterprise
+"""
+
+import streamlit as st
+import sys
+import os
+import traceback
+
+def setup_paths():
+    """Thiết lập đường dẫn Python paths"""
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    src_dir = os.path.join(current_dir, 'src')
+    
+    # Thêm src directory vào Python path
+    if src_dir not in sys.path:
+        sys.path.insert(0, src_dir)
+    
+    print(f"✅ Đã thiết lập Python path: {src_dir}")
+    return src_dir
+
+def check_dependencies():
+    """Kiểm tra dependencies cần thiết"""
+    required_packages = [
+        'streamlit',
+        'time',
+        'datetime',
+        'io',
+        'logging'
+    ]
+    
+    optional_packages = [
+        ('PyPDF2', 'PDF processing'),
+        ('pdfplumber', 'Advanced PDF extraction'),
+        ('pytesseract', 'Tesseract OCR'),
+        ('easyocr', 'EasyOCR engine'),
+        ('PIL', 'Image processing'),
+        ('reportlab', 'PDF export'),
+        ('docx', 'DOCX export')
+    ]
+    
+    print("🔍 Kiểm tra dependencies...")
+    
+    # Kiểm tra required packages
+    for package in required_packages:
+        try:
+            __import__(package)
+            print(f"✅ {package}")
+        except ImportError:
+            print(f"❌ {package} - THIẾU (cần thiết)")
+            return False
+    
+    # Kiểm tra optional packages
+    available_features = []
+    for package, feature in optional_packages:
+        try:
+            __import__(package)
+            print(f"✅ {package} - {feature}")
+            available_features.append(feature)
+        except ImportError:
+            print(f"⚠️  {package} - {feature} (tùy chọn)")
+    
+    print(f"\n🎯 Tính năng khả dụng: {', '.join(available_features)}")
+    return True
+
+def test_imports():
+    """Test import các module chính"""
+    try:
+        print("📦 Testing imports...")
+        
+        # Test core interfaces
+        from core.interfaces.chunking import ChunkerInterface, ChunkCombinerInterface
+        print("✅ Core chunking interfaces")
+        
+        from core.interfaces.document_processing import DocumentProcessor, OCREngine, FormulaProcessor
+        print("✅ Document processing interfaces")
+        
+        # Test infrastructure
+        from infrastructure.chunking.smart_chunker import SmartTextChunker
+        from infrastructure.chunking.chunk_combiner import SmartChunkCombiner
+        print("✅ Chunking infrastructure")
+        
+        # Test services
+        from application.services.enhanced_translation_service import EnhancedTranslationService
+        print("✅ Enhanced translation service")
+        
+        # Test app
+        from app.enhanced_main import main
+        print("✅ Enhanced Streamlit app")
+        
+        return True
+        
+    except ImportError as e:
+        print(f"❌ Import error: {str(e)}")
+        print("\n🔧 Troubleshooting:")
+        print("1. Đảm bảo bạn đang ở thư mục gốc của project")
+        print("2. Kiểm tra structure thư mục src/")
+        print("3. Tạo các file __init__.py nếu thiếu")
+        return False
+    except Exception as e:
+        print(f"❌ Unexpected error: {str(e)}")
+        traceback.print_exc()
+        return False
+
+def create_init_files():
+    """Tạo các file __init__.py cần thiết"""
+    print("📁 Tạo __init__.py files...")
+    
+    init_dirs = [
+        'src',
+        'src/core',
+        'src/core/interfaces',
+        'src/infrastructure',
+        'src/infrastructure/chunking',
+        'src/infrastructure/processors',
+        'src/infrastructure/ocr',
+        'src/infrastructure/formula',
+        'src/infrastructure/export',
+        'src/application',
+        'src/application/services',
+        'src/app'
+    ]
+    
+    for dir_path in init_dirs:
+        if os.path.exists(dir_path):
+            init_file = os.path.join(dir_path, '__init__.py')
+            if not os.path.exists(init_file):
+                with open(init_file, 'w') as f:
+                    f.write('')
+                print(f"✅ Tạo {init_file}")
+            else:
+                print(f"✅ {init_file} đã tồn tại")
+        else:
+            print(f"⚠️  Thư mục {dir_path} không tồn tại")
+
+def main():
+    """Main launcher function"""
+    print("🚀 ENHANCED TRANSLATION APP LAUNCHER")
+    print("=" * 50)
+    
+    # Bước 1: Setup paths
+    setup_paths()
+    
+    # Bước 2: Check dependencies
+    if not check_dependencies():
+        print("\n❌ Vui lòng cài đặt dependencies thiếu và thử lại")
+        return
+    
+    # Bước 3: Create init files
+    create_init_files()
+    
+    # Bước 4: Test imports
+    if not test_imports():
+        print("\n❌ Import test thất bại. Kiểm tra cấu trúc project.")
+        return
+    
+    # Bước 5: Launch app
+    print("\n🚀 Khởi động Enhanced Translation App...")
+    print("📊 Sẽ mở trên: http://localhost:8511")
+    print("🔄 Đang load...")
+    
+    try:
+        from app.enhanced_main import main as app_main
+        app_main()
+    except Exception as e:
+        print(f"❌ Lỗi khởi động app: {str(e)}")
+        traceback.print_exc()
+        
+        print("\n🔧 Fallback: Thử chạy Phase 3A app...")
+        try:
+            from app.main import main as fallback_main
+            fallback_main()
+        except Exception as e2:
+            print(f"❌ Fallback cũng thất bại: {str(e2)}")
+
+if __name__ == "__main__":
+    main()

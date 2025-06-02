@@ -1,0 +1,52 @@
+[2025-05-26 23:13:40] ❌ [KEY] OPENAI - gpt-4o: [OPENAI][ZGTX8A] 
+[2025-05-26 23:13:40] ❌ [FALLBACK] OPENAI - gpt-4o: [FALLBACK] Tất cả OpenAI API key đều thất bại.
+[2025-05-26 23:13:40] ❌ [APP] UNKNOWN - unknown: [APP] Exception đoạn 7: Tất cả mô hình đều thất bại cho cấp độ: Chuẩn
+[2025-05-26 23:13:40] ❌ [KEY] OPENAI - gpt-4o: [OPENAI][ZGTX8A] 
+[2025-05-26 23:13:40] ❌ [FALLBACK] OPENAI - gpt-4o: [FALLBACK] Tất cả OpenAI API key đều thất bại.
+[2025-05-26 23:13:40] ❌ [APP] UNKNOWN - unknown: [APP] Exception đoạn 8: Tất cả mô hình đều thất bại cho cấp độ: Chuẩn
+[2025-05-26 23:25:20] ❌ [KEY] OPENAI - gpt-3.5-turbo: [OPENAI][ZGTX8A] 
+[2025-05-26 23:25:20] ❌ [FALLBACK] OPENAI - gpt-3.5-turbo: [FALLBACK] Tất cả OpenAI API key đều thất bại.
+[2025-05-26 23:25:20] ❌ [APP] UNKNOWN - unknown: [APP] Exception đoạn 4: Tất cả mô hình đều thất bại cho cấp độ: Thô
+[2025-05-27 00:37:57] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 1: name 'build_prompt' is not defined
+[2025-05-27 00:37:57] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 2: name 'build_prompt' is not defined
+[2025-05-27 00:37:57] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 3: name 'build_prompt' is not defined
+[2025-05-27 00:37:57] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 4: name 'build_prompt' is not defined
+[2025-05-27 00:37:57] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 5: name 'build_prompt' is not defined
+[2025-05-27 00:37:57] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 6: name 'build_prompt' is not defined
+[2025-05-27 00:37:57] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 7: name 'build_prompt' is not defined
+[2025-05-27 00:37:57] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 8: name 'build_prompt' is not defined
+[2025-05-27 00:44:11] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 1: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:44:11] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 2: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:44:11] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 3: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:44:11] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 4: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:44:11] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 5: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:44:11] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 6: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:44:11] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 7: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:44:11] ❌ [APP] OPENAI - gpt-4.1-mini: [APP] Exception đoạn 8: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:39] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 1: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:39] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 2: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:39] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 3: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:39] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 4: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:39] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 5: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:39] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 6: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:39] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 7: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:39] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 8: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:44] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 1: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:44] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 2: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:44] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 3: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:44] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 4: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:44] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 5: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:44] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 6: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:44] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 7: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:46:44] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 8: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:54:13] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 1: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:54:13] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 2: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:54:13] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 3: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:54:13] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 4: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:54:13] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 5: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:54:13] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 6: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:54:13] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 7: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 00:54:13] ❌ [APP] OPENAI - gpt-3.5-turbo: [APP] Exception đoạn 8: call_model_async() got an unexpected keyword argument 'model_name'
+[2025-05-27 16:07:11] ❌ [KEY] OPENAI - gpt-4o: [OPENAI][ZGTX8A] 
+[2025-05-27 16:07:11] ❌ [FALLBACK] OPENAI - gpt-4o: [FALLBACK] Tất cả OpenAI API key đều thất bại.
+[2025-05-27 16:07:11] ❌ [APP] MIXED - Chuẩn: [APP] Exception đoạn 3: Tất cả mô hình đều thất bại cho cấp độ: Chuẩn
