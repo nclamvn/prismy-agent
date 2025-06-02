@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: prismy-ui
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "streamlit run streamlit_ui.py --server.port $PORT --server.address 0.0.0.0"
+    envVars:
+      - key: API_BASE_URL
+        value: https://prismy-agent.onrender.com
