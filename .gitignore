@@ -3,3 +3,16 @@ venv/
 __pycache__/
 *.pyc
 .DS_Store
+
+# Python environments - NEVER commit these
+agent_env/
+venv/
+env/
+.venv/
+*.pyc
+__pycache__/
+
+# Large files
+*.dylib
+*.so
+*.dll
