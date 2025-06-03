@@ -12,7 +12,7 @@ import json
 
 from src.infrastructure.content_transformation.base_transformer import TargetAudience, TransformationType
 # Import all AI engines
-from ..translation import ProviderManager, TranslationRequest, ProviderType
+# from ..translation import ProviderManager, TranslationRequest, ProviderType
 #from ..content_transformation import (
 #    TransformationManager, TransformationType, TargetAudience,
 #    TransformationRequest, BatchTransformationRequest

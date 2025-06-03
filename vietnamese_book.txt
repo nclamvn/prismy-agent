@@ -1,0 +1,11 @@
+CHƯƠNG 1: KHỞI ĐẦU
+
+Trong thế giới công nghệ ngày nay, trí tuệ nhân tạo đã trở thành một phần không thể thiếu. Từ những ứng dụng đơn giản như gợi ý văn bản đến những hệ thống phức tạp như xe tự lái, AI đang dần thay đổi cách chúng ta sống và làm việc.
+
+Lịch sử phát triển của AI bắt đầu từ những năm 1950, khi Alan Turing đặt ra câu hỏi: "Liệu máy móc có thể suy nghĩ?". Từ đó đến nay, chúng ta đã chứng kiến nhiều bước tiến vượt bậc.
+
+CHƯƠNG 2: ỨNG DỤNG THỰC TẾ
+
+AI không chỉ là lý thuyết suông. Trong y tế, AI giúp chẩn đoán bệnh sớm hơn, chính xác hơn. Trong giáo dục, AI cá nhân hóa trải nghiệm học tập cho từng học sinh. Trong kinh doanh, AI tối ưu hóa quy trình và tăng hiệu quả.
+
+Tuy nhiên, cùng với những lợi ích, AI cũng đặt ra nhiều thách thức về đạo đức, việc làm, và quyền riêng tư mà xã hội cần giải quyết.

@@ -1,0 +1,17 @@
+Chương 1: Giới thiệu về AI
+
+Trí tuệ nhân tạo (AI) là một lĩnh vực của khoa học máy tính tập trung vào việc tạo ra các hệ thống thông minh có khả năng thực hiện các nhiệm vụ thường đòi hỏi trí thông minh của con người.
+
+Lịch sử phát triển:
+- 1950: Alan Turing đề xuất "Turing Test"
+- 1956: Thuật ngữ "Artificial Intelligence" ra đời
+- 1997: Deep Blue đánh bại nhà vô địch cờ vua
+- 2016: AlphaGo chiến thắng trong Go
+- 2022: ChatGPT làm thay đổi cách người dùng tương tác với AI
+
+Các ứng dụng hiện tại:
+1. Y tế: Chẩn đoán bệnh, phát triển thuốc
+2. Tài chính: Phát hiện gian lận, trading tự động
+3. Giao thông: Xe tự lái, tối ưu route
+4. Giáo dục: Personalized learning
+5. Entertainment: Game AI, content generation

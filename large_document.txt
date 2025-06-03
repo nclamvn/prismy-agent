@@ -1,0 +1,11 @@
+Chapter 1: Introduction to Artificial Intelligence
+
+Artificial Intelligence represents one of the most transformative technologies of our time. From its humble beginnings in the 1950s to today's sophisticated systems, AI has evolved dramatically. This chapter explores the fundamental concepts, history, and current applications that define the field.
+
+The journey began with Alan Turing's groundbreaking question: "Can machines think?" This simple yet profound inquiry laid the foundation for decades of research and innovation. Today, we see AI applications everywhere - from the smartphones in our pockets to the recommendation systems that shape our digital experiences.
+
+Chapter 2: Machine Learning Fundamentals
+
+Machine learning, a subset of AI, enables computers to learn from data without being explicitly programmed. This revolutionary approach has opened doors to solving complex problems that traditional programming couldn't tackle. We'll explore supervised learning, unsupervised learning, and reinforcement learning paradigms.
+
+Understanding these concepts is crucial for anyone looking to grasp how modern AI systems work. Whether it's recognizing images, understanding natural language, or making predictions, machine learning algorithms power these capabilities.

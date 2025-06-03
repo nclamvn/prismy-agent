@@ -10,7 +10,6 @@ from src.config.logging_config import setup_logging, get_logger
 from src.core.utils.health_check import HealthChecker, check_disk_space
 from src.api.v1.endpoints import translation, content, health
 from src.api.v1.endpoints import document
-from src.api.v1.endpoints import health, translation, content, document
 
 # Setup logging
 setup_logging()
@@ -40,7 +39,6 @@ app.include_router(
     document.router,
     prefix="/api/v1/document",
     tags=["document-processing"],
-    responses={404: {"description": "Not found"}},
 )
 @app.get("/")
 async def root():

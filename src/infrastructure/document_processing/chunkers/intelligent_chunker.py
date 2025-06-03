@@ -1,0 +1,690 @@
+# src/infrastructure/document_processing/chunkers/intelligent_chunker.py
+
+import hashlib
+import re
+from typing import List, Dict, Tuple, Optional, Any
+from dataclasses import dataclass
+from enum import Enum
+import numpy as np
+from sentence_transformers import SentenceTransformer
+
+from src.core.models.document import Document, DocumentChunk
+from src.core.utils.logger import Logger
+
+logger = Logger(__name__)
+
+
+class DocumentType(Enum):
+    NARRATIVE = "narrative"
+    ACADEMIC = "academic"
+    BUSINESS = "business"
+    TECHNICAL = "technical"
+    GENERAL = "general"
+
+
+@dataclass
+class ChunkingStrategy:
+    max_chunk_size: int = 3000
+    min_chunk_size: int = 500
+    overlap_size: int = 200
+    semantic_threshold: float = 0.7
+    preserve_structure: bool = True
+
+
+class IntelligentChunker:
+    """Smart document chunking with semantic awareness and format optimization."""
+    
+    def __init__(self):
+        self.embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+        self.strategies = {
+            DocumentType.NARRATIVE: self._chunk_narrative,
+            DocumentType.ACADEMIC: self._chunk_academic,
+            DocumentType.BUSINESS: self._chunk_business,
+            DocumentType.TECHNICAL: self._chunk_technical,
+            DocumentType.GENERAL: self._chunk_general
+        }
+        
+    def chunk_document(
+        self, 
+        document: Document, 
+        target_format: str,
+        strategy: Optional[ChunkingStrategy] = None
+    ) -> Tuple[List[DocumentChunk], Dict[str, Any]]:
+        """
+        Intelligently chunk document based on type and target format.
+        
+        Returns:
+            Tuple of (chunks, context_map)
+        """
+        if strategy is None:
+            strategy = ChunkingStrategy()
+            
+        # Detect document type
+        doc_type = self._detect_document_type(document)
+        logger.info(f"Detected document type: {doc_type.value}")
+        
+        # Apply appropriate chunking strategy
+        chunks = self.strategies[doc_type](document, strategy)
+        
+        # Create context map for coherence
+        context_map = self._create_context_map(chunks)
+        
+        # Optimize for target format
+        if target_format == "podcast":
+            chunks = self._optimize_for_podcast(chunks)
+        elif target_format == "course":
+            chunks = self._optimize_for_course(chunks)
+        elif target_format == "video":
+            chunks = self._optimize_for_video(chunks)
+            
+        return chunks, context_map
+    
+    def _detect_document_type(self, document: Document) -> DocumentType:
+        """Detect document type using content analysis."""
+        text_sample = document.content[:5000]  # Analyze first 5000 chars
+        
+        # Check for academic indicators
+        if self._has_academic_markers(text_sample):
+            return DocumentType.ACADEMIC
+            
+        # Check for business markers
+        if self._has_business_markers(text_sample):
+            return DocumentType.BUSINESS
+            
+        # Check for technical documentation
+        if self._has_technical_markers(text_sample):
+            return DocumentType.TECHNICAL
+            
+        # Check for narrative structure
+        if self._has_narrative_structure(text_sample):
+            return DocumentType.NARRATIVE
+            
+        return DocumentType.GENERAL
+    
+    def _has_academic_markers(self, text: str) -> bool:
+        """Check for academic paper markers."""
+        markers = [
+            r'\babstract\b', r'\bintroduction\b', r'\bmethodology\b',
+            r'\bconclusion\b', r'\breferences\b', r'\bcitation\b',
+            r'\bfigure\s+\d+', r'\btable\s+\d+', r'\bsection\s+\d+'
+        ]
+        marker_count = sum(1 for marker in markers if re.search(marker, text, re.I))
+        return marker_count >= 3
+    
+    def _has_business_markers(self, text: str) -> bool:
+        """Check for business document markers."""
+        markers = [
+            r'\bexecutive summary\b', r'\bmarket analysis\b', r'\bROI\b',
+            r'\bquarterly\b', r'\brevenue\b', r'\bstrategy\b',
+            r'\bKPI\b', r'\bstakeholder\b', r'\bforecast\b'
+        ]
+        marker_count = sum(1 for marker in markers if re.search(marker, text, re.I))
+        return marker_count >= 3
+    
+    def _has_technical_markers(self, text: str) -> bool:
+        """Check for technical documentation markers."""
+        markers = [
+            r'```', r'\bAPI\b', r'\bfunction\b', r'\bclass\b',
+            r'\bimplementation\b', r'\bparameter\b', r'\breturn\b',
+            r'\binstall\b', r'\bconfiguration\b'
+        ]
+        marker_count = sum(1 for marker in markers if re.search(marker, text, re.I))
+        return marker_count >= 3
+    
+    def _has_narrative_structure(self, text: str) -> bool:
+        """Check for narrative/story structure."""
+        # Check for dialogue
+        has_dialogue = bool(re.search(r'[""].*?[""]', text))
+        
+        # Check for character indicators
+        has_characters = bool(re.search(r'\b(said|asked|replied|thought)\b', text, re.I))
+        
+        # Check for scene descriptions
+        has_scenes = bool(re.search(r'\b(chapter|scene|prologue|epilogue)\b', text, re.I))
+        
+        return sum([has_dialogue, has_characters, has_scenes]) >= 2
+    
+    def _chunk_narrative(
+        self, 
+        document: Document, 
+        strategy: ChunkingStrategy
+    ) -> List[DocumentChunk]:
+        """Chunk narrative documents by scenes/chapters."""
+        chunks = []
+        
+        # Split by chapters first
+        chapter_pattern = r'(Chapter\s+\d+|CHAPTER\s+\d+|Chapter\s+[IVX]+)'
+        chapters = re.split(chapter_pattern, document.content)
+        
+        current_position = 0
+        
+        for i in range(0, len(chapters), 2):
+            if i + 1 < len(chapters):
+                chapter_title = chapters[i] if i > 0 else "Beginning"
+                chapter_content = chapters[i + 1] if i + 1 < len(chapters) else chapters[i]
+                
+                # Further split long chapters by scenes
+                if len(chapter_content) > strategy.max_chunk_size:
+                    scene_chunks = self._split_by_scenes(
+                        chapter_content, 
+                        strategy,
+                        chapter_title
+                    )
+                    chunks.extend(scene_chunks)
+                else:
+                    chunk = DocumentChunk(
+                        content=chapter_content.strip(),
+                        start_position=current_position,
+                        end_position=current_position + len(chapter_content),
+                        metadata={
+                            "type": "chapter",
+                            "title": chapter_title,
+                            "index": len(chunks)
+                        }
+                    )
+                    chunks.append(chunk)
+                
+                current_position += len(chapter_content)
+                
+        return chunks
+    
+    def _chunk_academic(
+        self, 
+        document: Document, 
+        strategy: ChunkingStrategy
+    ) -> List[DocumentChunk]:
+        """Chunk academic documents by sections."""
+        chunks = []
+        
+        # Common academic section patterns
+        section_pattern = r'(\n\s*\d+\.?\s+[A-Z][^.]+\n|\n\s*[IVX]+\.?\s+[A-Z][^.]+\n)'
+        sections = re.split(section_pattern, document.content)
+        
+        current_position = 0
+        
+        for i in range(0, len(sections), 2):
+            section_title = sections[i].strip() if i > 0 else "Abstract"
+            section_content = sections[i + 1] if i + 1 < len(sections) else sections[i]
+            
+            if len(section_content) > strategy.max_chunk_size:
+                # Split by paragraphs for long sections
+                sub_chunks = self._split_by_paragraphs(
+                    section_content,
+                    strategy,
+                    section_title
+                )
+                chunks.extend(sub_chunks)
+            else:
+                chunk = DocumentChunk(
+                    content=section_content.strip(),
+                    start_position=current_position,
+                    end_position=current_position + len(section_content),
+                    metadata={
+                        "type": "section",
+                        "title": section_title,
+                        "index": len(chunks)
+                    }
+                )
+                chunks.append(chunk)
+                
+            current_position += len(section_content)
+            
+        return chunks
+    
+    def _chunk_business(
+        self, 
+        document: Document, 
+        strategy: ChunkingStrategy
+    ) -> List[DocumentChunk]:
+        """Chunk business documents by logical sections."""
+        chunks = []
+        
+        # Business document sections
+        section_markers = [
+            r'Executive Summary',
+            r'Market Analysis',
+            r'Financial Overview',
+            r'Strategy',
+            r'Recommendations',
+            r'Conclusion',
+            r'Appendix'
+        ]
+        
+        # Create pattern from markers
+        pattern = '(' + '|'.join(f'\\n\\s*{marker}\\s*\\n' for marker in section_markers) + ')'
+        sections = re.split(pattern, document.content, flags=re.I)
+        
+        current_position = 0
+        
+        for i in range(0, len(sections), 2):
+            section_title = sections[i].strip() if i > 0 else "Introduction"
+            section_content = sections[i + 1] if i + 1 < len(sections) else sections[i]
+            
+            chunk = DocumentChunk(
+                content=section_content.strip(),
+                start_position=current_position,
+                end_position=current_position + len(section_content),
+                metadata={
+                    "type": "business_section",
+                    "title": section_title,
+                    "index": len(chunks),
+                    "has_metrics": self._contains_metrics(section_content)
+                }
+            )
+            chunks.append(chunk)
+            current_position += len(section_content)
+            
+        return chunks
+    
+    def _chunk_technical(
+        self, 
+        document: Document, 
+        strategy: ChunkingStrategy
+    ) -> List[DocumentChunk]:
+        """Chunk technical documents preserving code blocks."""
+        chunks = []
+        current_position = 0
+        
+        # Split by code blocks first to preserve them
+        code_block_pattern = r'(```[\s\S]*?```)'
+        parts = re.split(code_block_pattern, document.content)
+        
+        current_chunk = ""
+        
+        for part in parts:
+            if part.startswith('```'):
+                # This is a code block
+                if len(current_chunk) > strategy.min_chunk_size:
+                    # Save current chunk
+                    chunks.append(self._create_chunk(
+                        current_chunk, 
+                        current_position,
+                        "text"
+                    ))
+                    current_position += len(current_chunk)
+                    current_chunk = ""
+                
+                # Add code block as separate chunk
+                chunks.append(self._create_chunk(
+                    part,
+                    current_position,
+                    "code"
+                ))
+                current_position += len(part)
+            else:
+                # Regular text
+                if len(current_chunk) + len(part) > strategy.max_chunk_size:
+                    # Split by paragraphs
+                    paragraphs = part.split('\n\n')
+                    for para in paragraphs:
+                        if len(current_chunk) + len(para) > strategy.max_chunk_size:
+                            chunks.append(self._create_chunk(
+                                current_chunk,
+                                current_position,
+                                "text"
+                            ))
+                            current_position += len(current_chunk)
+                            current_chunk = para
+                        else:
+                            current_chunk += '\n\n' + para if current_chunk else para
+                else:
+                    current_chunk += part
+        
+        # Add remaining content
+        if current_chunk:
+            chunks.append(self._create_chunk(
+                current_chunk,
+                current_position,
+                "text"
+            ))
+            
+        return chunks
+    
+    def _chunk_general(
+        self, 
+        document: Document, 
+        strategy: ChunkingStrategy
+    ) -> List[DocumentChunk]:
+        """General chunking strategy using semantic similarity."""
+        sentences = self._split_into_sentences(document.content)
+        chunks = []
+        current_chunk = []
+        current_size = 0
+        start_position = 0
+        
+        for i, sentence in enumerate(sentences):
+            sentence_size = len(sentence)
+            
+            # Check if adding sentence exceeds max size
+            if current_size + sentence_size > strategy.max_chunk_size and current_chunk:
+                # Create chunk
+                chunk_content = ' '.join(current_chunk)
+                chunks.append(DocumentChunk(
+                    content=chunk_content,
+                    start_position=start_position,
+                    end_position=start_position + len(chunk_content),
+                    metadata={
+                        "type": "general",
+                        "index": len(chunks),
+                        "sentence_count": len(current_chunk)
+                    }
+                ))
+                
+                # Keep overlap for context
+                overlap_sentences = int(len(current_chunk) * 0.1)  # 10% overlap
+                current_chunk = current_chunk[-overlap_sentences:] if overlap_sentences > 0 else []
+                current_size = sum(len(s) for s in current_chunk)
+                start_position += len(chunk_content) - current_size
+            
+            current_chunk.append(sentence)
+            current_size += sentence_size
+        
+        # Add final chunk
+        if current_chunk:
+            chunk_content = ' '.join(current_chunk)
+            chunks.append(DocumentChunk(
+                content=chunk_content,
+                start_position=start_position,
+                end_position=start_position + len(chunk_content),
+                metadata={
+                    "type": "general",
+                    "index": len(chunks),
+                    "sentence_count": len(current_chunk)
+                }
+            ))
+            
+        return chunks
+    
+    def _split_by_scenes(
+        self, 
+        content: str, 
+        strategy: ChunkingStrategy,
+        chapter_title: str
+    ) -> List[DocumentChunk]:
+        """Split narrative content by scenes."""
+        # Scene indicators
+        scene_patterns = [
+            r'\n\s*\*\s*\*\s*\*\s*\n',  # *** scene break
+            r'\n\s*#\s*#\s*#\s*\n',      # ### scene break
+            r'\n\s*-\s*-\s*-\s*\n',      # --- scene break
+        ]
+        
+        pattern = '(' + '|'.join(scene_patterns) + ')'
+        scenes = re.split(pattern, content)
+        
+        chunks = []
+        for i, scene in enumerate(scenes):
+            if not scene.strip() or len(scene) < 50:
+                continue
+                
+            chunks.append(DocumentChunk(
+                content=scene.strip(),
+                start_position=0,  # Will be updated
+                end_position=0,    # Will be updated
+                metadata={
+                    "type": "scene",
+                    "chapter": chapter_title,
+                    "scene_index": i,
+                    "index": len(chunks)
+                }
+            ))
+            
+        return chunks
+    
+    def _split_by_paragraphs(
+        self,
+        content: str,
+        strategy: ChunkingStrategy,
+        section_title: str
+    ) -> List[DocumentChunk]:
+        """Split content by paragraphs."""
+        paragraphs = content.split('\n\n')
+        chunks = []
+        current_chunk = []
+        current_size = 0
+        
+        for para in paragraphs:
+            para_size = len(para)
+            
+            if current_size + para_size > strategy.max_chunk_size and current_chunk:
+                chunk_content = '\n\n'.join(current_chunk)
+                chunks.append(DocumentChunk(
+                    content=chunk_content,
+                    start_position=0,  # Will be updated
+                    end_position=0,    # Will be updated
+                    metadata={
+                        "type": "paragraph_group",
+                        "section": section_title,
+                        "index": len(chunks)
+                    }
+                ))
+                current_chunk = []
+                current_size = 0
+                
+            current_chunk.append(para)
+            current_size += para_size
+        
+        # Add remaining
+        if current_chunk:
+            chunk_content = '\n\n'.join(current_chunk)
+            chunks.append(DocumentChunk(
+                content=chunk_content,
+                start_position=0,
+                end_position=0,
+                metadata={
+                    "type": "paragraph_group",
+                    "section": section_title,
+                    "index": len(chunks)
+                }
+            ))
+            
+        return chunks
+    
+    def _contains_metrics(self, text: str) -> bool:
+        """Check if text contains business metrics."""
+        metric_patterns = [
+            r'\$\d+', r'\d+%', r'ROI', r'revenue', r'profit',
+            r'growth', r'margin', r'cost', r'budget'
+        ]
+        return any(re.search(pattern, text, re.I) for pattern in metric_patterns)
+    
+    def _create_chunk(
+        self,
+        content: str,
+        position: int,
+        chunk_type: str
+    ) -> DocumentChunk:
+        """Create a document chunk."""
+        return DocumentChunk(
+            content=content.strip(),
+            start_position=position,
+            end_position=position + len(content),
+            metadata={
+                "type": chunk_type,
+                "index": 0  # Will be updated
+            }
+        )
+    
+    def _split_into_sentences(self, text: str) -> List[str]:
+        """Split text into sentences."""
+        # Simple sentence splitter - can be enhanced with NLTK
+        sentences = re.split(r'(?<=[.!?])\s+', text)
+        return [s.strip() for s in sentences if s.strip()]
+    
+    def _create_context_map(self, chunks: List[DocumentChunk]) -> Dict[str, Any]:
+        """Create context map for maintaining coherence."""
+        context_map = {
+            "chunk_count": len(chunks),
+            "chunk_embeddings": {},
+            "similarity_matrix": None,
+            "key_entities": {},
+            "narrative_flow": []
+        }
+        
+        # Generate embeddings for each chunk
+        chunk_texts = [chunk.content[:500] for chunk in chunks]  # Use first 500 chars
+        embeddings = self.embedding_model.encode(chunk_texts)
+        
+        # Store embeddings
+        for i, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
+            chunk_id = f"chunk_{i}"
+            context_map["chunk_embeddings"][chunk_id] = embedding.tolist()
+        
+        # Calculate similarity matrix
+        similarity_matrix = np.zeros((len(chunks), len(chunks)))
+        for i in range(len(chunks)):
+            for j in range(len(chunks)):
+                if i != j:
+                    sim = np.dot(embeddings[i], embeddings[j]) / (
+                        np.linalg.norm(embeddings[i]) * np.linalg.norm(embeddings[j])
+                    )
+                    similarity_matrix[i][j] = sim
+        
+        context_map["similarity_matrix"] = similarity_matrix.tolist()
+        
+        # Extract key entities (simplified - can use NER)
+        for i, chunk in enumerate(chunks):
+            entities = self._extract_simple_entities(chunk.content)
+            context_map["key_entities"][f"chunk_{i}"] = entities
+        
+        return context_map
+    
+    def _extract_simple_entities(self, text: str) -> List[str]:
+        """Extract simple entities from text."""
+        # Extract capitalized words (potential names/places)
+        entities = re.findall(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b', text)
+        
+        # Remove common words
+        common_words = {'The', 'This', 'That', 'These', 'Those', 'Chapter', 'Section'}
+        entities = [e for e in entities if e not in common_words]
+        
+        return list(set(entities))[:10]  # Return top 10 unique entities
+    
+    def _optimize_for_podcast(self, chunks: List[DocumentChunk]) -> List[DocumentChunk]:
+        """Optimize chunks for podcast episodes."""
+        # Group chunks into episode-sized segments (15-20 minutes of content)
+        # Assuming 150 words per minute speaking rate
+        words_per_episode = 150 * 20  # 20-minute episodes
+        
+        optimized_chunks = []
+        current_episode = []
+        current_word_count = 0
+        
+        for chunk in chunks:
+            chunk_word_count = len(chunk.content.split())
+            
+            if current_word_count + chunk_word_count > words_per_episode and current_episode:
+                # Create episode chunk
+                episode_content = '\n\n'.join([c.content for c in current_episode])
+                episode_chunk = DocumentChunk(
+                    content=episode_content,
+                    start_position=current_episode[0].start_position,
+                    end_position=current_episode[-1].end_position,
+                    metadata={
+                        "type": "podcast_episode",
+                        "episode_number": len(optimized_chunks) + 1,
+                        "duration_minutes": current_word_count / 150,
+                        "chunk_count": len(current_episode)
+                    }
+                )
+                optimized_chunks.append(episode_chunk)
+                
+                current_episode = [chunk]
+                current_word_count = chunk_word_count
+            else:
+                current_episode.append(chunk)
+                current_word_count += chunk_word_count
+        
+        # Add final episode
+        if current_episode:
+            episode_content = '\n\n'.join([c.content for c in current_episode])
+            episode_chunk = DocumentChunk(
+                content=episode_content,
+                start_position=current_episode[0].start_position,
+                end_position=current_episode[-1].end_position,
+                metadata={
+                    "type": "podcast_episode",
+                    "episode_number": len(optimized_chunks) + 1,
+                    "duration_minutes": current_word_count / 150,
+                    "chunk_count": len(current_episode)
+                }
+            )
+            optimized_chunks.append(episode_chunk)
+        
+        return optimized_chunks
+    
+    def _optimize_for_course(self, chunks: List[DocumentChunk]) -> List[DocumentChunk]:
+        """Optimize chunks for course lessons."""
+        # Group chunks into lesson-sized segments
+        # Aiming for 10-15 minute video lessons
+        
+        optimized_chunks = []
+        for i, chunk in enumerate(chunks):
+            chunk.metadata["lesson_number"] = i + 1
+            chunk.metadata["lesson_type"] = self._determine_lesson_type(chunk)
+            chunk.metadata["exercises_needed"] = self._needs_exercises(chunk)
+            optimized_chunks.append(chunk)
+            
+        return optimized_chunks
+    
+    def _optimize_for_video(self, chunks: List[DocumentChunk]) -> List[DocumentChunk]:
+        """Optimize chunks for video scripts."""
+        # For 90-second videos, we need very concise chunks
+        # Assuming 2-3 words per second for clear narration
+        
+        words_per_video = 180  # 90 seconds * 2 words/second
+        
+        optimized_chunks = []
+        for chunk in chunks:
+            chunk_words = chunk.content.split()
+            
+            if len(chunk_words) > words_per_video:
+                # Split into multiple video segments
+                for i in range(0, len(chunk_words), words_per_video):
+                    segment_words = chunk_words[i:i + words_per_video]
+                    segment_content = ' '.join(segment_words)
+                    
+                    video_chunk = DocumentChunk(
+                        content=segment_content,
+                        start_position=chunk.start_position,
+                        end_position=chunk.end_position,
+                        metadata={
+                            "type": "video_segment",
+                            "duration_seconds": len(segment_words) / 2,
+                            "scene_count": self._estimate_scene_count(segment_content),
+                            "video_number": len(optimized_chunks) + 1
+                        }
+                    )
+                    optimized_chunks.append(video_chunk)
+            else:
+                chunk.metadata["type"] = "video_segment"
+                chunk.metadata["duration_seconds"] = len(chunk_words) / 2
+                chunk.metadata["scene_count"] = self._estimate_scene_count(chunk.content)
+                chunk.metadata["video_number"] = len(optimized_chunks) + 1
+                optimized_chunks.append(chunk)
+                
+        return optimized_chunks
+    
+    def _determine_lesson_type(self, chunk: DocumentChunk) -> str:
+        """Determine the type of lesson based on content."""
+        content_lower = chunk.content.lower()
+        
+        if any(word in content_lower for word in ['example', 'case study', 'demonstration']):
+            return "practical"
+        elif any(word in content_lower for word in ['theory', 'concept', 'definition']):
+            return "theoretical"
+        elif any(word in content_lower for word in ['exercise', 'practice', 'assignment']):
+            return "exercise"
+        else:
+            return "mixed"
+    
+    def _needs_exercises(self, chunk: DocumentChunk) -> bool:
+        """Determine if chunk needs exercises."""
+        lesson_type = chunk.metadata.get("lesson_type", "mixed")
+        return lesson_type in ["theoretical", "practical"]
+    
+    def _estimate_scene_count(self, content: str) -> int:
+        """Estimate number of scenes needed for video content."""
+        # Rough estimate: 1 scene per 30 words (15 seconds)
+        word_count = len(content.split())
+        return max(1, word_count // 30)

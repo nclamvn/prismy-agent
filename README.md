@@ -1,28 +1,25 @@
-# Translate Export Agent
+# 🌐 Translate Export Agent
 
-AI-powered translation and content transformation system.
+AI-powered translation and content transformation system with multi-provider support.
 
 ## Features
-- 🌐 Multi-language translation with multiple providers
-- 🎙️ Podcast script generation with LLM enhancement
-- 📚 Educational content builder
-- 🎬 Video content processor with DNA analysis
-- 🤖 AI Commander for intelligent routing
+- 🌍 Multi-language translation (8 languages)
+- 🤖 Multiple LLM providers (OpenAI GPT-4, Claude 4, Google)
+- 🎙️ Content transformation (Podcast, Education, Video)
+- 🚀 RESTful API with documentation
+- 🎨 Interactive web interface
+- 📊 Health monitoring and metrics
 
-## Installation
-```bash
-# Clone repository
-git clone [your-repo-url]
+## Quick Start
+1. Install dependencies: pip install -r requirements.txt
+2. Configure environment: Copy .env.example to .env and add API keys
+3. Run API: uvicorn src.api.main:app --port 8000
+4. Run UI: streamlit run streamlit_ui.py
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Install in development mode
-pip install -e .
-
-# Copy environment variables
-cp .env.example .env
+## Architecture
+Clean architecture with separation of concerns:
+- Core: Domain logic and interfaces
+- Application: Business use cases
+- Infrastructure: External integrations
+- API: RESTful endpoints
+- UI: Streamlit interface

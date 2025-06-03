@@ -65,3 +65,136 @@
 2025-06-02 10:07:33 - src.infrastructure.llm.providers.anthropic_provider - INFO - translate:52 - Success with model: claude-opus-4-20250514
 2025-06-02 10:07:33 - src.application.services.translation_service - INFO - translate_text:72 - Translation successful: Con chim dậy sớm bắt được sâu, nhưng con chuột thứ...
 2025-06-02 10:35:00 - src.api.main - INFO - shutdown_event:56 - API shutting down...
+2025-06-02 14:27:51 - src.api.main - INFO - startup_event:50 - API starting up...
+2025-06-02 14:27:55 - src.core.utils.health_check - INFO - check_health:36 - Starting health checks
+2025-06-02 14:28:33 - src.core.utils.health_check - INFO - check_health:36 - Starting health checks
+2025-06-02 14:28:41 - src.core.utils.health_check - INFO - check_health:36 - Starting health checks
+2025-06-02 14:30:35 - src.api.main - INFO - shutdown_event:56 - API shutting down...
+2025-06-02 21:11:27 - src.api.main - INFO - startup_event:57 - API starting up...
+2025-06-02 21:12:21 - src.api.main - INFO - shutdown_event:63 - API shutting down...
+2025-06-02 21:16:49 - src.api.main - INFO - startup_event:57 - API starting up...
+2025-06-02 21:17:23 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: 578f96e2-db04-4425-9e88-18ef22962b2f
+2025-06-02 21:17:23 - src.infrastructure.document_processing.document_processor - ERROR - error:28 - Document processing failed: name 're' is not defined
+2025-06-02 21:17:23 - src.api.v1.endpoints.document - ERROR - error:28 - Processing task error: Failed to process document: name 're' is not defined
+2025-06-02 21:18:57 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: d9fa2baf-6dd0-4e9b-99db-05f6df219646
+2025-06-02 21:18:57 - src.infrastructure.document_processing.document_processor - ERROR - error:28 - Document processing failed: name 're' is not defined
+2025-06-02 21:18:57 - src.api.v1.endpoints.document - ERROR - error:28 - Processing task error: Failed to process document: name 're' is not defined
+2025-06-02 21:25:32 - src.api.main - INFO - shutdown_event:63 - API shutting down...
+2025-06-02 21:25:45 - src.api.main - INFO - startup_event:57 - API starting up...
+2025-06-02 21:27:16 - src.api.v1.endpoints.document - ERROR - error:28 - Error processing document: 400: Invalid output format. Must be one of: ['translation', 'podcast', 'course', 'video', 'screenplay']
+2025-06-02 21:29:00 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: 3df5dff6-7a67-4311-9c66-82c716182bd9
+2025-06-02 21:29:07 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for podcast format
+2025-06-02 21:29:07 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: general
+2025-06-02 21:29:10 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 1 chunks
+2025-06-02 21:29:10 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 0, chunks to process: 1
+2025-06-02 21:29:10 - src.infrastructure.document_processing.orchestrators.model_orchestrator - INFO - info:25 - Processing plan created: 1 tasks
+2025-06-02 21:29:10 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: a94ed2ad-c6dc-466a-a143-83e3809c555e
+2025-06-02 21:29:10 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 10.30s, cost: $0.0000
+2025-06-02 21:29:16 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: 27b3ce49-bec7-4c99-9060-a7a985f8980b
+2025-06-02 21:29:17 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for translation format
+2025-06-02 21:29:17 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: general
+2025-06-02 21:29:17 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 1 chunks
+2025-06-02 21:29:17 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 0, chunks to process: 1
+2025-06-02 21:29:17 - src.infrastructure.document_processing.orchestrators.model_orchestrator - INFO - info:25 - Processing plan created: 1 tasks
+2025-06-02 21:29:17 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 7.17s, cost: $0.0000
+2025-06-02 21:29:22 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for course format
+2025-06-02 21:29:22 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: general
+2025-06-02 21:29:22 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 1 chunks
+2025-06-02 21:29:22 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 0, chunks to process: 1
+2025-06-02 21:29:22 - src.infrastructure.document_processing.orchestrators.model_orchestrator - INFO - info:25 - Processing plan created: 1 tasks
+2025-06-02 21:29:22 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 5.83s, cost: $0.0000
+2025-06-02 21:31:27 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: 90424af1-726b-4dd4-ade6-ebb0015992a6
+2025-06-02 21:31:46 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for translation format
+2025-06-02 21:31:46 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: general
+2025-06-02 21:31:46 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 1 chunks
+2025-06-02 21:31:46 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 0, chunks to process: 1
+2025-06-02 21:31:46 - src.infrastructure.document_processing.orchestrators.model_orchestrator - INFO - info:25 - Processing plan created: 1 tasks
+2025-06-02 21:31:46 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 19.43s, cost: $0.0002
+2025-06-02 21:32:22 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: 2a3f8c9c-f70f-4b81-88a3-a752d1176c66
+2025-06-02 21:32:28 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for podcast format
+2025-06-02 21:32:28 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: general
+2025-06-02 21:32:28 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 1 chunks
+2025-06-02 21:32:28 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 0, chunks to process: 1
+2025-06-02 21:32:28 - src.infrastructure.document_processing.orchestrators.model_orchestrator - INFO - info:25 - Processing plan created: 1 tasks
+2025-06-02 21:32:28 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 6.25s, cost: $0.0000
+2025-06-02 21:32:35 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: 6a2c943d-b90c-4149-b220-ef4e055b9278
+2025-06-02 21:32:54 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for video format
+2025-06-02 21:32:54 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: general
+2025-06-02 21:32:54 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 1 chunks
+2025-06-02 21:32:54 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 0, chunks to process: 1
+2025-06-02 21:32:54 - src.infrastructure.document_processing.orchestrators.model_orchestrator - INFO - info:25 - Processing plan created: 1 tasks
+2025-06-02 21:32:54 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 19.38s, cost: $0.0002
+2025-06-02 21:34:09 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: 82d52885-aff0-4da5-8ddf-0a10650635b4
+2025-06-02 21:34:15 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for podcast format
+2025-06-02 21:34:15 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: general
+2025-06-02 21:34:16 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 1 chunks
+2025-06-02 21:34:16 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 0, chunks to process: 1
+2025-06-02 21:34:16 - src.infrastructure.document_processing.orchestrators.model_orchestrator - INFO - info:25 - Processing plan created: 1 tasks
+2025-06-02 21:34:16 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 6.81s, cost: $0.0000
+2025-06-02 21:34:30 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: 0602123f-7ac6-46c1-b0ba-5d19a4570bd7
+2025-06-02 21:34:36 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for podcast format
+2025-06-02 21:34:36 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: general
+2025-06-02 21:34:36 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 1 chunks
+2025-06-02 21:34:36 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 0, chunks to process: 1
+2025-06-02 21:34:36 - src.infrastructure.document_processing.orchestrators.model_orchestrator - INFO - info:25 - Processing plan created: 1 tasks
+2025-06-02 21:34:36 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 6.54s, cost: $0.0000
+2025-06-02 21:39:07 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: 3e02c22c-cf64-49de-ace4-ed668cc80135
+2025-06-02 21:39:12 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for podcast format
+2025-06-02 21:39:12 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: general
+2025-06-02 21:39:13 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 1 chunks
+2025-06-02 21:39:13 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 0, chunks to process: 1
+2025-06-02 21:39:13 - src.infrastructure.document_processing.orchestrators.model_orchestrator - INFO - info:25 - Processing plan created: 1 tasks
+2025-06-02 21:39:13 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 6.13s, cost: $0.0000
+2025-06-02 21:39:20 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: c7975760-8172-4b1d-9e29-eefea29f3d02
+2025-06-02 21:39:26 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for podcast format
+2025-06-02 21:39:26 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: general
+2025-06-02 21:39:26 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 1 chunks
+2025-06-02 21:39:26 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 0, chunks to process: 1
+2025-06-02 21:39:26 - src.infrastructure.document_processing.orchestrators.model_orchestrator - INFO - info:25 - Processing plan created: 1 tasks
+2025-06-02 21:39:26 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 6.05s, cost: $0.0000
+2025-06-02 21:58:01 - src.api.main - INFO - shutdown_event:63 - API shutting down...
+2025-06-02 22:11:09 - src.api.main - INFO - startup_event:57 - API starting up...
+2025-06-02 22:11:35 - src.api.main - INFO - shutdown_event:63 - API shutting down...
+2025-06-02 22:12:08 - src.api.main - INFO - startup_event:57 - API starting up...
+2025-06-02 22:13:05 - src.infrastructure.document_processing.cache.cache_manager - INFO - info:25 - Cache optimized, current size: 0.0 MB
+2025-06-02 22:13:22 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: 06a0400e-b60e-4938-9971-540b4a826758
+2025-06-02 22:13:31 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for podcast format
+2025-06-02 22:13:31 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: general
+2025-06-02 22:13:32 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 1 chunks
+2025-06-02 22:13:32 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 0, chunks to process: 1
+2025-06-02 22:13:32 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Processing 1 chunks with orchestrator
+2025-06-02 22:13:32 - src.infrastructure.document_processing.orchestrators.model_orchestrator - INFO - info:25 - Processing plan created: 1 tasks
+2025-06-02 22:13:32 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 10.01s, cost: $0.0000
+2025-06-02 22:14:14 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: ebcc8dd0-6522-4e4e-86c9-587c3e0fb07f
+2025-06-02 22:14:21 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for podcast format
+2025-06-02 22:14:21 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: general
+2025-06-02 22:14:21 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 1 chunks
+2025-06-02 22:14:21 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 1, chunks to process: 0
+2025-06-02 22:14:21 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 6.83s, cost: $0.0000
+2025-06-02 22:16:29 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: 89e7bfb7-1e19-4cd2-9505-0252adc040d8
+2025-06-02 22:16:35 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for podcast format
+2025-06-02 22:16:35 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: general
+2025-06-02 22:16:35 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 1 chunks
+2025-06-02 22:16:35 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 1, chunks to process: 0
+2025-06-02 22:16:35 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 6.10s, cost: $0.0000
+2025-06-02 22:16:48 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: 3e65b8ad-3be9-436c-8d54-7022af3b844d
+2025-06-02 22:16:54 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for course format
+2025-06-02 22:16:54 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: narrative
+2025-06-02 22:16:55 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 2 chunks
+2025-06-02 22:16:55 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 0, chunks to process: 2
+2025-06-02 22:16:55 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Processing 2 chunks with orchestrator
+2025-06-02 22:16:55 - src.infrastructure.document_processing.orchestrators.model_orchestrator - INFO - info:25 - Processing plan created: 2 tasks
+2025-06-02 22:16:55 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 7.05s, cost: $0.0000
+2025-06-02 22:18:00 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Preprocessing document: 4a02b6f0-e491-4fb1-a2de-b885b68eaadd
+2025-06-02 22:18:06 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Chunking document for course format
+2025-06-02 22:18:06 - src.infrastructure.document_processing.chunkers.intelligent_chunker - INFO - info:25 - Detected document type: narrative
+2025-06-02 22:18:06 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Created 2 chunks
+2025-06-02 22:18:06 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Cache hits: 2, chunks to process: 0
+2025-06-02 22:18:06 - src.infrastructure.document_processing.document_processor - INFO - info:25 - Document processed successfully in 5.39s, cost: $0.0000
+2025-06-02 22:26:23 - src.api.main - INFO - shutdown_event:63 - API shutting down...
+2025-06-02 22:26:42 - src.api.main - INFO - startup_event:57 - API starting up...
+2025-06-02 22:30:35 - src.api.main - INFO - shutdown_event:63 - API shutting down...
+2025-06-02 22:30:54 - src.api.main - INFO - startup_event:57 - API starting up...
+2025-06-02 22:31:11 - src.api.main - INFO - shutdown_event:63 - API shutting down...
+2025-06-02 22:31:25 - src.api.main - INFO - startup_event:57 - API starting up...
+2025-06-03 08:36:08 - src.api.main - INFO - shutdown_event:63 - API shutting down...

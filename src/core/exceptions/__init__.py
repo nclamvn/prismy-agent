@@ -34,3 +34,7 @@ __all__ = [
     'TransformationError',
     'UnsupportedFormatError'
 ]
+
+class ProcessingError(Exception):
+    """Error during document processing."""
+    pass
